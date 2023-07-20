@@ -1,0 +1,644 @@
+Artist,Album,Year,Popularity,Length (Min),Album Cover,acousticness,danceability,energy,instrumentalness,loudness,mode,speechiness,tempo,valence
+AC/DC,POWER UP,2020-11-13,64,41.1,https://i.scdn.co/image/ab67616d0000b27304db0e3bcd166c1d6cfd81f9,0.0,0.585,0.82,0.061,-4.849,1.0,0.037,115.43,0.636
+AC/DC,Rock or Bust,2014-11-28,64,35.0,https://i.scdn.co/image/ab67616d0000b273f5ea32b7c7b4ee3a4583d5df,0.0,0.509,0.86,0.061,-4.252,1.0,0.043,123.792,0.579
+AC/DC,Live at River Plate,2012-11-19,59,110.7,https://i.scdn.co/image/ab67616d0000b2730a80b890ab011362fd7aa73b,0.002,0.341,0.958,0.023,-5.019,0.947,0.1,123.777,0.355
+AC/DC,Black Ice,2008-10-20,66,55.6,https://i.scdn.co/image/ab67616d0000b273107d182a8d39586f8f3f23a0,0.001,0.547,0.79,0.021,-3.565,0.8,0.033,109.882,0.514
+AC/DC,Stiff Upper Lip,2000-02-25,59,47.1,https://i.scdn.co/image/ab67616d0000b2736376f65001ec44cb380e12c1,0.041,0.565,0.681,0.029,-4.515,0.917,0.037,110.248,0.683
+AC/DC,Ballbreaker,1995-09-22,56,49.8,https://i.scdn.co/image/ab67616d0000b273dd72be577ed91add8f268f5e,0.004,0.475,0.7,0.125,-6.283,0.909,0.04,129.639,0.565
+AC/DC,Live (Collector's Edition),1992-10-27,50,132.1,https://i.scdn.co/image/ab67616d0000b27326b32820b869763b5d706c26,0.014,0.369,0.95,0.347,-5.415,0.913,0.107,119.855,0.368
+AC/DC,Live,1992-10-27,49,70.9,https://i.scdn.co/image/ab67616d0000b273c5a5b4be2acc36cddc42fb8f,0.001,0.394,0.962,0.293,-4.999,1.0,0.111,119.376,0.374
+AC/DC,The Razors Edge,1990-09-24,78,46.7,https://i.scdn.co/image/ab67616d0000b2738399047ff71200928f5b6508,0.008,0.512,0.859,0.017,-3.972,1.0,0.043,122.109,0.519
+AC/DC,Blow Up Your Video,1988-02-01,52,43.0,https://i.scdn.co/image/ab67616d0000b2737d29629468b9a39131b6d718,0.037,0.442,0.899,0.048,-5.004,0.7,0.072,127.76,0.415
+AC/DC,Who Made Who,1986-05-24,66,37.9,https://i.scdn.co/image/ab67616d0000b273febe8d3decc4565315adff23,0.049,0.483,0.808,0.353,-5.892,0.778,0.062,121.073,0.471
+AC/DC,Fly On the Wall,1985-06-28,47,40.5,https://i.scdn.co/image/ab67616d0000b2738c956231b82b953273c78001,0.028,0.463,0.929,0.48,-4.55,0.7,0.055,109.064,0.448
+AC/DC,Flick of the Switch,1983-08-15,47,37.2,https://i.scdn.co/image/ab67616d0000b2739a0c5b4e72a4aaf8912fa3f7,0.001,0.408,0.883,0.267,-4.132,1.0,0.046,133.619,0.648
+AC/DC,For Those About to Rock (We Salute You),1981-11-23,61,40.2,https://i.scdn.co/image/ab67616d0000b2730d025344564dfda2e57f9ffd,0.0,0.42,0.912,0.492,-4.732,0.9,0.057,124.623,0.553
+AC/DC,Back In Black,1980-07-25,83,42.1,https://i.scdn.co/image/ab67616d0000b2730b51f8d91f3a21e8426361ae,0.028,0.456,0.847,0.012,-5.005,0.9,0.057,129.722,0.592
+AC/DC,Highway to Hell,1979-07-27,79,41.7,https://i.scdn.co/image/ab67616d0000b27351c02a77d09dfcd53c8676d0,0.022,0.475,0.875,0.105,-4.694,0.7,0.089,137.368,0.554
+AC/DC,If You Want Blood You've Got It (Live),1978-10-13,45,53.0,https://i.scdn.co/image/ab67616d0000b27383493eb8edb7ffc099986d1a,0.001,0.333,0.931,0.467,-4.036,1.0,0.107,147.105,0.282
+AC/DC,Powerage,1978-05-05,57,39.9,https://i.scdn.co/image/ab67616d0000b2733bf8d1987a42dd781a8039de,0.007,0.471,0.835,0.451,-4.427,1.0,0.059,140.342,0.444
+AC/DC,Let There Be Rock,1977-03-21,64,41.0,https://i.scdn.co/image/ab67616d0000b27305a19220d37bc871db939b64,0.054,0.449,0.792,0.276,-4.962,0.875,0.104,143.162,0.443
+AC/DC,Dirty Deeds Done Dirt Cheap,1976-09-20,68,39.8,https://i.scdn.co/image/ab67616d0000b27368b03027356fb05501948f62,0.176,0.543,0.746,0.14,-5.722,0.778,0.104,122.798,0.523
+Aretha Franklin,"Aretha Franklin Live at Berns Salonger, Stockholm May 2nd. 1968 (Restauración 2023)",2023-06-23,32,26.6,https://i.scdn.co/image/ab67616d0000b273c7785948d0c5e1b24bcf5323,0.597,0.402,0.676,0.098,-10.442,1.0,0.144,121.279,0.528
+Aretha Franklin,ARETHA,2021-07-30,57,176.8,https://i.scdn.co/image/ab67616d0000b273247ba731e4b951a7dcb342cd,0.608,0.523,0.508,0.027,-7.862,0.86,0.052,122.331,0.582
+Aretha Franklin,The Genius of Aretha Franklin,2021-02-19,37,51.9,https://i.scdn.co/image/ab67616d0000b273a4a7f3436cad6b48567a8c59,0.512,0.634,0.438,0.009,-10.698,0.933,0.044,112.253,0.659
+Aretha Franklin,The Glory of Aretha: 1980-2014,2021-02-18,36,76.7,https://i.scdn.co/image/ab67616d0000b273441952b4134ebab5651657e4,0.21,0.655,0.775,0.008,-6.292,0.667,0.074,123.804,0.737
+Aretha Franklin,The Genesis of Aretha: 1960-1966,2021-02-16,43,59.2,https://i.scdn.co/image/ab67616d0000b273eaeda952e049cef319b5d754,0.79,0.519,0.446,0.0,-10.144,0.727,0.075,114.607,0.612
+Aretha Franklin,A Brand New Me: Aretha Franklin (with The Royal Philharmonic Orchestra),2017-11-10,44,51.7,https://i.scdn.co/image/ab67616d0000b273d4750565018a7842b38914df,0.242,0.468,0.526,0.002,-9.1,1.0,0.037,114.315,0.468
+Aretha Franklin,Aretha Franklin Sings The Great Diva Classics,2014-10-17,45,41.4,https://i.scdn.co/image/ab67616d0000b273542cc41d59b4bb40fd1d63dc,0.159,0.569,0.655,0.0,-6.346,0.6,0.057,101.271,0.393
+Aretha Franklin,So Damn Happy,2003,36,44.6,https://i.scdn.co/image/ab67616d0000b273a6ee4b91b989277abf034176,0.316,0.523,0.66,0.002,-5.786,0.727,0.138,110.301,0.442
+Aretha Franklin,A Rose Is Still A Rose,1998-03-10,36,51.5,https://i.scdn.co/image/ab67616d0000b2733b587986d0ffd38f08260751,0.242,0.659,0.594,0.0,-8.026,0.545,0.08,127.404,0.53
+Aretha Franklin,What You See Is What You Sweat,1991-06-25,34,44.5,https://i.scdn.co/image/ab67616d0000b273e30edcbdf41de98f2c9a3e27,0.358,0.656,0.725,0.0,-7.916,0.9,0.058,118.367,0.605
+Aretha Franklin,"One Lord, One Faith, One Baptism",1987,29,72.3,https://i.scdn.co/image/ab67616d0000b273b08fd883cd78de62822603a3,0.689,0.348,0.597,0.0,-10.579,0.929,0.171,121.188,0.346
+Aretha Franklin,Aretha (Expanded Edition),1986-10,38,150.8,https://i.scdn.co/image/ab67616d0000b273456cd5372184e73b55ee574a,0.166,0.65,0.757,0.049,-10.062,0.593,0.08,116.571,0.649
+Bad Bunny,Un Verano Sin Ti,2022-05-06,97,81.9,https://i.scdn.co/image/ab67616d0000b27349d694203245f241a1bcaa72,0.258,0.757,0.657,0.0,-6.061,0.478,0.12,118.279,0.485
+Bad Bunny,EL ÚLTIMO TOUR DEL MUNDO,2020-11-27,85,47.3,https://i.scdn.co/image/ab67616d0000b273005ee342f4eef2cc6e8436ab,0.268,0.714,0.616,0.0,-6.101,0.625,0.102,123.454,0.424
+Bad Bunny,LAS QUE NO IBAN A SALIR,2020-05-10,73,30.3,https://i.scdn.co/image/ab67616d0000b273ae879683217d488c39600092,0.178,0.783,0.674,0.001,-7.242,0.6,0.125,117.293,0.618
+Bad Bunny,YHLQMDLG,2020-02-29,88,66.0,https://i.scdn.co/image/ab67616d0000b273548f7ec52da7313de0c5e4a0,0.174,0.77,0.726,0.0,-5.086,0.55,0.113,113.266,0.618
+Bad Bunny,X 100PRE,2018-12-23,84,53.9,https://i.scdn.co/image/ab67616d0000b2732fbd77033247e889cb7d2ac4,0.278,0.734,0.575,0.0,-7.249,0.533,0.115,130.888,0.298
+Billie Holiday,Billie and Stan,2022-01-17,40,30.2,https://i.scdn.co/image/ab67616d0000b273ac3036ad17603d1fd56457c8,0.981,0.595,0.071,0.032,-20.545,0.5,0.127,110.232,0.433
+Billie Holiday,Simply ... Lady Day! (2019 Remaster),2020-03-20,38,157.6,https://i.scdn.co/image/ab67616d0000b273f01b2364426e8bd7bc1c2ba7,0.969,0.608,0.155,0.062,-13.143,0.449,0.059,107.103,0.458
+Billie Holiday,Summertime,2018-10-02,31,75.9,https://i.scdn.co/image/ab67616d0000b2738bd9a4fae1d6e0eaa295503a,0.99,0.496,0.15,0.299,-17.566,0.522,0.047,108.294,0.413
+Billie Holiday,The Decca Singles Vol. 1: 1945-1949,2017-11-10,32,52.5,https://i.scdn.co/image/ab67616d0000b273ac44de799aaa8bd04083ab32,0.942,0.465,0.222,0.0,-9.217,0.706,0.037,84.533,0.293
+Billie Holiday,The Complete Commodore/Decca Masters,2009-11-06,25,155.7,https://i.scdn.co/image/ab67616d0000b2733ef5677049d3e4a2a7f4747d,0.929,0.506,0.102,0.001,-15.876,0.64,0.054,98.615,0.327
+Billie Holiday,Remixed & Reimagined,2007,26,67.0,https://i.scdn.co/image/ab67616d0000b2737a8787661c5bd6bae1f406db,0.118,0.699,0.746,0.259,-7.491,0.714,0.085,114.347,0.559
+Bob Dylan,Shadow Kingdom,2023-06-02,56,54.2,https://i.scdn.co/image/ab67616d0000b273ce38c202bc194b2256642678,0.675,0.515,0.37,0.004,-11.466,0.857,0.053,123.477,0.397
+Bob Dylan,"Fragments - Time Out of Mind Sessions (1996-1997): The Bootleg Series, Vol. 17 (Deluxe Edition)",2023-01-27,46,313.6,https://i.scdn.co/image/ab67616d0000b273ca319c649fbaa3c9829cf370,0.445,0.508,0.608,0.032,-8.342,0.64,0.044,122.999,0.471
+Bob Dylan,"Fragments - Time Out of Mind Sessions (1996-1997): The Bootleg Series, Vol. 17",2023-01-26,41,149.7,https://i.scdn.co/image/ab67616d0000b273edb584ee826b6b32126bafd6,0.45,0.526,0.601,0.026,-8.22,0.652,0.038,120.533,0.46
+Bob Dylan,"Springtime in New York: The Bootleg Series, Vol. 16 / 1980-1985",2021-09-17,37,124.3,https://i.scdn.co/image/ab67616d0000b273f3fc007950f80f6f75954962,0.338,0.58,0.593,0.019,-8.893,0.88,0.05,127.437,0.595
+Bob Dylan,Rough and Rowdy Ways,2020-06-19,47,70.6,https://i.scdn.co/image/ab67616d0000b273de53828a4a84a66179dcdfde,0.729,0.54,0.227,0.0,-17.762,0.7,0.104,115.576,0.324
+Bob Dylan,"Travelin' Thru, 1967 - 1969: The Bootleg Series, Vol. 15 (Sampler)",2019-11-01,44,39.9,https://i.scdn.co/image/ab67616d0000b273e13ae64046e6493080ef9738,0.581,0.586,0.441,0.007,-13.766,0.8,0.044,126.07,0.724
+Bob Dylan,The Rolling Thunder Revue: The 1975 Live Recordings (Sampler),2019-06-07,31,47.7,https://i.scdn.co/image/ab67616d0000b273ff01644ae27495ac9f2dfccc,0.413,0.485,0.566,0.0,-12.551,0.9,0.072,132.724,0.715
+Bob Dylan,"More Blood, More Tracks: The Bootleg Series, Vol. 14 (Sampler)",2018-11-02,36,60.3,https://i.scdn.co/image/ab67616d0000b2736724f11842fdbc0c49653ac1,0.574,0.504,0.335,0.001,-13.102,1.0,0.04,120.991,0.481
+Bob Dylan,"Trouble No More: The Bootleg Series, Vol. 13 / 1979-1981 (Deluxe Edition)",2017-11-03,33,240.2,https://i.scdn.co/image/ab67616d0000b27385443ed2ee74c2ed3b52571d,0.396,0.537,0.535,0.0,-13.41,0.72,0.05,125.763,0.591
+Bob Dylan,Triplicate,2017-03-31,33,94.7,https://i.scdn.co/image/ab67616d0000b273b022dcb9f6e5911182135742,0.907,0.424,0.245,0.003,-12.099,0.9,0.032,115.599,0.225
+Bob Dylan,Fallen Angels,2016-05-20,27,37.7,https://i.scdn.co/image/ab67616d0000b27390e16023e3a2b202820c15ed,0.838,0.519,0.087,0.0,-21.901,0.667,0.041,97.959,0.319
+Bob Dylan,Shadows in the Night,2015-02-03,28,34.7,https://i.scdn.co/image/ab67616d0000b273102f09ad3fd0578545ee4cf0,0.883,0.295,0.036,0.001,-22.876,0.8,0.035,112.684,0.157
+Bob Dylan,"Another Self Portrait (1969-1971): The Bootleg Series, Vol. 10 [Deluxe Edition]",2013-08-27,39,162.3,https://i.scdn.co/image/ab67616d0000b273e78de4dfda8fd05bdd9cc2f4,0.763,0.514,0.434,0.012,-9.639,0.9,0.052,120.442,0.506
+Bob Dylan,Tempest,2012-09-10,35,68.5,https://i.scdn.co/image/ab67616d0000b27310e67dc9176f50e7a41748c6,0.626,0.595,0.57,0.002,-10.181,0.9,0.054,120.196,0.57
+Bob Dylan,Christmas In The Heart,2009-10-13,26,42.2,https://i.scdn.co/image/ab67616d0000b273cfff88f4afc7f485b123309a,0.745,0.547,0.473,0.0,-6.692,0.933,0.035,100.304,0.499
+Bob Dylan,Together Through Life,2009-04-28,30,45.4,https://i.scdn.co/image/ab67616d0000b2739c239fa8f7d68820aff40309,0.275,0.6,0.588,0.0,-7.82,0.6,0.034,110.654,0.634
+Bob Dylan,Tell Tale Signs: The Bootleg Series Vol. 8 (Deluxe Edition),2008-10-07,39,197.7,https://i.scdn.co/image/ab67616d0000b273c42fafa92785c984e8c4a6e4,0.388,0.54,0.559,0.012,-9.116,0.744,0.051,127.652,0.47
+Bob Dylan,Modern Times,2006-08-29,40,62.7,https://i.scdn.co/image/ab67616d0000b2736996cd6e6a1423a0c047cbcc,0.475,0.625,0.563,0.005,-9.372,0.6,0.039,121.168,0.546
+Bob Dylan,Love And Theft,2001-09-11,37,57.5,https://i.scdn.co/image/ab67616d0000b273bc66153fea3a00492f35a9f8,0.325,0.575,0.651,0.001,-8.882,0.917,0.053,103.522,0.542
+Bob Dylan,Time Out Of Mind,1997-09-30,50,72.6,https://i.scdn.co/image/ab67616d0000b273fa4240ed863bbd8bec6e9c34,0.487,0.482,0.472,0.012,-13.122,0.818,0.042,115.403,0.435
+Bruce Springsteen,Bruce Springsteen & The E Street Band - The Darkness Tour '78,2023-06-02,53,113.1,https://i.scdn.co/image/ab67616d0000b27304af5c6527ebdc419ec1022d,0.186,0.387,0.713,0.003,-6.849,0.65,0.086,131.056,0.455
+Bruce Springsteen,The Live Series: Songs Of Character,2023-04-21,40,87.3,https://i.scdn.co/image/ab67616d0000b273fa8427700d216cd7c7326747,0.254,0.42,0.728,0.006,-7.595,0.867,0.055,127.613,0.523
+Bruce Springsteen,Only the Strong Survive,2022-11-11,58,50.5,https://i.scdn.co/image/ab67616d0000b273ae2d2ad6f7f39c99faea92fd,0.111,0.532,0.779,0.0,-3.902,0.667,0.049,128.806,0.656
+Bruce Springsteen,The Live Series: Songs Of Location,2022-04-29,42,75.0,https://i.scdn.co/image/ab67616d0000b2730ff08702c84403648159381e,0.293,0.389,0.592,0.001,-9.222,0.8,0.079,120.155,0.317
+Bruce Springsteen,Bruce Springsteen & The E Street Band - The Legendary 1979 No Nukes Concerts,2021-11-19,45,89.9,https://i.scdn.co/image/ab67616d0000b273e9f5b49dc9a43a3c36068b0b,0.043,0.292,0.908,0.009,-7.913,0.846,0.11,137.233,0.376
+Bruce Springsteen,Letter To You,2020-10-23,61,58.4,https://i.scdn.co/image/ab67616d0000b273e5e195e27f8995a9c03bf993,0.079,0.483,0.677,0.001,-7.922,1.0,0.033,124.302,0.478
+Bruce Springsteen,Western Stars - Songs From The Film,2019-10-25,40,57.2,https://i.scdn.co/image/ab67616d0000b273b9289eeef7263e7f1e922ab2,0.374,0.444,0.437,0.004,-10.334,1.0,0.031,115.214,0.405
+Bruce Springsteen,Western Stars,2019-06-14,52,50.7,https://i.scdn.co/image/ab67616d0000b27376ae9897d1fc1fc699a11168,0.438,0.548,0.444,0.004,-9.189,0.923,0.031,120.361,0.423
+Bruce Springsteen,Springsteen on Broadway,2018-12-14,44,148.9,https://i.scdn.co/image/ab67616d0000b273635e75b133faf4b4e86b5fd7,0.776,0.498,0.274,0.0,-18.499,0.886,0.545,122.272,0.342
+Bruce Springsteen,The Live Series Collection,2018-11-29,50,248.1,https://i.scdn.co/image/ab67616d0000b273ad44edf0a236ced2ad45a721,0.283,0.409,0.664,0.003,-8.062,0.86,0.06,126.4,0.438
+Bruce Springsteen,The Ties That Bind: The River Collection,2015-12-04,40,114.1,https://i.scdn.co/image/ab67616d0000b273b52e232d28360b7021c48031,0.076,0.419,0.839,0.045,-7.117,0.875,0.061,137.618,0.7
+Bruce Springsteen,High Hopes,2014-01-14,43,56.0,https://i.scdn.co/image/ab67616d0000b27347c99b965b3074b761d30a6c,0.161,0.511,0.635,0.012,-8.072,0.75,0.031,116.552,0.45
+Bruce Springsteen,Wrecking Ball,2012-03-06,52,61.5,https://i.scdn.co/image/ab67616d0000b27395fefda2989db2e915c27950,0.15,0.49,0.633,0.009,-9.388,1.0,0.037,122.921,0.519
+Bruce Springsteen,The Promise,2010-11-16,53,88.2,https://i.scdn.co/image/ab67616d0000b2737a4a1f69e24ea5efbca22737,0.09,0.425,0.731,0.006,-7.397,0.952,0.038,132.789,0.653
+Bruce Springsteen,Working On A Dream,2009-01-27,45,51.3,https://i.scdn.co/image/ab67616d0000b27346bc11a76fc87e5cf3ba8097,0.137,0.471,0.678,0.113,-8.499,0.846,0.037,116.905,0.566
+Bruce Springsteen,Magic,2007-09-25,53,47.6,https://i.scdn.co/image/ab67616d0000b2730a85cfc4a5af7b0d03c03f49,0.166,0.447,0.757,0.002,-5.733,0.667,0.045,130.103,0.533
+Bruce Springsteen,Live In Dublin,2007-06-05,47,152.3,https://i.scdn.co/image/ab67616d0000b2735d9e578a82454ca9c9095b85,0.361,0.362,0.734,0.0,-7.098,0.75,0.067,131.913,0.501
+Bruce Springsteen,"Hammersmith Odeon, London '75",2006-02-28,40,124.9,https://i.scdn.co/image/ab67616d0000b273258492ee954d2af64289664c,0.175,0.293,0.794,0.008,-6.771,0.75,0.15,130.049,0.395
+Chuck Berry,Live From Blueberry Hill,2021-12-17,31,29.6,https://i.scdn.co/image/ab67616d0000b273ca9d76fd339208a95de1101b,0.242,0.534,0.854,0.0,-5.205,0.9,0.158,121.731,0.739
+Chuck Berry,CHUCK,2017-06-09,29,34.9,https://i.scdn.co/image/ab67616d0000b273954efb2c42b96906e6cff061,0.411,0.587,0.715,0.0,-6.364,0.9,0.093,122.137,0.747
+Chuck Berry,Hail! Hail! Rock 'N' Roll,1987-01-01,32,42.0,https://i.scdn.co/image/ab67616d0000b2731258ec472824d23ce92d1351,0.156,0.563,0.657,0.028,-14.036,0.846,0.06,125.552,0.668
+Chuck Berry,Rock 'N' Roll Rarities,1986-01-01,51,52.7,https://i.scdn.co/image/ab67616d0000b27339807cff601735a3dec9e24c,0.576,0.637,0.584,0.001,-11.949,0.85,0.088,140.67,0.881
+Chuck Berry,Chuck Berry,1975-01-01,35,67.2,https://i.scdn.co/image/ab67616d0000b2735205b35aae090bbaa56c3bfe,0.58,0.713,0.622,0.277,-11.961,0.95,0.048,138.834,0.928
+Chuck Berry,Bio,1973-01-01,26,32.6,https://i.scdn.co/image/ab67616d0000b273bdb2241ff2c68f3b52e5591b,0.511,0.628,0.591,0.271,-10.913,0.857,0.067,131.901,0.815
+Chuck Berry,San Francisco Dues,1971-01-01,48,33.8,https://i.scdn.co/image/ab67616d0000b2736bf950a2cb95f9c700e5f73e,0.695,0.654,0.511,0.336,-11.741,1.0,0.07,121.719,0.756
+Chuck Berry,Back Home,1970-01-01,43,30.3,https://i.scdn.co/image/ab67616d0000b273f12b6a918856dd7806ad3b22,0.571,0.61,0.604,0.406,-10.752,1.0,0.039,120.845,0.821
+Chuck Berry,From St. Louie To Frisco,1968-01-01,30,42.4,https://i.scdn.co/image/ab67616d0000b27399519ca871101951bc481dc8,0.575,0.629,0.512,0.07,-12.051,0.812,0.043,101.549,0.799
+Chuck Berry,Live At Fillmore Auditorium,1967-01-01,32,54.3,https://i.scdn.co/image/ab67616d0000b273f1e32d9641542b85af5e868a,0.666,0.516,0.459,0.127,-13.664,0.917,0.055,126.377,0.74
+Chuck Berry,Chuck Berry In Memphis,1967,40,30.7,https://i.scdn.co/image/ab67616d0000b2734bc9dfcca6a8fd207eaa306e,0.691,0.619,0.422,0.093,-14.866,0.917,0.044,125.034,0.815
+Chuck Berry,Fresh Berry's,1965-01-01,44,29.3,https://i.scdn.co/image/ab67616d0000b2736960582e96e4a34e5c487a68,0.528,0.651,0.505,0.04,-12.821,0.917,0.045,134.415,0.813
+David Bowie,Laughing with Liza,2023-05-05,40,28.2,https://i.scdn.co/image/ab67616d0000b273206e9ec5b39887a79cef21c3,0.426,0.555,0.608,0.0,-9.921,0.9,0.087,138.437,0.722
+David Bowie,Divine Symmetry,2022-11-25,42,176.5,https://i.scdn.co/image/ab67616d0000b27380eb9188441d156240306dd4,0.675,0.488,0.46,0.051,-12.083,0.82,0.178,107.935,0.457
+David Bowie,Moonage Daydream – A Brett Morgen Film,2022-09-16,44,140.0,https://i.scdn.co/image/ab67616d0000b27331b3dfc5151a94371f77f5d6,0.378,0.39,0.497,0.242,-13.826,0.75,0.092,115.465,0.332
+David Bowie,David Bowie: Live in Chile 1990,2022-06-29,28,96.6,https://i.scdn.co/image/ab67616d0000b273d048b2fdcbbc4bf3c74b57d3,0.008,0.372,0.929,0.006,-4.763,0.81,0.103,119.899,0.355
+David Bowie,Something In The Air (Live Paris 99),2021-03-12,25,72.1,https://i.scdn.co/image/ab67616d0000b2731de60b5752fc69003232d882,0.185,0.467,0.573,0.017,-11.024,0.867,0.045,122.001,0.468
+David Bowie,I'm Only Dancing (The Soul Tour 74) [Live],2020-11-27,26,86.3,https://i.scdn.co/image/ab67616d0000b273ab95e8f40ae2563798751b6f,0.297,0.448,0.607,0.038,-11.995,0.842,0.087,120.328,0.49
+David Bowie,ChangesNowBowie,2020-08-28,31,32.0,https://i.scdn.co/image/ab67616d0000b2733cfd876c0e5db6147394be77,0.21,0.606,0.498,0.156,-10.761,0.667,0.032,111.074,0.531
+David Bowie,Metrobolist (aka The Man Who Sold The World) [2020 Mix],2020,27,41.1,https://i.scdn.co/image/ab67616d0000b273658eea37cecb991df691fbf0,0.178,0.325,0.668,0.017,-9.209,0.667,0.064,137.649,0.397
+David Bowie,"Serious Moonlight (Live '83, 2018 Remaster)",2019-02-15,31,92.3,https://i.scdn.co/image/ab67616d0000b27329c0e49172299f83d09e7235,0.08,0.343,0.903,0.043,-8.826,0.619,0.082,123.279,0.482
+David Bowie,Dance,2019-02-15,25,72.5,https://i.scdn.co/image/ab67616d0000b273c1c9fb6ead90cd04f019f6c9,0.148,0.681,0.742,0.09,-8.98,0.583,0.051,120.28,0.672
+David Bowie,Glastonbury 2000 (Live),2018-11-30,44,114.5,https://i.scdn.co/image/ab67616d0000b273a0185a52b3436eb9c9f861ce,0.091,0.502,0.855,0.021,-8.864,0.727,0.081,119.197,0.395
+David Bowie,Welcome To The Blackout (Live London '78),2018-04-20,28,107.5,https://i.scdn.co/image/ab67616d0000b273a50484641e183c7c87fe7cda,0.292,0.366,0.826,0.173,-7.808,0.875,0.095,132.459,0.529
+David Bowie,Stage (2017) [Live],2017-09-29,32,97.1,https://i.scdn.co/image/ab67616d0000b273f72245e903db4307226fdff6,0.165,0.418,0.807,0.188,-8.237,0.727,0.075,124.417,0.604
+David Bowie,"Cracked Actor (Live, Los Angeles '74)",2017-04-22,28,97.2,https://i.scdn.co/image/ab67616d0000b2730d91cf5368982a1e84bf9673,0.202,0.418,0.732,0.048,-8.819,0.75,0.094,128.957,0.421
+Dire Straits,On the Night,1993-05-10,35,75.6,https://i.scdn.co/image/ab67616d0000b273e417d25e9e96c66969805d7f,0.352,0.361,0.653,0.421,-9.39,0.5,0.039,121.8,0.378
+Dire Straits,On Every Street (Remaster),1991-09-10,47,60.6,https://i.scdn.co/image/ab67616d0000b2732dc5c0ffad2ea15cd2af7060,0.302,0.535,0.5,0.395,-11.164,0.583,0.031,121.723,0.471
+Dire Straits,Money For Nothing (2022 Remaster),1988,45,66.7,https://i.scdn.co/image/ab67616d0000b2739974ec3fa91e4bb2500d3338,0.295,0.52,0.675,0.173,-7.983,0.5,0.046,124.594,0.545
+Dire Straits,Brothers in Arms,1985-05-13,64,55.2,https://i.scdn.co/image/ab67616d0000b273fb995d2871f084b34afae3b3,0.482,0.582,0.482,0.18,-12.252,0.556,0.041,118.332,0.472
+Dire Straits,Love Over Gold,1982-09-20,39,41.2,https://i.scdn.co/image/ab67616d0000b2736eb1486e037eba0ff701df77,0.216,0.558,0.525,0.19,-12.374,0.6,0.036,115.04,0.352
+Dire Straits,Making Movies,1980-10-17,52,37.8,https://i.scdn.co/image/ab67616d0000b2735b5e5240a4c483b5fb9f2cb0,0.353,0.572,0.635,0.069,-11.07,0.714,0.033,125.721,0.629
+Dire Straits,Communiqué,1979-06-15,51,42.8,https://i.scdn.co/image/ab67616d0000b2737d93116a6bcbd2ec3c79b062,0.36,0.665,0.607,0.29,-11.823,0.333,0.039,119.85,0.756
+Dire Straits,Dire Straits,1978-10-07,63,41.9,https://i.scdn.co/image/ab67616d0000b273c5a897378c8caf5cd11935a6,0.264,0.757,0.607,0.252,-11.324,0.556,0.04,127.88,0.788
+Duke Ellington,"Ellington In Order, Volume 2 (1928-30)",2023-07-14,33,145.9,https://i.scdn.co/image/ab67616d0000b27350974a8913f514c80992c220,0.804,0.705,0.252,0.519,-13.907,0.778,0.093,118.82,0.745
+Duke Ellington,"Ellington In Order, Volume 1 (1927-28)",2023-06-16,36,131.6,https://i.scdn.co/image/ab67616d0000b273352755ce4cee3c158665c5c3,0.915,0.681,0.286,0.583,-13.633,0.628,0.076,110.588,0.726
+Duke Ellington,"Milestones of Jazz Legends - Duke Ellington and the His Vocalists, Vol. 3",2019-04-05,27,67.6,https://i.scdn.co/image/ab67616d0000b27318b1a6f0bed43b75d2819533,0.933,0.486,0.139,0.001,-15.678,0.824,0.043,100.322,0.364
+Ella Fitzgerald,Ella Sings the Blues,2023-06-15,43,95.4,https://i.scdn.co/image/ab67616d0000b2739f0ae843389c25c9174fea83,0.844,0.493,0.336,0.009,-9.843,0.68,0.058,109.339,0.476
+Ella Fitzgerald,Ella: The Lost Berlin Tapes (Live),2020-10-02,28,64.2,https://i.scdn.co/image/ab67616d0000b273d1375e39b9cfed648567a7e4,0.72,0.434,0.583,0.0,-6.388,0.412,0.111,111.146,0.453
+Ella Fitzgerald,The Complete Piano Duets,2020-03-13,44,148.0,https://i.scdn.co/image/ab67616d0000b2736143a56d2b3acb04f3486c03,0.986,0.436,0.139,0.013,-11.572,0.698,0.037,105.341,0.217
+Ella Fitzgerald,Cheek To Cheek: The Complete Duet Recordings,2018-04-06,44,224.3,https://i.scdn.co/image/ab67616d0000b273ce7df176c25b0872d97990d3,0.831,0.494,0.252,0.009,-11.468,0.66,0.068,111.07,0.383
+Elvis Presley,Rarest Interviews,2023-06-06,36,78.3,https://i.scdn.co/image/ab67616d0000b273098ea2d75daca62b455c0f1b,0.883,0.469,0.624,0.045,-14.923,0.833,0.717,94.99,0.549
+Elvis Presley,Elvis On Tour,2022-12-02,48,128.9,https://i.scdn.co/image/ab67616d0000b2730fba61ec6f4467aaf0b512b0,0.564,0.394,0.637,0.253,-11.36,0.88,0.135,123.053,0.494
+Elvis Presley,Elvis 30 #1 Hits (Expanded Edition),2022-02-18,70,101.9,https://i.scdn.co/image/ab67616d0000b2735cc9e097906397c45324ea08,0.666,0.542,0.592,0.012,-8.518,0.769,0.061,113.363,0.711
+Elvis Presley,Elvis Back in Nashville,2021-11-12,38,165.4,https://i.scdn.co/image/ab67616d0000b27315ef9c59a2e3274068609a76,0.751,0.433,0.415,0.108,-13.354,0.9,0.046,111.162,0.533
+Elvis Presley,From Elvis In Nashville,2020-11-20,40,179.8,https://i.scdn.co/image/ab67616d0000b2732379330cc9d3133cea047e41,0.554,0.458,0.599,0.114,-11.057,0.96,0.043,113.256,0.618
+Elvis Presley,American Sound 1969,2019-08-23,31,199.4,https://i.scdn.co/image/ab67616d0000b273ed6f9c3010458116dcefbce7,0.726,0.54,0.238,0.05,-18.407,0.98,0.049,114.962,0.502
+Elvis Presley,Live 1969,2019-08-09,41,186.3,https://i.scdn.co/image/ab67616d0000b273949faf48c3215c54ab28e8ad,0.585,0.422,0.718,0.067,-11.19,0.98,0.344,111.53,0.571
+Elvis Presley,'68 Comeback Special (50th Anniversary Edition) [Live],2018-11-30,48,174.2,https://i.scdn.co/image/ab67616d0000b273480be8802a3ec9bedddd8c1f,0.62,0.349,0.719,0.18,-11.602,1.0,0.21,106.461,0.525
+Elvis Presley,Christmas with Elvis and the Royal Philharmonic Orchestra (Deluxe),2017-11-24,27,50.7,https://i.scdn.co/image/ab67616d0000b2737f4bc5b1bd50ee702887bf2b,0.701,0.305,0.424,0.011,-8.615,1.0,0.034,108.759,0.344
+Elvis Presley,A Boy From Tupelo: The Complete 1953-1955 Recordings,2017-07-28,49,132.4,https://i.scdn.co/image/ab67616d0000b273fcceeb0c255a838e6870f7f3,0.846,0.554,0.252,0.078,-15.158,0.9,0.056,96.871,0.526
+Elvis Presley,The Wonder of You: Elvis Presley with the Royal Philharmonic Orchestra,2016-10-21,54,51.2,https://i.scdn.co/image/ab67616d0000b273ee18f491fc7ac61b1dc02dcf,0.56,0.367,0.568,0.091,-7.736,1.0,0.04,100.645,0.322
+Elvis Presley,Way Down in the Jungle Room,2016-08-05,36,130.7,https://i.scdn.co/image/ab67616d0000b273a67b3636c1a067b93c453a09,0.699,0.488,0.41,0.091,-13.469,1.0,0.047,109.277,0.471
+Elvis Presley,If I Can Dream: Elvis Presley with the Royal Philharmonic Orchestra,2015-10-30,56,49.7,https://i.scdn.co/image/ab67616d0000b2737adaca103b3a58a478bac9f4,0.565,0.311,0.497,0.034,-8.158,0.857,0.038,113.388,0.308
+Elvis Presley,Elvis At Stax,2013-08-05,41,157.5,https://i.scdn.co/image/ab67616d0000b273e569054f3eae62a7286803cf,0.466,0.541,0.551,0.038,-11.725,0.82,0.041,113.685,0.626
+Elvis Presley,Prince From Another Planet (Live),2012-11-12,46,114.8,https://i.scdn.co/image/ab67616d0000b273777543948983dd7e3637097e,0.435,0.307,0.832,0.359,-7.002,0.766,0.127,127.147,0.486
+Elvis Presley,Viva Elvis,2010-11-11,44,42.5,https://i.scdn.co/image/ab67616d0000b273cac26722f394ccf43216ba8b,0.305,0.514,0.625,0.21,-9.589,1.0,0.099,122.447,0.404
+Elvis Presley,Elvis: Close Up,2003-04-01,37,127.4,https://i.scdn.co/image/ab67616d0000b27383dd0216e36aa016e20c39b7,0.832,0.535,0.273,0.01,-15.27,0.86,0.095,114.778,0.592
+Elvis Presley,"Today, Tomorrow and Forever",2002-06-25,38,123.9,https://i.scdn.co/image/ab67616d0000b273cdd853e18f1ab86774cf93dc,0.857,0.504,0.441,0.081,-11.482,0.88,0.104,109.895,0.565
+Elvis Presley,Platinum - A Life In Music,1997-07-15,68,123.8,https://i.scdn.co/image/ab67616d0000b27352cbfb62c42adc19d5637843,0.844,0.515,0.356,0.158,-14.786,0.88,0.07,100.501,0.618
+Elvis Presley,Elvis In Concert (Live),1977-10-03,39,71.9,https://i.scdn.co/image/ab67616d0000b273c922d9e228ccb3af58f05a16,0.608,0.413,0.526,0.321,-14.221,0.906,0.253,117.857,0.56
+Fleetwood Mac,Before the Beginning - 1968-1970 Rare Live & Demo Sessions (Remastered),2019-11-15,41,213.9,https://i.scdn.co/image/ab67616d0000b2734f64884618ade392db6555b8,0.525,0.51,0.59,0.431,-7.921,0.683,0.061,120.489,0.587
+Fleetwood Mac,50 Years - Don't Stop,2018-11-16,58,187.4,https://i.scdn.co/image/ab67616d0000b273470a57c2dc8710171d4783df,0.215,0.616,0.649,0.043,-9.832,0.74,0.036,123.615,0.689
+Fleetwood Mac,Say You Will,2003-04-15,55,76.0,https://i.scdn.co/image/ab67616d0000b273018780ada265fb01b9cc89e5,0.248,0.516,0.798,0.007,-5.28,0.667,0.051,127.211,0.613
+Fleetwood Mac,Shrine '69,2000-04-28,30,43.3,https://i.scdn.co/image/ab67616d0000b2735251341c3b39986864060fbd,0.764,0.432,0.244,0.067,-16.017,0.7,0.051,135.588,0.434
+Fleetwood Mac,The Dance,1997-08-19,56,79.2,https://i.scdn.co/image/ab67616d0000b2730b8de3e1eb45d3b13bdb7057,0.18,0.479,0.757,0.126,-7.693,0.765,0.063,116.469,0.619
+Fleetwood Mac,Time,1995-10-10,33,60.9,https://i.scdn.co/image/ab67616d0000b273b48386aa4c58f02bc8cd9333,0.454,0.558,0.634,0.061,-9.076,0.769,0.031,119.902,0.516
+Fleetwood Mac,Behind the Mask,1990-04-10,38,54.4,https://i.scdn.co/image/ab67616d0000b273ed27bc6cfc884eeee79e54c1,0.335,0.534,0.594,0.025,-11.853,0.692,0.031,126.562,0.596
+Fleetwood Mac,Tango in the Night (2017 Remaster),1987-04-14,52,44.5,https://i.scdn.co/image/ab67616d0000b273e8556a4e368fe3871df5de59,0.229,0.648,0.569,0.054,-11.006,0.583,0.035,120.084,0.632
+Fleetwood Mac,Tango In the Night (Deluxe Edition),1987-04-13,77,178.6,https://i.scdn.co/image/ab67616d0000b273aaba065944cd82a6f15c86b6,0.176,0.668,0.654,0.287,-10.579,0.718,0.039,123.939,0.728
+Fleetwood Mac,Live in Boston,1985-02-05,37,57.8,https://i.scdn.co/image/ab67616d0000b27313d8d4e164cc3c9d5aec224f,0.185,0.364,0.807,0.091,-6.962,0.5,0.118,127.281,0.361
+Fleetwood Mac,Mirage (Deluxe Edition),1982-06-18,56,195.7,https://i.scdn.co/image/ab67616d0000b27306a0a0ab1f8d31eafa7704e4,0.253,0.543,0.634,0.095,-9.621,0.756,0.04,125.96,0.6
+Fleetwood Mac,Live,1980-12-08,36,91.3,https://i.scdn.co/image/ab67616d0000b2739e08039645e3483e03ddf993,0.292,0.448,0.511,0.03,-16.052,1.0,0.043,124.733,0.503
+Fleetwood Mac,Live (Deluxe Edition),1980,38,167.3,https://i.scdn.co/image/ab67616d0000b273cee457bebea8ffc3af3a9624,0.198,0.442,0.74,0.104,-9.046,0.848,0.053,122.439,0.432
+Fleetwood Mac,Tusk (Deluxe Edition),1979-10-12,61,185.6,https://i.scdn.co/image/ab67616d0000b273ac3b1b1e8bb8a4986b485fb5,0.377,0.668,0.509,0.226,-12.112,0.72,0.036,120.047,0.688
+Fleetwood Mac,Tusk (2015 Remaster),1979-10-12,56,74.3,https://i.scdn.co/image/ab67616d0000b2737a2a55eaab314c41d8f6e512,0.361,0.671,0.498,0.157,-12.241,0.6,0.037,120.368,0.673
+Fleetwood Mac,Rumours (Super Deluxe),1977-02-04,83,205.5,https://i.scdn.co/image/ab67616d0000b273e52a59a28efa4773dd2bfe1b,0.438,0.574,0.504,0.136,-11.26,0.8,0.045,129.887,0.548
+Fleetwood Mac,Rumours,1977-02-04,79,40.0,https://i.scdn.co/image/ab67616d0000b27357df7ce0eac715cf70e519a7,0.285,0.647,0.591,0.048,-9.052,0.818,0.044,130.804,0.71
+Fleetwood Mac,Fleetwood Mac (Deluxe Edition),1975-07-11,52,207.1,https://i.scdn.co/image/ab67616d0000b27346c433f89c341ad1f3b9fcae,0.249,0.522,0.568,0.127,-11.622,0.63,0.038,125.8,0.597
+Fleetwood Mac,Fleetwood Mac (2017 Remaster),1975-07-11,51,56.7,https://i.scdn.co/image/ab67616d0000b273152f87dab60dcbd929169daa,0.268,0.613,0.608,0.092,-10.211,0.733,0.031,124.018,0.714
+Fleetwood Mac,Heroes Are Hard to Find,1974-09-13,39,39.6,https://i.scdn.co/image/ab67616d0000b273eabf72d25aa56935806e7ce9,0.636,0.488,0.518,0.318,-16.042,0.727,0.037,109.546,0.609
+Frank Sinatra,Watertown (Deluxe Edition / 2022 Mix),2022-06-03,46,57.3,https://i.scdn.co/image/ab67616d0000b2733d8e6802e8108a879302787d,0.651,0.348,0.294,0.004,-13.444,0.833,0.035,90.017,0.38
+Frank Sinatra,Reprise Rarities (Vol. 5),2021-09-24,49,38.3,https://i.scdn.co/image/ab67616d0000b273c42a3d9b6daa17a1a7a1022b,0.76,0.443,0.415,0.0,-9.1,0.714,0.043,111.152,0.505
+Frank Sinatra,Reprise Rarities (Vol. 4),2021-08-06,32,49.3,https://i.scdn.co/image/ab67616d0000b273be73e7f0e28a6f47989bb69c,0.761,0.404,0.366,0.001,-10.871,0.8,0.039,110.482,0.418
+Frank Sinatra,Reprise Rarities (Vol. 3),2021-05-07,35,45.1,https://i.scdn.co/image/ab67616d0000b27378b1ceefa7389a14f5cd44f4,0.739,0.405,0.378,0.001,-10.206,0.733,0.039,99.814,0.308
+Frank Sinatra,Reprise Rarities (Vol. 2),2021-02-05,28,37.4,https://i.scdn.co/image/ab67616d0000b2735223d04098da71faa9453209,0.8,0.362,0.306,0.007,-10.583,0.769,0.035,115.564,0.325
+Frank Sinatra,Reprise Rarities (Vol. 1),2020-12-11,32,41.6,https://i.scdn.co/image/ab67616d0000b273e492a7c094ddd04b7d29e420,0.776,0.307,0.317,0.001,-10.706,1.0,0.039,126.069,0.297
+Frank Sinatra,Let It Snow! Let It Snow! Let It Snow!,2020-12-04,26,56.7,https://i.scdn.co/image/ab67616d0000b273a184d8320d55382125fd861a,0.936,0.368,0.15,0.008,-15.578,0.944,0.051,100.294,0.325
+Frank Sinatra,Sinatra Sings Alan & Marilyn Bergman,2019-10-11,28,41.1,https://i.scdn.co/image/ab67616d0000b2733057665ded422cda12ff8051,0.803,0.354,0.288,0.001,-12.151,0.923,0.037,100.03,0.335
+Frank Sinatra,Standing Room Only,2018-05-04,39,174.0,https://i.scdn.co/image/ab67616d0000b2738b2efe3f5cc5cf97859b966f,0.741,0.408,0.521,0.027,-11.485,0.74,0.286,107.036,0.404
+Frank Sinatra,Baby Blue Eyes,2017-05-12,43,53.9,https://i.scdn.co/image/ab67616d0000b273300f6f4c93e6c76d1b44dbe2,0.717,0.467,0.283,0.029,-11.576,0.75,0.037,114.998,0.507
+Frank Sinatra,World On A String (Live),2016-08-26,34,141.0,https://i.scdn.co/image/ab67616d0000b2739fd5d519d6c5599406d077ec,0.805,0.432,0.471,0.061,-16.071,0.78,0.294,106.248,0.528
+Frank Sinatra,Selections From A Voice On Air (1935-1955),2015-11-20,35,151.9,https://i.scdn.co/image/ab67616d0000b27378ac5c4666292edb5c30f92a,0.951,0.411,0.215,0.12,-15.763,0.74,0.201,100.942,0.394
+Frank Sinatra,Duets (20th Anniversary Deluxe Edition),2013-01-01,57,115.6,https://i.scdn.co/image/ab67616d0000b273062b0726843ce4aedc70162e,0.69,0.422,0.324,0.001,-11.34,0.75,0.041,118.381,0.332
+Frank Sinatra,Live At The Meadowlands,2009-01-01,33,77.7,https://i.scdn.co/image/ab67616d0000b273122ec99f2193223c4347dfde,0.712,0.395,0.45,0.046,-12.569,0.81,0.157,103.925,0.339
+Frank Sinatra,Vegas (Live),2006-11-07,33,149.4,https://i.scdn.co/image/ab67616d0000b273c00c6982cfb92327e07842b2,0.663,0.453,0.424,0.058,-15.209,0.78,0.307,112.927,0.442
+Frank Sinatra,Christmas Songs by Sinatra,1994-11-08,46,44.6,https://i.scdn.co/image/ab67616d0000b273df1066335619efa75889bcfc,0.935,0.349,0.142,0.01,-15.899,1.0,0.047,98.763,0.31
+Frank Sinatra,Sinatra And Sextet: Live In Paris,1994-03-22,25,71.6,https://i.scdn.co/image/ab67616d0000b2737f43e8080cfac4282de66f2a,0.845,0.516,0.224,0.0,-18.905,0.731,0.164,115.238,0.507
+Frank Sinatra,Highlights From Duets,1994,35,27.4,https://i.scdn.co/image/ab67616d0000b273c3794ad8f94c3ec18245766e,0.645,0.351,0.287,0.004,-12.416,0.625,0.041,135.356,0.324
+Frank Sinatra,L.A. Is My Lady,1984-01-01,40,37.1,https://i.scdn.co/image/ab67616d0000b273b5f9d048d29057ea7b872ea3,0.692,0.514,0.403,0.0,-12.012,0.636,0.057,115.549,0.498
+Frank Sinatra,She Shot Me Down,1981-01-01,36,36.9,https://i.scdn.co/image/ab67616d0000b2731d8c039aed0fde9921e91836,0.853,0.291,0.155,0.0,-15.896,0.778,0.037,108.053,0.161
+"Hank Williams, Jr.",Rich White Honky Blues,2022-06-17,38,45.9,https://i.scdn.co/image/ab67616d0000b273c86fdb3c3250c0ee2060567c,0.216,0.552,0.68,0.077,-6.84,0.75,0.063,127.138,0.701
+"Hank Williams, Jr.",All My Rowdy Friends Are Coming Over: Great Tailgating Songs,2017-09-01,33,31.0,https://i.scdn.co/image/ab67616d0000b27349559c59b9cde1ed01a312ef,0.162,0.645,0.711,0.0,-7.912,1.0,0.044,106.784,0.794
+"Hank Williams, Jr.",A Country Boy Can Survive (Box Set),2016-10-21,51,162.2,https://i.scdn.co/image/ab67616d0000b2734bd2bd755ab729c1a32e9f32,0.213,0.596,0.715,0.012,-6.09,0.92,0.056,122.226,0.638
+"Hank Williams, Jr.",35 Biggest Hits,2015-06-16,55,119.2,https://i.scdn.co/image/ab67616d0000b273296adbe9fe76cb2124ec0544,0.209,0.648,0.566,0.001,-10.591,0.917,0.04,113.17,0.683
+"Hank Williams, Jr.",It's About Time,2015-01-01,40,43.8,https://i.scdn.co/image/ab67616d0000b273746fe89f0f0cc82e917f71c2,0.007,0.528,0.901,0.002,-4.302,0.917,0.06,126.025,0.594
+"Hank Williams, Jr.",127 Rose Avenue,2009-06-16,39,44.0,https://i.scdn.co/image/ab67616d0000b27363a25dfe130d8293dbb60bb2,0.174,0.567,0.644,0.008,-5.838,0.727,0.035,113.016,0.441
+"Hank Williams, Jr.",That's How They Do It In Dixie - The Essential Collection,2006-06-27,30,41.1,https://i.scdn.co/image/ab67616d0000b273f66ce27cef744f759b2bcd9b,0.139,0.632,0.695,0.0,-7.929,0.917,0.046,109.895,0.738
+"Hank Williams, Jr.",I'm One Of You,2003-11-18,37,42.0,https://i.scdn.co/image/ab67616d0000b27350a1990470c0422fa1a2c201,0.082,0.528,0.835,0.004,-5.549,1.0,0.059,134.988,0.723
+"Hank Williams, Jr.",Almeria Club,2002-01-08,30,52.9,https://i.scdn.co/image/ab67616d0000b273c77fb732e0fd0ba897f517d2,0.228,0.495,0.626,0.08,-6.951,0.769,0.05,114.776,0.601
+"Hank Williams, Jr.",The Bocephus Box Set,2000-08-22,53,167.0,https://i.scdn.co/image/ab67616d0000b27396ccc01b06b92c2154cf89a2,0.218,0.576,0.578,0.008,-11.191,0.9,0.047,120.081,0.583
+"Hank Williams, Jr.",The Complete,1999-04-06,27,143.2,https://i.scdn.co/image/ab67616d0000b273f9834cb5912820e849c40e39,0.21,0.638,0.608,0.002,-9.326,0.911,0.043,116.676,0.694
+"Hank Williams, Jr.",Men With Broken Hearts,1996-09-17,45,31.6,https://i.scdn.co/image/ab67616d0000b27373515ab2e0d6b06bcaa6cf96,0.225,0.615,0.631,0.001,-6.982,0.917,0.04,135.439,0.631
+Heart,Live in Atlantic City,2019-01-25,25,67.8,https://i.scdn.co/image/ab67616d0000b273e77872fd0b722f506ff5681a,0.129,0.381,0.816,0.046,-6.503,0.786,0.074,124.999,0.35
+Heart,Jupiters Darling,2004-06-22,27,62.2,https://i.scdn.co/image/ab67616d0000b27317f632655a29d4db62c2f05f,0.115,0.439,0.677,0.003,-6.479,0.75,0.045,120.276,0.33
+Heart,Alive in Seattle (Live),2003-06-11,28,99.4,https://i.scdn.co/image/ab67616d0000b27327d18fd51fe3626f09b4cba7,0.195,0.427,0.624,0.003,-11.721,0.684,0.047,127.451,0.425
+Heart,The Road Home,1995-01-01,28,74.6,https://i.scdn.co/image/ab67616d0000b2733796dadf93e88979293e2021,0.221,0.407,0.463,0.001,-12.18,0.867,0.042,109.465,0.296
+Heart,Desire Walks On,1993-11-16,36,60.0,https://i.scdn.co/image/ab67616d0000b2732acd216746d9aa71319d6d63,0.245,0.559,0.617,0.024,-9.045,0.667,0.055,117.497,0.407
+Heart,Brigade,1990-03-25,60,54.6,https://i.scdn.co/image/ab67616d0000b27357850545c0dc2cc537186070,0.173,0.494,0.725,0.0,-9.051,0.615,0.046,125.9,0.415
+Heart,Bad Animals,1987-06-06,68,40.8,https://i.scdn.co/image/ab67616d0000b2735fa646a4cfcd17842fdd7bbd,0.322,0.529,0.617,0.0,-12.645,0.8,0.031,122.926,0.418
+Heart,Heart,1985-07-06,63,39.3,https://i.scdn.co/image/ab67616d0000b273aac099da610b063763c63117,0.34,0.515,0.783,0.0,-7.147,0.7,0.045,119.616,0.458
+Heart,Passionworks,1983-08-20,30,42.0,https://i.scdn.co/image/ab67616d0000b27368dda066c051cef940b1e1bf,0.048,0.595,0.495,0.002,-11.866,0.909,0.031,102.763,0.405
+Heart,Bebe Le Strange,1980-02-14,34,37.5,https://i.scdn.co/image/ab67616d0000b27376bdc3ca5a738b72f1309eb9,0.168,0.481,0.589,0.172,-12.877,0.9,0.038,152.114,0.701
+Heart,Dog & Butterfly,1978-10-07,47,39.4,https://i.scdn.co/image/ab67616d0000b273328ab77d37d0dfba8917a96c,0.12,0.559,0.423,0.096,-14.977,0.875,0.057,130.059,0.399
+Heart,Little Queen,1977-05-14,68,39.1,https://i.scdn.co/image/ab67616d0000b2739cef5b2e4c9104c678973f44,0.298,0.479,0.357,0.093,-17.404,0.4,0.049,126.062,0.424
+James Brown,Super Bad Live!,2022-12-09,31,76.3,https://i.scdn.co/image/ab67616d0000b273477b4a35010c5ad09edfb96d,0.063,0.531,0.807,0.485,-8.575,0.667,0.11,140.86,0.516
+James Brown,I'm Real (Expanded),2015-12-18,28,94.6,https://i.scdn.co/image/ab67616d0000b2737953f1689397cb089cb677d6,0.16,0.82,0.608,0.067,-11.107,0.238,0.241,109.587,0.696
+James Brown,Get On Up - The James Brown Story,2014-07-29,44,73.5,https://i.scdn.co/image/ab67616d0000b2732983f36e702c45bf2f98ef77,0.26,0.691,0.693,0.028,-6.902,0.75,0.11,121.122,0.736
+James Brown,The Singles Vol. 10 1975-1979,2011-02-11,32,152.0,https://i.scdn.co/image/ab67616d0000b2736e575414ed808223cd4f7186,0.328,0.736,0.672,0.04,-9.247,0.694,0.097,122.035,0.644
+James Brown,The Singles: Vol. 9 1973-1975,2010-01-01,37,145.5,https://i.scdn.co/image/ab67616d0000b273e1c89cf9c284f9caf15a4454,0.351,0.748,0.815,0.04,-5.796,0.571,0.154,117.389,0.716
+James Brown,The Singles Vol. 8: 1972-1973,2009-12-21,34,143.1,https://i.scdn.co/image/ab67616d0000b2731a45e2db82b972caeb25812f,0.346,0.724,0.588,0.143,-7.778,0.4,0.099,118.853,0.691
+James Brown,The Singles Vol. 7: 1970-1972,2009-05-26,25,136.6,https://i.scdn.co/image/ab67616d0000b273eec44cc6087826afde426d03,0.501,0.757,0.711,0.082,-7.301,0.641,0.113,112.725,0.771
+James Brown,Number 1's,2007-03-27,27,60.6,https://i.scdn.co/image/ab67616d0000b273ff9fd89c6290eb40e3c212e6,0.357,0.797,0.63,0.068,-8.115,0.632,0.103,114.89,0.795
+Johnny Cash,"Bear's Sonic Journals: Live At The Carousel Ballroom, April 24 1968",2021-10-29,37,64.3,https://i.scdn.co/image/ab67616d0000b2737d1504f3b32ea9988552bd24,0.711,0.562,0.292,0.077,-19.334,0.75,0.137,112.21,0.698
+Johnny Cash,Johnny Cash: Forever Words Expanded,2021-04-02,46,126.8,https://i.scdn.co/image/ab67616d0000b273a8d71fce9d7c84bc967816e5,0.381,0.493,0.486,0.039,-8.671,0.706,0.042,125.26,0.448
+Johnny Cash,Johnny Cash and The Royal Philharmonic Orchestra,2020-11-13,35,39.2,https://i.scdn.co/image/ab67616d0000b27314cdd6c6cbfa21dbb2aaf297,0.617,0.432,0.456,0.027,-8.836,0.917,0.035,99.457,0.477
+Johnny Cash,Complete Mercury Albums 1986-1991,2020-06-26,47,155.0,https://i.scdn.co/image/ab67616d0000b273ade431b5fdd43d4617eccdcf,0.376,0.628,0.545,0.014,-10.628,1.0,0.054,123.639,0.66
+Johnny Cash,The Total Johnny Cash Sun Collection,2018-04-06,37,111.7,https://i.scdn.co/image/ab67616d0000b2735da0e434b33dbaed74187e41,0.676,0.69,0.663,0.044,-6.146,0.86,0.059,110.17,0.8
+Johnny Cash,Man in Black: Live in Denmark 1971,2015-12-04,32,56.6,https://i.scdn.co/image/ab67616d0000b273f72375b4a0be94d4ae594b32,0.673,0.588,0.606,0.01,-12.634,1.0,0.337,101.497,0.833
+Johnny Cash,Out Among The Stars,2014-03-25,50,39.2,https://i.scdn.co/image/ab67616d0000b273e80611564fb18d5ba07fce29,0.676,0.589,0.551,0.004,-8.338,0.846,0.055,118.819,0.619
+Johnny Cash,Bootleg Vol. IV: The Soul Of Truth,2012-04-03,33,136.5,https://i.scdn.co/image/ab67616d0000b27311555ea8de37a2fb69b2dea9,0.71,0.594,0.373,0.005,-13.677,1.0,0.067,115.97,0.639
+Johnny Cash,The Cash Collection: The Mercury Years 1987-1991,2011-04-08,34,103.6,https://i.scdn.co/image/ab67616d0000b27317d6db894c2aedd5a912dd63,0.295,0.642,0.562,0.035,-10.797,0.972,0.053,122.644,0.704
+Johnny Cash,Bootleg Vol. II: From Memphis To Hollywood,2011-02-22,31,104.1,https://i.scdn.co/image/ab67616d0000b2735458c4827f1eb77b470bf460,0.867,0.621,0.327,0.085,-14.35,0.86,0.137,114.237,0.695
+Johnny Cash,American VI: Ain't No Grave,2010-01-01,53,32.4,https://i.scdn.co/image/ab67616d0000b27343d978694566927455ced3c6,0.903,0.533,0.255,0.001,-11.085,0.8,0.037,107.3,0.399
+Johnny Cash,"Live From Austin, TX",2007-01-09,29,49.9,https://i.scdn.co/image/ab67616d0000b273818ac3b435349b8ace275151,0.635,0.546,0.526,0.03,-11.374,0.929,0.157,121.366,0.665
+Johnny Cash,The Great Lost Performance,2007-01-01,33,53.3,https://i.scdn.co/image/ab67616d0000b273119fa57b093dd2898d8093f9,0.635,0.514,0.646,0.001,-8.684,0.889,0.121,114.636,0.584
+Johnny Cash,Bootleg Vol. I: Personal File,2006-05-23,36,137.5,https://i.scdn.co/image/ab67616d0000b273e946530d2d0d19eb55dd1ce7,0.916,0.599,0.108,0.001,-14.373,0.959,0.09,109.326,0.423
+Johnny Cash,American V: A Hundred Highways,2006-01-01,57,42.8,https://i.scdn.co/image/ab67616d0000b273bed30c3640a8c8929d65ed3f,0.903,0.57,0.287,0.002,-11.836,0.917,0.039,114.215,0.412
+Johnny Cash,My Mother's Hymn Book,2004,39,38.3,https://i.scdn.co/image/ab67616d0000b273b83770517c2b17fc9a575c7c,0.951,0.557,0.086,0.0,-14.253,0.933,0.05,121.356,0.443
+Kanye West,Donda (Deluxe),2021-11-14,66,131.1,https://i.scdn.co/image/ab67616d0000b273c5663e50de353981ed2b1a37,0.292,0.569,0.511,0.025,-7.534,0.625,0.175,110.839,0.275
+Kanye West,Donda,2021-08-29,79,109.0,https://i.scdn.co/image/ab67616d0000b273cad190f1a73c024e5a40dddd,0.267,0.572,0.514,0.03,-7.378,0.63,0.163,116.445,0.285
+Kanye West,JESUS IS KING,2019-10-25,72,27.1,https://i.scdn.co/image/ab67616d0000b2731bb797bbfe2480650b6c2964,0.48,0.566,0.539,0.0,-6.253,0.364,0.151,102.29,0.381
+Kanye West,The Life Of Pablo,2016-06-10,83,66.0,https://i.scdn.co/image/ab67616d0000b2732a7db835b912dc5014bd37f4,0.341,0.621,0.591,0.0,-6.037,0.65,0.274,116.147,0.411
+Kanye West,Yeezus,2013-06-18,80,40.1,https://i.scdn.co/image/ab67616d0000b2731dacfbc31cc873d132958af9,0.184,0.515,0.589,0.0,-5.418,0.6,0.18,131.447,0.361
+Kanye West,My Beautiful Dark Twisted Fantasy,2010-11-22,83,68.7,https://i.scdn.co/image/ab67616d0000b273d9194aa18fa4c9362b47464f,0.187,0.523,0.681,0.047,-5.94,0.385,0.131,111.952,0.365
+Kanye West,808s & Heartbreak,2008-11-24,79,52.1,https://i.scdn.co/image/ab67616d0000b273346d77e155d854735410ed18,0.206,0.656,0.481,0.149,-9.316,0.417,0.058,119.702,0.351
+Kanye West,Graduation,2007-09-11,89,54.5,https://i.scdn.co/image/ab67616d0000b27326f7f19c7f0381e56156c94a,0.117,0.576,0.623,0.0,-7.313,0.571,0.185,100.129,0.519
+Kanye West,Late Registration,2005-08-30,78,70.0,https://i.scdn.co/image/ab67616d0000b273428d2255141c2119409a31b2,0.18,0.596,0.636,0.002,-7.859,0.524,0.376,97.775,0.521
+Kanye West,The College Dropout,2004-02-10,80,76.4,https://i.scdn.co/image/ab67616d0000b27325b055377757b3cdd6f26b78,0.36,0.58,0.594,0.0,-7.796,0.524,0.408,109.784,0.665
+KAROL G,MAÑANA SERÁ BONITO,2023-02-24,94,52.9,https://i.scdn.co/image/ab67616d0000b27382de1ca074ae63cb18fce335,0.413,0.81,0.688,0.001,-4.391,0.412,0.203,122.759,0.586
+KAROL G,KG0516,2021-03-26,81,58.2,https://i.scdn.co/image/ab67616d0000b273ae28c8f2748587cc2a33d6c2,0.288,0.758,0.739,0.0,-3.92,0.438,0.137,130.73,0.668
+KAROL G,OCEAN,2019-05-03,74,51.0,https://i.scdn.co/image/ab67616d0000b273813d0c955d8224bd5f919a75,0.267,0.756,0.713,0.0,-4.668,0.625,0.1,125.097,0.66
+KAROL G,Unstoppable,2017-10-27,72,42.8,https://i.scdn.co/image/ab67616d0000b273649f01bbab8409909d42a166,0.209,0.736,0.681,0.0,-6.044,0.308,0.104,119.615,0.528
+Kendrick Lamar,Mr. Morale & The Big Steppers,2022-05-13,85,78.8,https://i.scdn.co/image/ab67616d0000b2732e02117d76426a08ac7c174f,0.481,0.633,0.577,0.001,-8.974,0.421,0.243,121.558,0.526
+Kendrick Lamar,Black Panther The Album Music From And Inspired By,2018-02-09,79,49.3,https://i.scdn.co/image/ab67616d0000b273c027ad28821777b00dcaa888,0.185,0.685,0.619,0.002,-7.253,0.714,0.216,121.264,0.423
+Kendrick Lamar,DAMN. COLLECTORS EDITION.,2017-12-08,56,55.0,https://i.scdn.co/image/ab67616d0000b273add9eb25744782c3717c9368,0.175,0.663,0.585,0.006,-7.864,0.571,0.276,136.752,0.48
+Kendrick Lamar,DAMN.,2017-04-14,87,55.0,https://i.scdn.co/image/ab67616d0000b2738b52c6b9bc4e43d873869699,0.175,0.663,0.585,0.006,-7.864,0.571,0.276,136.752,0.48
+Kendrick Lamar,untitled unmastered.,2016-03-04,65,34.2,https://i.scdn.co/image/ab67616d0000b2738c697f553a46006a5d8886b2,0.442,0.639,0.49,0.0,-12.265,0.375,0.328,111.076,0.382
+Kendrick Lamar,To Pimp A Butterfly,2015-03-16,80,79.0,https://i.scdn.co/image/ab67616d0000b273cdb645498cd3d8a2db4d05e1,0.323,0.591,0.708,0.0,-5.802,0.5,0.294,103.445,0.487
+Kendrick Lamar,"good kid, m.A.A.d city (Deluxe)",2012,76,92.2,https://i.scdn.co/image/ab67616d0000b273d58e537cea05c2156792c53d,0.123,0.601,0.677,0.001,-7.812,0.471,0.268,116.045,0.398
+Kendrick Lamar,"good kid, m.A.A.d city",2012,77,73.0,https://i.scdn.co/image/ab67616d0000b273d28d2ebdedb220e479743797,0.132,0.586,0.654,0.001,-8.268,0.538,0.307,111.763,0.327
+Kendrick Lamar,Section.80,2011-07-02,73,54.5,https://i.scdn.co/image/ab67616d0000b273eddb2639b74ac6c202032ebe,0.412,0.567,0.777,0.001,-6.713,0.467,0.285,124.596,0.511
+Kendrick Lamar,Overly Dedicated,2010-09-14,58,53.6,https://i.scdn.co/image/ab67616d0000b2739b035b031d9f0a6a75ae464e,0.3,0.636,0.72,0.007,-6.776,0.667,0.314,110.897,0.46
+Led Zeppelin,The Complete BBC Sessions (Remastered),2016-09-16,54,201.8,https://i.scdn.co/image/ab67616d0000b273ce69f6900fa18dd689d2d45b,0.223,0.346,0.624,0.076,-10.805,0.818,0.097,124.413,0.503
+Led Zeppelin,Celebration Day,2012-11-19,49,115.6,https://i.scdn.co/image/ab67616d0000b27354bea3780cb998f903356012,0.001,0.297,0.773,0.414,-9.543,0.75,0.056,112.089,0.351
+Led Zeppelin,Mothership (Remastered),2007,63,136.3,https://i.scdn.co/image/ab67616d0000b27322f1b6c28ce5735646b2e569,0.175,0.412,0.717,0.123,-9.685,0.75,0.072,115.68,0.537
+Led Zeppelin,How the West Was Won (Remaster),2003-05-27,47,148.2,https://i.scdn.co/image/ab67616d0000b2737befecf74a075298cc93766c,0.093,0.331,0.758,0.151,-9.898,0.722,0.078,109.505,0.328
+Led Zeppelin,Coda (Remaster),1982-11-19,37,33.1,https://i.scdn.co/image/ab67616d0000b27303e31c6840aa343b73bbfe84,0.079,0.379,0.871,0.122,-9.032,0.875,0.078,138.601,0.466
+Led Zeppelin,Coda (Deluxe Edition),1982-11-19,62,97.3,https://i.scdn.co/image/ab67616d0000b2733b7bf70364c3f8643723398e,0.155,0.422,0.782,0.214,-9.337,0.826,0.063,127.777,0.535
+Led Zeppelin,In Through the out Door (Remaster),1979-08-15,62,42.6,https://i.scdn.co/image/ab67616d0000b27315aa25b0b3b972a7be623605,0.071,0.44,0.848,0.057,-7.916,1.0,0.041,128.005,0.547
+Led Zeppelin,In Through the out Door (Deluxe Edition),1979-08-15,41,85.5,https://i.scdn.co/image/ab67616d0000b2730b4c9d84cc83626849bfbff0,0.192,0.458,0.786,0.182,-9.46,0.929,0.039,121.681,0.56
+Led Zeppelin,The Song Remains the Same (Remaster),1976-10-22,52,132.0,https://i.scdn.co/image/ab67616d0000b2731ac4670157a26949de3ba875,0.025,0.284,0.848,0.156,-8.075,0.8,0.093,124.371,0.326
+Led Zeppelin,Presence (Remaster),1976-03-31,52,44.8,https://i.scdn.co/image/ab67616d0000b27327f6c518a8e36d45b5e7d95e,0.064,0.451,0.775,0.023,-9.645,1.0,0.067,136.736,0.589
+Led Zeppelin,Presence (Deluxe Edition),1976-03-31,36,76.4,https://i.scdn.co/image/ab67616d0000b273b1b0c9ada95f50cf50a34444,0.118,0.452,0.73,0.096,-10.756,0.917,0.065,130.828,0.552
+Led Zeppelin,Physical Graffiti (Remaster),1975-02-24,51,82.9,https://i.scdn.co/image/ab67616d0000b2735273ac7ada6725bc36a2bcd0,0.377,0.501,0.692,0.143,-9.911,0.867,0.042,117.309,0.556
+Led Zeppelin,Physical Graffiti (Deluxe Edition),1975-02-24,67,124.4,https://i.scdn.co/image/ab67616d0000b273765b0617b572bdd1dbdc7d8e,0.372,0.512,0.715,0.184,-9.99,0.864,0.041,116.085,0.607
+Led Zeppelin,Houses of the Holy (Remaster),1973-03-28,67,40.9,https://i.scdn.co/image/ab67616d0000b2731aa47e71c4edfeaddb65cd54,0.23,0.417,0.663,0.17,-9.581,0.875,0.065,118.216,0.511
+Led Zeppelin,Houses of the Holy (Deluxe Edition),1973-03-28,59,77.2,https://i.scdn.co/image/ab67616d0000b2731816adce1d49e35d3ce9a1d1,0.257,0.441,0.615,0.27,-10.19,0.867,0.062,114.905,0.515
+Led Zeppelin,Led Zeppelin IV (Remaster),1971-11-08,61,42.6,https://i.scdn.co/image/ab67616d0000b2734509204d0860cc0cc67e83dc,0.391,0.408,0.678,0.185,-9.823,0.625,0.045,117.715,0.578
+Led Zeppelin,Led Zeppelin IV (Deluxe Edition),1971-11-08,77,83.2,https://i.scdn.co/image/ab67616d0000b273c8a11e48c91a982d086afc69,0.368,0.412,0.67,0.279,-10.255,0.812,0.047,117.534,0.585
+Led Zeppelin,Led Zeppelin III (Deluxe Edition),1970-10-05,52,84.7,https://i.scdn.co/image/ab67616d0000b2734f08944b5cb3be8ca14ba705,0.269,0.435,0.626,0.141,-10.787,0.895,0.048,105.9,0.437
+Led Zeppelin,Led Zeppelin III (Remaster),1970,74,43.1,https://i.scdn.co/image/ab67616d0000b27390a50cfe99a4c19ff3cbfbdb,0.23,0.396,0.614,0.045,-11.198,0.9,0.045,104.011,0.34
+Led Zeppelin,Led Zeppelin II (Remaster),1969-10-22,58,41.6,https://i.scdn.co/image/ab67616d0000b273f396ea414b735ef23e2ed1a9,0.162,0.397,0.589,0.113,-11.857,1.0,0.101,98.273,0.506
+Louis Armstrong,Louis on Broadway,2023-06-15,39,98.7,https://i.scdn.co/image/ab67616d0000b27337e677729f10643bb990b560,0.686,0.488,0.314,0.0,-12.493,0.8,0.088,112.973,0.503
+Louis Armstrong,Louis Wishes You a Cool Yule,2022-10-28,33,34.7,https://i.scdn.co/image/ab67616d0000b27374d96b9fc4b705293ab7c8a9,0.704,0.518,0.318,0.0,-11.589,0.818,0.133,120.164,0.467
+Louis Armstrong,February 7th. 1959 Nederland (Restauración 2022),2022-07-25,28,50.8,https://i.scdn.co/image/ab67616d0000b273f879e40c56ac0d8312a2bfbd,0.854,0.486,0.443,0.243,-13.298,0.75,0.173,122.394,0.626
+Louis Armstrong,Satchmo: The Decca And Verve Years 1924-1967,2020-04-01,29,181.0,https://i.scdn.co/image/ab67616d0000b27320c778915e19b6eab5531c1d,0.836,0.55,0.281,0.093,-11.955,0.86,0.132,108.906,0.5
+Louis Armstrong,"Louis Armstrong Sparks, Nevada 1964!",2018-06-22,34,44.4,https://i.scdn.co/image/ab67616d0000b273d458c06a759b979460fb77c4,0.677,0.491,0.482,0.207,-13.294,0.909,0.191,99.881,0.627
+Louis Armstrong,Pops Is Tops: The Verve Studio Albums,2018-04-13,26,209.1,https://i.scdn.co/image/ab67616d0000b2733144aa80662943dcdeb375e9,0.699,0.486,0.223,0.001,-13.51,0.62,0.085,94.449,0.356
+Mac Miller,Watching Movies with the Sound Off (10th Anniversary),2023-06-23,68,76.1,https://i.scdn.co/image/ab67616d0000b2735be7fbceaed6fc6343625990,0.31,0.557,0.698,0.0,-6.644,0.65,0.238,121.447,0.392
+Mac Miller,"I Love Life, Thank You",2022-07-22,73,36.3,https://i.scdn.co/image/ab67616d0000b273c8a77225ad852699c908ac4b,0.273,0.648,0.815,0.012,-4.496,0.692,0.269,101.412,0.572
+Mac Miller,Faces,2021-10-15,70,91.2,https://i.scdn.co/image/ab67616d0000b273e4251cf5331ad74eaaeca36e,0.279,0.583,0.678,0.023,-6.076,0.6,0.237,116.613,0.419
+Mac Miller,Circles (Deluxe),2020-03-19,62,57.8,https://i.scdn.co/image/ab67616d0000b2738cbe65eb023c2f2b5cdf5a91,0.508,0.722,0.364,0.062,-11.469,0.643,0.121,114.233,0.355
+Mac Miller,Circles,2020-01-17,77,48.7,https://i.scdn.co/image/ab67616d0000b27326b7dd89810cc1a40ada642c,0.47,0.743,0.368,0.038,-11.225,0.583,0.127,115.099,0.345
+Mac Miller,Swimming,2018-08-03,82,58.7,https://i.scdn.co/image/ab67616d0000b273175c577a61aa13d4fb4b6534,0.652,0.625,0.438,0.013,-9.456,0.615,0.17,122.121,0.281
+Mac Miller,The Divine Feminine,2016-09-16,78,52.6,https://i.scdn.co/image/ab67616d0000b2732e92f776279eaf45d14a33fd,0.48,0.642,0.498,0.005,-8.878,0.4,0.198,117.285,0.448
+Mac Miller,Best Day Ever (5th Anniversary Remastered Edition),2016-06-03,70,51.4,https://i.scdn.co/image/ab67616d0000b27349a3f56cdc4d1f0da6b3be79,0.187,0.612,0.749,0.0,-5.341,0.75,0.136,131.605,0.501
+Mac Miller,GO:OD AM,2015-09-18,75,70.6,https://i.scdn.co/image/ab67616d0000b273ee0f38410382a255e4fb15f4,0.352,0.637,0.617,0.0,-6.767,0.412,0.197,120.204,0.412
+Mac Miller,Live From Space,2013-12-17,47,61.8,https://i.scdn.co/image/ab67616d0000b27331541d8f5f3680b5d8894e31,0.212,0.509,0.633,0.001,-8.547,0.643,0.218,117.187,0.306
+Mac Miller,Watching Movies with the Sound Off,2013-06-18,59,61.7,https://i.scdn.co/image/ab67616d0000b273c55598e1d908aad2918d84ec,0.316,0.529,0.686,0.0,-6.742,0.625,0.236,121.04,0.342
+Mac Miller,Macadelic (Remastered Edition),2012-03-23,69,64.8,https://i.scdn.co/image/ab67616d0000b273b96e6f1969405960d026b9e2,0.268,0.607,0.683,0.015,-7.236,0.647,0.219,124.392,0.405
+Mac Miller,Blue Slide Park (Commentary Version),2011-11-15,39,53.3,https://i.scdn.co/image/ab67616d0000b2739a4ea28598768c89ea14773c,0.463,0.644,0.453,0.015,-12.073,0.656,0.56,105.921,0.581
+Mac Miller,Blue Slide Park,2011-11-08,66,46.2,https://i.scdn.co/image/ab67616d0000b273fef67ba7527cc0aa2ec6edf8,0.248,0.54,0.726,0.03,-7.446,0.688,0.191,124.692,0.394
+Mac Miller,K.I.D.S. (Deluxe),2010-08-13,76,54.0,https://i.scdn.co/image/ab67616d0000b273463d73e65c7b95a17898388b,0.197,0.64,0.809,0.0,-5.075,0.556,0.264,103.863,0.575
+Mac Miller,K.I.D.S.,2010-08-13,74,47.1,https://i.scdn.co/image/ab67616d0000b273a694ca73bba461b1cdd4e0f8,0.21,0.628,0.825,0.0,-4.778,0.562,0.275,105.019,0.593
+Madonna,American Life (The Remixes),2023-04-21,38,55.5,https://i.scdn.co/image/ab67616d0000b273e82972f4aa99de552f0ba5df,0.053,0.774,0.743,0.189,-7.013,0.375,0.082,119.441,0.704
+Madonna,Ray of Light (Single Remixes),2023-03-03,35,67.5,https://i.scdn.co/image/ab67616d0000b27359093b3ef481eba681a1559f,0.075,0.605,0.849,0.633,-9.372,0.778,0.059,126.484,0.483
+Madonna,You Can Dance (Single Edits),2022-11-17,32,30.3,https://i.scdn.co/image/ab67616d0000b273172fd94787e525eb801a7ce2,0.116,0.771,0.707,0.023,-10.31,0.571,0.047,122.41,0.862
+Madonna,Rain,2022-11-11,31,34.9,https://i.scdn.co/image/ab67616d0000b273363a47d271f4f0da46e1e768,0.068,0.707,0.562,0.173,-11.069,1.0,0.056,101.288,0.451
+Madonna,Bad Girl / Fever,2022-10-20,32,69.3,https://i.scdn.co/image/ab67616d0000b273eae7d482f57907855d7a41db,0.017,0.781,0.599,0.45,-11.234,0.583,0.057,121.511,0.542
+Madonna,Finally Enough Love: 50 Number Ones,2022-08-19,50,223.7,https://i.scdn.co/image/ab67616d0000b2734c3c7ca30705947ac207f86a,0.029,0.687,0.829,0.152,-6.558,0.38,0.063,124.518,0.616
+Madonna,Finally Enough Love,2022-06-24,44,77.3,https://i.scdn.co/image/ab67616d0000b2734c8be9bd075e348477c91178,0.023,0.704,0.837,0.149,-6.38,0.312,0.056,122.709,0.547
+Madonna,Madame X - Music From The Theater Xperience (Live),2021-10-08,36,92.8,https://i.scdn.co/image/ab67616d0000b2735a6ef83d7084b0d93fec0781,0.175,0.544,0.657,0.04,-7.33,0.6,0.151,124.654,0.313
+Madonna,True Blue (35th Anniversary Edition),2021-07-30,38,97.9,https://i.scdn.co/image/ab67616d0000b273b0e5ec766a876b4b4da14ba7,0.237,0.734,0.829,0.114,-5.731,0.5,0.05,115.73,0.769
+Madonna,Madame X (International Deluxe),2019-06-14,35,77.8,https://i.scdn.co/image/ab67616d0000b2730c947e1bdfeb3f66e3788083,0.169,0.663,0.675,0.043,-6.066,0.611,0.089,125.279,0.345
+Madonna,Madame X (Deluxe),2019-06-14,55,64.6,https://i.scdn.co/image/ab67616d0000b273fa3f9b299ec4a1b18164726d,0.198,0.651,0.676,0.04,-6.123,0.533,0.094,136.858,0.348
+Madonna,Rebel Heart Tour (Live),2017-09-15,40,99.2,https://i.scdn.co/image/ab67616d0000b273a9af36b3963a42832371dc4e,0.11,0.646,0.733,0.06,-7.787,0.591,0.08,117.402,0.319
+Madonna,Rebel Heart (Super Deluxe),2015-03-10,35,102.7,https://i.scdn.co/image/ab67616d0000b273b61438b72de4b8e46f928d93,0.12,0.677,0.639,0.036,-6.648,0.4,0.077,122.081,0.422
+Madonna,Rebel Heart (Deluxe),2015-03-10,57,74.4,https://i.scdn.co/image/ab67616d0000b273ce3289d289ff7fc3c245af34,0.148,0.68,0.619,0.002,-6.806,0.421,0.087,120.424,0.392
+Madonna,MDNA World Tour,2013-01-01,45,114.8,https://i.scdn.co/image/ab67616d0000b273185877648c3b294998ca3508,0.058,0.503,0.855,0.057,-5.77,0.667,0.099,118.018,0.233
+Madonna,MDNA (Deluxe Version),2012-01-01,44,69.0,https://i.scdn.co/image/ab67616d0000b273a10a2e61655cd1949bbc6903,0.08,0.679,0.69,0.035,-6.363,0.647,0.056,128.87,0.582
+Madonna,Sticky & Sweet Tour,2010-03-30,26,75.8,https://i.scdn.co/image/ab67616d0000b273e7182a66ba0611ba5145861d,0.119,0.617,0.881,0.1,-5.175,0.688,0.078,119.643,0.358
+Madonna,Hard Candy,2008-04-19,53,71.0,https://i.scdn.co/image/ab67616d0000b273c2c06f8ff6b3ee22263b3f2c,0.063,0.768,0.78,0.108,-5.024,0.267,0.056,122.01,0.696
+Madonna,The Confessions Tour,2007-01-30,31,73.2,https://i.scdn.co/image/ab67616d0000b273706da5ca52bd1c0201486c31,0.021,0.553,0.858,0.137,-6.709,0.308,0.068,123.178,0.335
+Michael Jackson,Thriller 40,2022-11-18,61,158.6,https://i.scdn.co/image/ab67616d0000b273822e06488f98e53e8743ff6b,0.206,0.758,0.681,0.021,-7.092,0.529,0.075,117.745,0.705
+Michael Jackson,XSCAPE,2014-05-09,74,73.5,https://i.scdn.co/image/ab67616d0000b273ed81569cdc08ab5c2dc5bd91,0.161,0.719,0.762,0.001,-4.356,0.471,0.087,119.244,0.632
+Michael Jackson,Bad 25th Anniversary,2012-09-18,75,107.4,https://i.scdn.co/image/ab67616d0000b2731bb21d27effb96a1d0fe8d6d,0.244,0.783,0.746,0.13,-5.512,0.708,0.063,117.643,0.56
+Michael Jackson,Michael,2010-12-10,56,27.4,https://i.scdn.co/image/ab67616d0000b273a7ef06d1e0bad6fe2ff028f6,0.22,0.657,0.681,0.0,-5.962,0.714,0.048,98.239,0.593
+Michael Jackson,Thriller 25 Super Deluxe Edition,2008-02-08,79,110.1,https://i.scdn.co/image/ab67616d0000b2734121faee8df82c526cbab2be,0.376,0.728,0.585,0.045,-9.708,0.5,0.35,112.998,0.609
+Michael Jackson,Invincible,2001-10-29,69,76.9,https://i.scdn.co/image/ab67616d0000b273463de2351439f6532ff0dfbd,0.251,0.69,0.648,0.007,-3.851,0.688,0.096,103.0,0.488
+Michael Jackson,BLOOD ON THE DANCE FLOOR/ HIStory In The Mix,1997-05-11,57,75.8,https://i.scdn.co/image/ab67616d0000b273983d03d4dee6600fb095a9e6,0.072,0.771,0.862,0.091,-6.18,0.692,0.081,114.275,0.622
+Michael Jackson,"HIStory - PAST, PRESENT AND FUTURE - BOOK I",1995-06-16,74,148.7,https://i.scdn.co/image/ab67616d0000b273d0593178c6c2594693ee34b7,0.292,0.684,0.672,0.024,-7.079,0.633,0.069,107.497,0.553
+Michael Jackson,Dangerous,1991-11-13,73,76.8,https://i.scdn.co/image/ab67616d0000b2733b9f8b18cc685e1502128aa8,0.264,0.714,0.721,0.06,-5.206,0.786,0.082,104.074,0.506
+Michael Jackson,Bad (Remastered),1987-08-31,71,48.2,https://i.scdn.co/image/ab67616d0000b27362e97ae5072de10850578af5,0.294,0.796,0.806,0.125,-4.908,0.727,0.075,111.936,0.478
+Michael Jackson,Thriller,1982-11-30,78,42.4,https://i.scdn.co/image/ab67616d0000b273de437d960dda1ac0a3586d97,0.161,0.781,0.573,0.052,-10.566,0.444,0.055,117.053,0.778
+Michael Jackson,Off the Wall,1979-08-10,75,42.4,https://i.scdn.co/image/ab67616d0000b2737027294551db4fda68b5ddac,0.308,0.773,0.581,0.039,-14.258,0.7,0.055,116.168,0.778
+Michael Jackson,"Forever, Michael",1975-01-16,39,33.7,https://i.scdn.co/image/ab67616d0000b2737a3f01d6f449f95c1622863f,0.283,0.533,0.638,0.002,-9.932,0.9,0.046,118.078,0.622
+Michael Jackson,Music and Me,1973-08-13,31,32.2,https://i.scdn.co/image/ab67616d0000b2737c48b55eccb177de6b5d94b4,0.305,0.489,0.575,0.003,-8.778,0.6,0.039,131.24,0.594
+Michael Jackson,Ben,1972-08-04,47,31.6,https://i.scdn.co/image/ab67616d0000b273c0a89f704e5e3358f9440c25,0.48,0.555,0.539,0.0,-9.197,0.8,0.038,134.773,0.724
+Michael Jackson,Got To Be There,1972-01-24,48,35.8,https://i.scdn.co/image/ab67616d0000b273681794b3786180ac45627c3d,0.243,0.509,0.633,0.009,-9.122,0.7,0.05,152.611,0.721
+Miles Davis,"That's What Happened 1982-1985: The Bootleg Series, Vol. 7",2022-09-16,30,211.0,https://i.scdn.co/image/ab67616d0000b273f835419ef534c6a65f8cee7f,0.463,0.573,0.422,0.434,-13.993,0.714,0.096,112.879,0.439
+Miles Davis,Music From and Inspired by The Film Birth Of The Cool,2020-02-21,28,79.8,https://i.scdn.co/image/ab67616d0000b2735c08161ee7e97c376c59c6ef,0.59,0.551,0.193,0.118,-19.038,0.5,0.412,100.444,0.446
+Miles Davis,Rubberband,2019-09-06,33,61.8,https://i.scdn.co/image/ab67616d0000b2732925d8971c1910869e80663f,0.192,0.736,0.781,0.165,-5.72,0.545,0.097,107.862,0.661
+Miles Davis,"The Final Tour: The Bootleg Series, Vol. 6",2018-03-23,30,220.9,https://i.scdn.co/image/ab67616d0000b2732a7a9c4360cedfd978af36b7,0.601,0.458,0.434,0.075,-14.808,0.478,0.134,136.998,0.531
+Miles Davis,Everything's Beautiful,2016-05-27,43,47.1,https://i.scdn.co/image/ab67616d0000b2739883e7842775fc3401d77e14,0.252,0.628,0.516,0.135,-10.759,0.818,0.137,110.477,0.314
+Nat King Cole,From The Capitol Vaults (Vol. 4),2023-06-16,43,37.8,https://i.scdn.co/image/ab67616d0000b273302b2985cb12a2e197f8da95,0.665,0.393,0.342,0.0,-10.768,0.714,0.046,103.183,0.443
+Nat King Cole,From The Capitol Vaults (Vol. 3),2023-02-10,37,39.8,https://i.scdn.co/image/ab67616d0000b27363cbde3db84a5adecf399e99,0.739,0.342,0.27,0.001,-13.573,0.714,0.042,100.824,0.333
+Nat King Cole,From The Capitol Vaults (Vol. 2),2022-06-17,33,34.0,https://i.scdn.co/image/ab67616d0000b273758a61627d9dfb48a197b138,0.657,0.395,0.324,0.0,-12.332,0.857,0.041,109.826,0.391
+Nat King Cole,From The Capitol Vaults (Vol. 1),2022-06-03,32,42.5,https://i.scdn.co/image/ab67616d0000b2734a2ca843fd14256e0ea3845b,0.794,0.4,0.222,0.001,-13.052,0.786,0.05,104.761,0.323
+Nat King Cole,Simply ... King Cole! (2020 Remaster),2020-04-03,39,120.8,https://i.scdn.co/image/ab67616d0000b273a123522a0b34e2cdc90a5886,0.925,0.522,0.2,0.039,-13.499,0.795,0.063,99.623,0.414
+Nat King Cole,International Nat King Cole,2019-06-14,39,36.0,https://i.scdn.co/image/ab67616d0000b2738576d2f26d36d4b33cae298e,0.558,0.365,0.383,0.0,-9.638,0.714,0.037,110.968,0.49
+Nat King Cole,Ultimate Nat King Cole,2019-03-15,42,60.4,https://i.scdn.co/image/ab67616d0000b2734cf30fc31e4aa6a6de9fbab0,0.819,0.422,0.24,0.001,-13.524,0.619,0.049,106.778,0.373
+Nat King Cole,The Extraordinary (Deluxe Edition),2014-05-27,37,100.7,https://i.scdn.co/image/ab67616d0000b2732b461f8716f53df8c016fb18,0.82,0.473,0.279,0.001,-12.144,0.778,0.062,110.023,0.474
+Nat King Cole,The Extraordinary,2014-05-27,41,56.5,https://i.scdn.co/image/ab67616d0000b273d3573d910223c606110398c4,0.79,0.54,0.335,0.0,-10.579,0.727,0.073,116.524,0.591
+Nat King Cole,Re:Generations,2009-01-01,26,46.5,https://i.scdn.co/image/ab67616d0000b2736e7350691136ad624763add2,0.186,0.607,0.786,0.157,-5.916,0.692,0.151,112.096,0.65
+Nat King Cole,The World Of Nat King Cole (Expanded Edition),2005-01-01,34,139.2,https://i.scdn.co/image/ab67616d0000b273fcb5e1595eca38ddd563d278,0.828,0.398,0.293,0.004,-12.784,0.74,0.051,108.141,0.389
+Nat King Cole,Love Songs,2003-02-03,42,74.3,https://i.scdn.co/image/ab67616d0000b273176508e5ab1f50d82627e751,0.86,0.272,0.211,0.01,-14.738,0.958,0.036,112.571,0.196
+Nat King Cole,The Classic Singles,2003-01-01,33,147.0,https://i.scdn.co/image/ab67616d0000b2731de1fdcb1188126fccdcbce6,0.935,0.507,0.162,0.011,-14.927,0.78,0.059,98.703,0.379
+Nat King Cole,Night Lights,2001-01-01,36,54.0,https://i.scdn.co/image/ab67616d0000b273b502e307de80fd7806b73762,0.698,0.371,0.236,0.0,-14.273,0.9,0.04,111.442,0.354
+Oingo Boingo,Farewell: Live From The Universal Amphitheatre-Halloween 1995,1996-04-16,30,146.2,https://i.scdn.co/image/ab67616d0000b273e429f71fccd35abb36f9e42d,0.074,0.422,0.864,0.07,-7.757,0.733,0.079,127.725,0.426
+Oingo Boingo,Boingo,1994-05-13,34,73.1,https://i.scdn.co/image/ab67616d0000b27361f962b98baed7f073046bea,0.208,0.465,0.686,0.008,-9.878,0.455,0.133,134.599,0.423
+Oingo Boingo,Best O' Boingo,1991-02-03,41,76.3,https://i.scdn.co/image/ab67616d0000b27393a2e136a4c36b868bd8b94a,0.093,0.583,0.805,0.16,-10.729,0.765,0.051,128.667,0.69
+Oingo Boingo,Dark At The End Of The Tunnel,1990-01-01,37,47.9,https://i.scdn.co/image/ab67616d0000b2736db30a31a1f187460e9c922b,0.184,0.606,0.655,0.001,-13.554,0.818,0.048,129.189,0.801
+Oingo Boingo,Boingo Alive,1988-01-01,38,128.4,https://i.scdn.co/image/ab67616d0000b2733747e21a9a5993be16348547,0.079,0.58,0.772,0.128,-11.842,0.742,0.061,143.641,0.68
+Oingo Boingo,Boi-Ngo,1987-01-01,42,40.7,https://i.scdn.co/image/ab67616d0000b273146079b1c159fec24f6e8ef2,0.126,0.67,0.761,0.043,-11.622,0.667,0.047,122.579,0.834
+Oingo Boingo,Dead Man's Party,1985-01-01,58,42.0,https://i.scdn.co/image/ab67616d0000b273117c53d4921791280aad03ba,0.262,0.605,0.801,0.006,-11.663,0.778,0.04,136.147,0.759
+Oingo Boingo,Good For Your Soul,1983-07-26,47,41.7,https://i.scdn.co/image/ab67616d0000b2735d4eb89373ad3a77dea35b6d,0.089,0.658,0.717,0.1,-13.091,0.818,0.054,133.196,0.772
+Oingo Boingo,Nothing To Fear,1982-01-01,48,41.5,https://i.scdn.co/image/ab67616d0000b273d0e458b6e44313404c230e12,0.063,0.569,0.79,0.115,-11.136,0.5,0.046,139.499,0.803
+Oingo Boingo,Only A Lad,1981-06-19,51,38.1,https://i.scdn.co/image/ab67616d0000b27371ee98e45b1b2ab98b75d423,0.051,0.662,0.831,0.02,-11.617,0.7,0.056,169.191,0.803
+Pink Floyd,The Dark Side Of The Moon (Live at Wembley 1974) [2023 Master],2023-03-24,50,55.1,https://i.scdn.co/image/ab67616d0000b27394731b7663cb4ba416da64a2,0.181,0.32,0.414,0.198,-15.021,0.6,0.051,112.204,0.234
+Pink Floyd,Live at Knebworth 1990,2021-04-30,38,55.8,https://i.scdn.co/image/ab67616d0000b273560114d4e74f76f5bd3b179f,0.158,0.306,0.553,0.118,-11.984,0.571,0.049,114.695,0.211
+Pink Floyd,Delicate Sound of Thunder (2019 Remix) [Live],2020-11-20,46,141.0,https://i.scdn.co/image/ab67616d0000b2737785fac1b09f44a9ff48181e,0.15,0.296,0.587,0.094,-12.555,0.652,0.063,120.635,0.278
+Pink Floyd,The Endless River,2014-11-10,49,65.2,https://i.scdn.co/image/ab67616d0000b273d68e1b64095e02dc6818c1f9,0.486,0.323,0.308,0.706,-17.956,0.571,0.037,113.672,0.15
+Pink Floyd,Pulse (Live),1995-05-29,59,155.2,https://i.scdn.co/image/ab67616d0000b273eabc2b563fc0b274fec964e9,0.196,0.339,0.467,0.191,-16.149,0.56,0.053,116.345,0.25
+Pink Floyd,The Division Bell,1994,64,66.4,https://i.scdn.co/image/ab67616d0000b2738431fb4cb38f8ee96d3434c0,0.329,0.424,0.439,0.162,-13.284,0.818,0.034,101.013,0.221
+Pink Floyd,Delicate Sound of Thunder (Live),1988-11-22,47,104.3,https://i.scdn.co/image/ab67616d0000b273807780eda29bee39afdc99d9,0.111,0.35,0.549,0.166,-15.298,0.733,0.062,110.571,0.261
+Pink Floyd,A Momentary Lapse of Reason,1987-09-08,60,51.0,https://i.scdn.co/image/ab67616d0000b27361f734a2370207feda78d018,0.332,0.368,0.406,0.166,-15.259,1.0,0.044,114.664,0.218
+Pink Floyd,A Momentary Lapse of Reason (2019 Remix),1987-09-07,39,51.2,https://i.scdn.co/image/ab67616d0000b27324624d763a336451b9806b11,0.279,0.376,0.358,0.328,-15.535,0.909,0.04,106.365,0.198
+Pink Floyd,The Final Cut,1983-03-21,56,46.3,https://i.scdn.co/image/ab67616d0000b27347df2a740389393d35cb33ca,0.612,0.439,0.247,0.082,-15.982,0.846,0.046,109.859,0.202
+Pink Floyd,The Wall,1979-11-30,78,81.0,https://i.scdn.co/image/ab67616d0000b2735d48e2f56d691f9a4e4b0bdf,0.45,0.473,0.253,0.276,-19.367,0.654,0.045,116.432,0.26
+Pink Floyd,Animals,1977-01-23,61,41.7,https://i.scdn.co/image/ab67616d0000b273810168d54f85d48f07389237,0.16,0.456,0.422,0.197,-15.204,0.4,0.065,126.23,0.284
+Pink Floyd,Animals (2018 Remix),1977-01-21,44,41.8,https://i.scdn.co/image/ab67616d0000b27333850875cf4e59221aaea5ff,0.202,0.457,0.328,0.12,-17.947,0.4,0.061,131.19,0.21
+Pink Floyd,Wish You Were Here,1975-09-12,72,44.2,https://i.scdn.co/image/ab67616d0000b2731a84d71391df7469c5ab8539,0.603,0.374,0.41,0.363,-12.689,0.4,0.04,130.019,0.259
+Pink Floyd,The Dark Side Of The Moon (50th Anniversary) [2023 Remaster],1973-03-02,46,42.9,https://i.scdn.co/image/ab67616d0000b273df8498a6ffec2ba9510d66b2,0.356,0.333,0.387,0.582,-16.164,0.8,0.061,132.794,0.279
+Pink Floyd,The Dark Side of the Moon,1973-03-01,77,42.9,https://i.scdn.co/image/ab67616d0000b273ea7caaff71dea1051d49b2fe,0.39,0.383,0.4,0.596,-15.702,0.8,0.059,120.066,0.273
+Pink Floyd,Obscured by Clouds,1972-06-03,53,40.5,https://i.scdn.co/image/ab67616d0000b273e806fae51cd0fc57e59d52a3,0.214,0.458,0.355,0.275,-14.113,0.8,0.036,120.89,0.256
+Pink Floyd,Meddle,1971-11-11,60,46.8,https://i.scdn.co/image/ab67616d0000b2739449d3adaa0f6e26af288c0d,0.327,0.439,0.299,0.279,-16.964,0.833,0.041,119.532,0.307
+Pink Floyd,Atom Heart Mother,1970-10-05,47,52.1,https://i.scdn.co/image/ab67616d0000b273c32e12829fb960100a3257c6,0.582,0.349,0.245,0.55,-16.76,0.4,0.036,124.302,0.198
+Pink Floyd,Ummagumma,1969-10-25,43,86.6,https://i.scdn.co/image/ab67616d0000b2732375d29d34154433cddc10e0,0.578,0.272,0.464,0.575,-14.653,0.75,0.145,99.906,0.186
+Pixies,Doggerel,2022-09-30,48,42.2,https://i.scdn.co/image/ab67616d0000b2732299380be552c33f4d47192b,0.008,0.552,0.812,0.078,-5.124,0.417,0.041,124.183,0.434
+Pixies,"Live from Disco Rodeo, Raleigh, NC. June 12th, 2005",2022-02-11,32,82.0,https://i.scdn.co/image/ab67616d0000b2730bb653ab71f27fa8a7af14a8,0.246,0.404,0.77,0.081,-8.895,0.75,0.056,129.249,0.4
+Pixies,"Live from Music Midtown, Atlanta, GA. June 11th, 2005",2022-01-21,25,74.0,https://i.scdn.co/image/ab67616d0000b27375eb79f84cce6fdc176f2fd9,0.474,0.413,0.757,0.078,-8.24,0.8,0.052,117.714,0.434
+Queen,The Miracle (Collector's Edition),2022-11-18,43,188.2,https://i.scdn.co/image/ab67616d0000b27377dd4e8cd4e792033c92b5a2,0.169,0.537,0.661,0.145,-8.668,0.574,0.053,108.408,0.525
+Queen,Live Around the World (Deluxe),2020-10-02,38,79.9,https://i.scdn.co/image/ab67616d0000b27317fe544b2d88e816ce135c4f,0.232,0.301,0.816,0.051,-8.052,0.75,0.065,122.644,0.305
+Queen,Bohemian Rhapsody (The Original Soundtrack),2018-10-19,59,79.9,https://i.scdn.co/image/ab67616d0000b27328581cfe196c266c132a9d62,0.295,0.438,0.711,0.019,-7.379,0.636,0.097,112.937,0.361
+Queen,Queen On Air,2016-10-21,37,100.8,https://i.scdn.co/image/ab67616d0000b273ac65a45b662514ebec164589,0.25,0.387,0.676,0.011,-8.861,0.75,0.079,123.252,0.392
+Queen,A Night at the Odeon,2015-01-01,34,73.3,https://i.scdn.co/image/ab67616d0000b273b0ee5b35fcf944d5e3221d2b,0.309,0.284,0.86,0.12,-8.701,0.684,0.151,128.158,0.218
+Queen,Live at the Rainbow ‘74,2014-01-01,30,144.1,https://i.scdn.co/image/ab67616d0000b27317b3c4b46719258b5091cc5f,0.097,0.275,0.866,0.135,-6.944,0.756,0.17,119.246,0.277
+Queen,Queen Rock Montreal,2007-10-29,38,98.1,https://i.scdn.co/image/ab67616d0000b273327cf890a43bc755c77b5ad7,0.081,0.319,0.852,0.152,-6.068,0.821,0.13,126.629,0.269
+Queen,On Fire: Live At The Bowl,2004-11-04,26,102.1,https://i.scdn.co/image/ab67616d0000b273051da27183803837d011ea88,0.176,0.297,0.866,0.124,-5.99,0.84,0.114,126.298,0.212
+Queen,Made in Heaven (Deluxe Remastered Version),1995-11-06,46,93.6,https://i.scdn.co/image/ab67616d0000b2733f2006dd19614640133b50ae,0.291,0.396,0.509,0.104,-9.582,0.737,0.038,107.846,0.273
+Queen,Made In Heaven,1995-11-06,38,70.4,https://i.scdn.co/image/ab67616d0000b273878396b831779c9bfb500913,0.245,0.361,0.482,0.15,-11.276,0.846,0.039,98.931,0.239
+Queen,Live At Wembley Stadium,1992-05-26,42,131.0,https://i.scdn.co/image/ab67616d0000b27381b9817153e6b30dedb8813f,0.287,0.302,0.896,0.082,-4.852,0.75,0.123,121.317,0.191
+Queen,Innuendo (Deluxe Remastered Version),1991-02-05,39,76.1,https://i.scdn.co/image/ab67616d0000b27338cc7608615675b52d894ce7,0.336,0.446,0.711,0.039,-7.247,0.647,0.058,111.757,0.309
+Queen,Innuendo,1991-02-04,51,53.6,https://i.scdn.co/image/ab67616d0000b27350dcdcb73b5bbff6d3136131,0.338,0.469,0.515,0.037,-14.489,0.5,0.047,111.907,0.313
+Queen,The Miracle (Deluxe Remastered Version),1989-05-22,50,69.6,https://i.scdn.co/image/ab67616d0000b27351ba9558a4638b6ebff9c746,0.126,0.556,0.745,0.119,-7.148,0.647,0.059,112.466,0.498
+Queen,The Miracle,1989-05-22,39,58.6,https://i.scdn.co/image/ab67616d0000b2735e14c0899c06a7cb776a9a38,0.114,0.552,0.654,0.11,-11.063,0.571,0.05,109.439,0.519
+Queen,A Kind of Magic (Deluxe Remastered Version),1986-06-02,53,70.8,https://i.scdn.co/image/ab67616d0000b273b2f32a40b64bc00dffa59281,0.152,0.469,0.678,0.076,-7.514,0.562,0.076,112.501,0.342
+Queen,A Kind Of Magic,1986-06-02,37,50.2,https://i.scdn.co/image/ab67616d0000b2731351b9b5479c81f76ce7d419,0.195,0.456,0.55,0.105,-13.228,0.545,0.073,111.989,0.299
+Queen,The Works (Deluxe Remastered Version),1984-02-27,62,62.4,https://i.scdn.co/image/ab67616d0000b2734aab69127abbdced0dec07e0,0.273,0.491,0.65,0.001,-7.168,1.0,0.055,112.068,0.453
+Queen,The Works,1984-02-27,50,55.1,https://i.scdn.co/image/ab67616d0000b27398a0577da5896bcc66521861,0.206,0.58,0.537,0.004,-11.944,1.0,0.047,111.979,0.519
+Queen,Hot Space (Deluxe Remastered Version),1982-05-03,65,66.5,https://i.scdn.co/image/ab67616d0000b273a1e05e1048e2cf2737adf742,0.18,0.62,0.687,0.001,-7.077,0.938,0.068,119.242,0.486
+Ray Charles,Live In Stockholm 1972,2022-05-06,38,38.6,https://i.scdn.co/image/ab67616d0000b273288123819393117f92886fed,0.391,0.44,0.637,0.001,-11.258,0.667,0.238,100.883,0.55
+Ray Charles,"Live At Palais Des Sports Paris, France. October 22nd., 1961 (Afternoon Concert) [Restauración 2022]",2022-04-18,27,53.0,https://i.scdn.co/image/ab67616d0000b27304a64cf9b54cfe1342bad37e,0.814,0.442,0.522,0.027,-13.068,0.583,0.066,116.761,0.414
+Ray Charles,True Genius,2021-09-10,68,170.4,https://i.scdn.co/image/ab67616d0000b2734448e36a9ef845b705d80a0d,0.59,0.454,0.384,0.015,-12.376,0.7,0.066,109.684,0.593
+Ray Charles,The Atlantic Hits,2019-02-08,40,147.4,https://i.scdn.co/image/ab67616d0000b273251f9ed8769d5c58720a7dd1,0.739,0.561,0.387,0.025,-9.098,0.9,0.078,123.794,0.599
+Ray Charles,The Atlantic Studio Albums in Mono (Remaster),2016-09-23,36,161.5,https://i.scdn.co/image/ab67616d0000b273c6acbbc088a2545c88c827f4,0.774,0.552,0.277,0.087,-14.431,0.78,0.081,122.881,0.57
+Ray Charles,"Modern Sounds in Country and Western Music, Vols 1 & 2",2009-06-02,58,74.1,https://i.scdn.co/image/ab67616d0000b2737b97663666f03928ff1e4578,0.855,0.38,0.264,0.005,-13.965,0.875,0.044,92.012,0.499
+Ray Charles,The Genius!,2007-10-30,47,144.1,https://i.scdn.co/image/ab67616d0000b273cb47173a6cbf7d1f06326654,0.78,0.561,0.353,0.031,-10.732,0.82,0.09,126.534,0.616
+Ray Charles,"Ray Sings, Basie Swings",2006-10-03,27,48.6,https://i.scdn.co/image/ab67616d0000b273ec291750f07f7008096a0897,0.621,0.453,0.464,0.003,-8.265,0.917,0.067,115.114,0.436
+Ray Charles,The Ray Charles Story Volume 2,2005-01-18,37,48.1,https://i.scdn.co/image/ab67616d0000b273b4f8eae1a2c0f4bc9274c2df,0.765,0.551,0.334,0.028,-13.36,0.857,0.077,112.226,0.677
+Ray Charles,Genius Loves Company,2004-08-31,59,51.6,https://i.scdn.co/image/ab67616d0000b2737e827444b254f83e8303c790,0.605,0.493,0.423,0.001,-9.726,0.75,0.066,121.051,0.371
+Ray Charles,The Birth of Soul,1991-09-24,31,141.5,https://i.scdn.co/image/ab67616d0000b273f3dfc2e52ef3206e4f3e41f6,0.788,0.588,0.348,0.013,-11.065,0.82,0.087,122.157,0.647
+Rihanna,Black Panther: Wakanda Forever - Music From and Inspired By,2022-11-11,74,66.5,https://i.scdn.co/image/ab67616d0000b273992a1f56ac5382848277cff2,0.336,0.61,0.544,0.036,-7.82,0.55,0.117,123.398,0.294
+Rihanna,ANTI (Deluxe),2016-01-28,85,51.0,https://i.scdn.co/image/ab67616d0000b27333c6b920eabcf4c00d7a1093,0.287,0.554,0.533,0.001,-6.287,0.562,0.066,118.357,0.445
+Rihanna,ANTI,2016-01-28,53,43.7,https://i.scdn.co/image/ab67616d0000b2737b688587a6754481c53f6bb7,0.316,0.552,0.497,0.001,-6.598,0.615,0.069,119.509,0.432
+Rihanna,Unapologetic (Deluxe),2012-12-11,71,68.0,https://i.scdn.co/image/ab67616d0000b2730e6cedee56e37a9a65f2164d,0.196,0.61,0.625,0.005,-6.538,0.294,0.068,120.526,0.4
+Rihanna,Unapologetic,2012-12-11,45,55.2,https://i.scdn.co/image/ab67616d0000b2731f69f49a0d2f6b13a79efe02,0.222,0.611,0.629,0.001,-6.506,0.286,0.071,121.181,0.397
+Rihanna,Talk That Talk (Deluxe),2012-07-18,62,49.1,https://i.scdn.co/image/ab67616d0000b273f70dcec206fbdbcc9816664a,0.083,0.622,0.769,0.002,-5.494,0.643,0.066,126.307,0.441
+Rihanna,Talk That Talk,2011-11-19,77,37.5,https://i.scdn.co/image/ab67616d0000b2731c5eacf6965d328c2c795cef,0.096,0.657,0.775,0.002,-5.364,0.636,0.066,122.039,0.467
+Rihanna,Loud,2010-11-15,56,46.9,https://i.scdn.co/image/ab67616d0000b2731c8ca4907c9f187456fe3f2c,0.123,0.631,0.761,0.0,-4.409,0.636,0.089,123.404,0.506
+Rihanna,Rated R: Remixed,2010-05-08,32,52.8,https://i.scdn.co/image/ab67616d0000b2730f7e6b57c3a28a3297f1afb5,0.031,0.709,0.756,0.067,-5.983,0.1,0.192,129.615,0.654
+Rihanna,Loud (Japan Version),2010-01-01,80,54.3,https://i.scdn.co/image/ab67616d0000b27331548865f7c729290b96c794,0.104,0.642,0.782,0.0,-4.449,0.615,0.081,130.065,0.559
+Rihanna,Rated R,2009-11-20,73,51.9,https://i.scdn.co/image/ab67616d0000b273ab647295c0c97446c1f1a3b5,0.166,0.467,0.649,0.0,-5.39,0.462,0.062,134.99,0.37
+Rihanna,Good Girl Gone Bad: The Remixes,2009-01-01,47,44.8,https://i.scdn.co/image/ab67616d0000b273d38fac36862a99fbc302b5f9,0.002,0.645,0.905,0.159,-4.396,0.583,0.073,126.745,0.662
+Rihanna,Good Girl Gone Bad: Reloaded,2008-06-02,83,57.1,https://i.scdn.co/image/ab67616d0000b273f9f27162ab1ed45b8d7a7e98,0.082,0.668,0.737,0.017,-5.418,0.667,0.076,123.523,0.628
+Rihanna,Good Girl Gone Bad,2007-01-01,70,46.0,https://i.scdn.co/image/ab67616d0000b273b9ff0a5f40d3406aed5e5e3b,0.075,0.654,0.75,0.021,-5.467,0.667,0.088,128.306,0.599
+Rihanna,A Girl Like Me,2006-04-10,72,50.4,https://i.scdn.co/image/ab67616d0000b273d744a51e193d52170070062b,0.175,0.65,0.577,0.001,-6.436,0.385,0.105,103.07,0.568
+Rihanna,Music Of The Sun,2005-08-29,73,52.4,https://i.scdn.co/image/ab67616d0000b273b21609e1a2d7c1b7ba8efae2,0.106,0.665,0.623,0.0,-7.331,0.615,0.142,106.07,0.568
+Stevie Wonder,Remixes,2019-10-25,34,312.2,https://i.scdn.co/image/ab67616d0000b27342b38ba9beca5e4485a4b1fe,0.078,0.73,0.616,0.116,-10.605,0.592,0.086,117.371,0.771
+Stevie Wonder,Mono Singles,2019-10-25,42,141.2,https://i.scdn.co/image/ab67616d0000b273351e5321a51548bf48d68eff,0.349,0.508,0.654,0.076,-7.585,0.8,0.066,117.162,0.717
+Stevie Wonder,Additional Singles & Rarities,2019-10-25,39,173.6,https://i.scdn.co/image/ab67616d0000b27311b6fe1c99ab9ffa4054f450,0.459,0.482,0.657,0.039,-7.889,0.84,0.106,118.445,0.681
+Stevie Wonder,A Time To Love,2005-10-28,36,77.7,https://i.scdn.co/image/ab67616d0000b273c9227b7991baf02ceea66859,0.314,0.669,0.64,0.001,-6.79,0.533,0.069,100.35,0.563
+Stevie Wonder,Natural Wonder,1995-11-21,39,105.1,https://i.scdn.co/image/ab67616d0000b273abd07a89ac6a0da37ccb3d3a,0.397,0.52,0.688,0.0,-8.764,0.667,0.057,111.827,0.511
+Stevie Wonder,Conversation Peace,1995-03-21,40,73.9,https://i.scdn.co/image/ab67616d0000b27330c9c5b398dcfe98aa9c0a9d,0.127,0.657,0.626,0.0,-10.177,0.538,0.07,117.302,0.526
+Stevie Wonder,"Music From The Movie ""Jungle Fever""",1991-05-28,30,51.2,https://i.scdn.co/image/ab67616d0000b273fc4c9523bd9ebdc6a5189730,0.256,0.645,0.622,0.0,-10.605,0.455,0.05,124.282,0.606
+Stevie Wonder,Characters,1987-11-06,34,61.5,https://i.scdn.co/image/ab67616d0000b2736990883a1e2ed9bd0e3a382e,0.18,0.688,0.421,0.029,-18.039,0.583,0.053,125.146,0.778
+Stevie Wonder,In Square Circle,1985-09-13,64,49.4,https://i.scdn.co/image/ab67616d0000b273ed0ddbe4b2590f448e9845be,0.172,0.683,0.507,0.0,-15.518,0.3,0.042,117.989,0.736
+Stevie Wonder,Selections From The Original Soundtrack The Woman In Red,1984-08-28,36,41.3,https://i.scdn.co/image/ab67616d0000b2732f5c212a389539c3527d9847,0.347,0.664,0.48,0.0,-13.997,0.75,0.05,117.576,0.571
+Stevie Wonder,Original Musiquarium,1982-05-04,50,85.9,https://i.scdn.co/image/ab67616d0000b273f79ed09155e87ba56eeeea2d,0.218,0.65,0.674,0.011,-9.964,0.562,0.059,108.451,0.76
+Stevie Wonder,Hotter Than July,1980-09-29,54,45.9,https://i.scdn.co/image/ab67616d0000b273ee3d8573b47a75a0d8233b39,0.112,0.732,0.461,0.001,-15.002,0.7,0.057,109.626,0.791
+Stevie Wonder,Journey Through The Secret Life Of Plants,1979-10-30,39,88.4,https://i.scdn.co/image/ab67616d0000b273afc02b1a09b144929c3b15cf,0.694,0.457,0.263,0.341,-19.922,0.6,0.048,120.675,0.343
+Stevie Wonder,Songs In The Key Of Life,1976-09-28,72,105.0,https://i.scdn.co/image/ab67616d0000b2732fee61bfec596bb6f5447c50,0.278,0.555,0.562,0.017,-11.83,0.524,0.058,111.244,0.57
+Stevie Wonder,Fulfillingness' First Finale,1974-07-22,48,42.6,https://i.scdn.co/image/ab67616d0000b273de0ccd19b3f72c1c4db92497,0.55,0.536,0.533,0.044,-11.327,0.4,0.046,91.37,0.455
+Stevie Wonder,Innervisions,1973-08-03,64,44.3,https://i.scdn.co/image/ab67616d0000b273ea8ab1a548312b79ac955266,0.409,0.576,0.633,0.0,-11.091,0.444,0.051,110.862,0.552
+Stevie Wonder,Talking Book,1972-10-28,67,43.5,https://i.scdn.co/image/ab67616d0000b273a14b08b9a6616e121df5e8b0,0.517,0.507,0.403,0.002,-14.738,0.7,0.049,107.566,0.479
+Stevie Wonder,Music Of My Mind,1972-03-03,43,47.9,https://i.scdn.co/image/ab67616d0000b27317b2abaa44b6380506ad922c,0.506,0.445,0.515,0.0,-11.747,0.778,0.072,115.519,0.444
+Stevie Wonder,Where I'm Coming From,1971-04-01,47,36.8,https://i.scdn.co/image/ab67616d0000b273c4816c073bfde36f4511862a,0.47,0.444,0.4,0.052,-13.069,0.667,0.037,110.626,0.496
+Stevie Wonder,Signed Sealed And Delivered,1970-08-07,40,36.4,https://i.scdn.co/image/ab67616d0000b2733ab5b578c4436b1e519e4a2e,0.223,0.489,0.718,0.008,-8.365,0.917,0.073,116.111,0.729
+SZA,SOS,2022-12-09,93,68.1,https://i.scdn.co/image/ab67616d0000b27370dbc9f47669d120ad874ec1,0.496,0.597,0.541,0.017,-7.854,0.652,0.103,115.549,0.457
+SZA,Ctrl (Deluxe),2022-06-09,75,69.0,https://i.scdn.co/image/ab67616d0000b2731882add8fd275c04e322027d,0.362,0.648,0.48,0.02,-8.58,0.619,0.167,109.071,0.406
+SZA,Ctrl,2017-06-09,83,49.1,https://i.scdn.co/image/ab67616d0000b2734c79d5ec52a6d0302f3add25,0.357,0.626,0.531,0.0,-6.921,0.643,0.183,107.34,0.394
+SZA,Z,2014-04-08,64,40.8,https://i.scdn.co/image/ab67616d0000b27332f1a3721efb2ddfb91b9c82,0.346,0.558,0.559,0.075,-8.413,0.4,0.105,115.879,0.273
+Talking Heads,Once in a Lifetime: The Talking Heads Box (2003 Remaster),2003-11-10,39,209.6,https://i.scdn.co/image/ab67616d0000b273e0ec41fdd469cf826252cee7,0.147,0.677,0.727,0.081,-7.732,0.7,0.047,123.105,0.802
+Talking Heads,Naked,1988-03-15,43,58.0,https://i.scdn.co/image/ab67616d0000b2730583afbbb82a225cd3ba17f0,0.272,0.674,0.731,0.005,-6.9,0.583,0.039,114.201,0.665
+Talking Heads,True Stories (Deluxe Version),1986-10-07,37,56.3,https://i.scdn.co/image/ab67616d0000b2733b41840563e4b7823db5c306,0.106,0.663,0.842,0.015,-6.356,0.917,0.043,127.051,0.818
+Talking Heads,Little Creatures (Deluxe Version),1985-07-10,46,54.7,https://i.scdn.co/image/ab67616d0000b273c64d2d4760962e4927527b2b,0.093,0.72,0.755,0.028,-6.466,0.75,0.035,117.867,0.869
+Talking Heads,Stop Making Sense (Live),1984,57,74.4,https://i.scdn.co/image/ab67616d0000b2734436f2e7c93002ad0eb9716a,0.144,0.643,0.742,0.016,-9.212,0.812,0.052,123.292,0.678
+Talking Heads,Speaking in Tongues (Deluxe Version),1983-05-31,66,58.1,https://i.scdn.co/image/ab67616d0000b273e35e2e2a4bfa8a30a78fc532,0.067,0.863,0.687,0.254,-9.331,0.545,0.057,115.918,0.822
+Talking Heads,Speaking in Tongues,1983-05-31,46,47.2,https://i.scdn.co/image/ab67616d0000b2731e6080bcea9c1d05762084a1,0.099,0.863,0.66,0.217,-11.109,0.667,0.06,117.333,0.884
+Talking Heads,The Name of This Band Is Talking Heads (Expanded 2004 Remaster),1982-03-24,43,156.7,https://i.scdn.co/image/ab67616d0000b2739960508d99ed0825d33e9ea8,0.138,0.599,0.835,0.082,-4.992,0.667,0.058,123.97,0.74
+Talking Heads,Remain in Light (Deluxe Version),1980-10-08,64,58.7,https://i.scdn.co/image/ab67616d0000b273e56fa8c916dc6ce419dcf557,0.269,0.682,0.789,0.543,-8.342,0.833,0.067,120.682,0.795
+Talking Heads,Remain in Light,1980-10-08,52,40.1,https://i.scdn.co/image/ab67616d0000b273f9e2d82b9969defab2105859,0.33,0.671,0.6,0.396,-14.946,0.625,0.052,118.859,0.774
+Talking Heads,Fear of Music (Deluxe Version),1979-08-03,54,57.4,https://i.scdn.co/image/ab67616d0000b2738365f74aa622b1b86962c8dd,0.134,0.604,0.76,0.181,-7.54,0.733,0.039,112.836,0.693
+Talking Heads,Fear of Music,1979-08-03,43,40.7,https://i.scdn.co/image/ab67616d0000b273874328096de13649dd64c790,0.114,0.582,0.563,0.214,-14.382,1.0,0.041,118.527,0.661
+Talking Heads,More Songs About Buildings and Food (Deluxe Version),1978-07-14,54,58.0,https://i.scdn.co/image/ab67616d0000b273b7307213fae24e3fbcbe46aa,0.135,0.663,0.676,0.034,-7.993,0.667,0.048,126.487,0.745
+Talking Heads,More Songs About Buildings and Food,1978-07-14,42,41.7,https://i.scdn.co/image/ab67616d0000b27391237668384c4d646b30c05c,0.178,0.645,0.528,0.136,-13.005,0.727,0.045,124.767,0.79
+Talking Heads,Talking Heads '77 (Deluxe Version),1977-09-16,70,54.8,https://i.scdn.co/image/ab67616d0000b273e71708b667804f6241dd1a59,0.175,0.713,0.634,0.001,-7.776,0.688,0.046,123.71,0.828
+Talking Heads,Talking Heads '77,1977-09-16,50,39.0,https://i.scdn.co/image/ab67616d0000b273b74dc29f68a36438421a9f1d,0.134,0.737,0.427,0.001,-15.136,0.727,0.047,122.718,0.828
+Taylor Swift,Speak Now (Taylor's Version),2023-07-07,100,104.7,https://i.scdn.co/image/ab67616d0000b2730b04da4f224b51ff86e0a481,0.183,0.551,0.655,0.0,-4.601,0.909,0.039,130.17,0.402
+Taylor Swift,Midnights (The Til Dawn Edition),2023-05-26,87,80.6,https://i.scdn.co/image/ab67616d0000b273fa747621a53c8e2cc436dee0,0.401,0.624,0.471,0.015,-10.253,0.826,0.09,117.624,0.278
+Taylor Swift,Midnights (3am Edition),2022-10-22,86,69.5,https://i.scdn.co/image/ab67616d0000b273e0b60c608586d88252b8fbc0,0.413,0.627,0.451,0.018,-10.588,0.9,0.092,119.745,0.283
+Taylor Swift,Midnights,2022-10-21,94,44.1,https://i.scdn.co/image/ab67616d0000b273bb54dde68cd23e2a268ae0f5,0.387,0.639,0.41,0.038,-10.882,0.923,0.101,117.49,0.224
+Taylor Swift,Red (Taylor's Version),2021-11-12,90,130.7,https://i.scdn.co/image/ab67616d0000b273318443aab3531a0558e79a4d,0.177,0.577,0.587,0.0,-7.014,0.967,0.042,124.362,0.425
+Taylor Swift,Fearless (Taylor's Version),2021-04-09,89,106.5,https://i.scdn.co/image/ab67616d0000b273a48964b5d9a3d6968ae3e0de,0.214,0.551,0.639,0.0,-6.197,0.962,0.038,131.237,0.422
+Taylor Swift,evermore (deluxe version),2021-01-07,82,69.1,https://i.scdn.co/image/ab67616d0000b27390fd9741e1838115cd90b3b6,0.794,0.527,0.494,0.021,-9.782,0.941,0.058,120.707,0.434
+Taylor Swift,evermore,2020-12-11,84,60.8,https://i.scdn.co/image/ab67616d0000b27333b8541201f1ef38941024be,0.795,0.519,0.491,0.023,-9.822,0.933,0.061,117.479,0.421
+Taylor Swift,folklore: the long pond studio sessions (from the Disney+ special) [deluxe edition],2020-11-25,72,134.7,https://i.scdn.co/image/ab67616d0000b273045514e3ed4e1767a7c3ece5,0.788,0.551,0.373,0.001,-10.621,0.882,0.038,116.099,0.338
+Taylor Swift,folklore (deluxe version),2020-08-18,82,67.1,https://i.scdn.co/image/ab67616d0000b273c288028c2592f400dd0b9233,0.718,0.542,0.416,0.0,-10.336,0.882,0.039,119.884,0.361
+Taylor Swift,folklore,2020-07-24,91,63.6,https://i.scdn.co/image/ab67616d0000b27395f754318336a07e85ec59bc,0.711,0.568,0.425,0.0,-10.247,0.875,0.04,116.148,0.381
+Taylor Swift,Lover,2019-08-23,97,61.9,https://i.scdn.co/image/ab67616d0000b273e787cffec20aa2a396a61647,0.334,0.658,0.545,0.001,-8.013,0.889,0.099,119.973,0.481
+Taylor Swift,reputation,2017-11-10,93,55.8,https://i.scdn.co/image/ab67616d0000b273da5d5aeeabacacc1263c0f4b,0.139,0.658,0.583,0.0,-7.672,0.667,0.095,127.54,0.293
+Taylor Swift,reputation Stadium Tour Surprise Song Playlist,2017-11-09,74,186.3,https://i.scdn.co/image/ab67616d0000b27363d77f99117b28af9f656918,0.16,0.596,0.653,0.0,-5.778,0.957,0.041,120.421,0.446
+Taylor Swift,1989 (Deluxe Edition),2014-10-27,79,68.8,https://i.scdn.co/image/ab67616d0000b273332d85510aba3eb28312cfb2,0.245,0.633,0.625,0.001,-7.924,0.895,0.173,127.033,0.454
+Taylor Swift,1989,2014-10-27,83,48.8,https://i.scdn.co/image/ab67616d0000b2739abdf14e6058bd3903686148,0.113,0.649,0.699,0.001,-6.237,1.0,0.066,124.089,0.463
+Taylor Swift,Red (Deluxe Edition),2012-10-22,65,90.2,https://i.scdn.co/image/ab67616d0000b273a7613d346501b828b56a0bc3,0.149,0.633,0.601,0.002,-7.38,0.864,0.037,110.297,0.468
+Taylor Swift,Red,2012-10-22,66,64.9,https://i.scdn.co/image/ab67616d0000b27396384c98ac4f3e7c2440f5b5,0.116,0.623,0.62,0.002,-7.129,0.875,0.039,109.684,0.497
+Taylor Swift,Speak Now World Tour Live,2010-10-25,61,79.2,https://i.scdn.co/image/ab67616d0000b273be4ec62353ee75fa11f6d6f7,0.234,0.441,0.65,0.0,-7.13,0.938,0.041,122.616,0.29
+Taylor Swift,Speak Now (Deluxe Edition),2010-10-25,75,91.8,https://i.scdn.co/image/ab67616d0000b2732e4ec3175d848eca7b76b07f,0.249,0.556,0.648,0.0,-4.726,0.9,0.035,136.376,0.417
+The Beach Boys,Sail On Sailor – 1972 (Super Deluxe),2022-12-02,36,176.7,https://i.scdn.co/image/ab67616d0000b273c894f656dfdb32ccb3ca0cba,0.368,0.443,0.432,0.079,-14.293,0.86,0.128,117.729,0.428
+The Beach Boys,Sail On Sailor – 1972 (Deluxe),2022-12-02,36,154.7,https://i.scdn.co/image/ab67616d0000b273faaa88fb95ceb28eb082b5da,0.387,0.459,0.411,0.084,-14.597,0.822,0.117,113.682,0.43
+The Beach Boys,"""Feel Flows"" The Sunflower & Surf’s Up Sessions 1969-1971 (Super Deluxe)",2021-08-27,43,153.8,https://i.scdn.co/image/ab67616d0000b273dfa30a29fbc855aa5878e7c8,0.118,0.45,0.438,0.033,-13.798,0.86,0.042,116.609,0.449
+The Beach Boys,The Beach Boys On Tour: 1968 (Live),2018-12-14,28,136.1,https://i.scdn.co/image/ab67616d0000b27346617c2e0d2bca45a90c392d,0.152,0.5,0.444,0.026,-14.613,0.88,0.06,122.612,0.547
+The Beach Boys,I Can Hear Music: The 20/20 Sessions,2018-12-07,28,99.3,https://i.scdn.co/image/ab67616d0000b2738db85049f1d9c013b4862c5a,0.4,0.507,0.278,0.208,-16.378,0.825,0.058,127.927,0.428
+The Beach Boys,The Beach Boys With The Royal Philharmonic Orchestra,2018-06-08,47,54.0,https://i.scdn.co/image/ab67616d0000b273ad3d008a0940bdb6588c7319,0.444,0.407,0.53,0.049,-8.061,0.882,0.032,121.875,0.514
+The Beach Boys,1967 - Sunshine Tomorrow,2017-06-30,32,117.3,https://i.scdn.co/image/ab67616d0000b27309855fbc08bc11e23cfd298d,0.431,0.576,0.275,0.183,-16.096,0.96,0.08,115.876,0.541
+The Beach Boys,Becoming the Beach Boys: The Complete Hite & Dorinda Morgan Sessions,2016-08-26,32,106.1,https://i.scdn.co/image/ab67616d0000b273c78590dfd2f07b9992627b23,0.655,0.564,0.375,0.104,-14.939,0.8,0.085,114.621,0.687
+The Beach Boys,The Beach Boys’ Party! Uncovered And Unplugged,2015-11-20,25,92.9,https://i.scdn.co/image/ab67616d0000b273ba5e9f7abd38002332c2db33,0.384,0.597,0.378,0.003,-13.039,0.88,0.206,115.212,0.732
+The Beach Boys,Keep An Eye On Summer - The Beach Boys Sessions 1964,2014-01-01,28,147.2,https://i.scdn.co/image/ab67616d0000b273b9ad398b414432ad5d4a45bc,0.275,0.471,0.474,0.059,-11.729,0.913,0.065,139.21,0.657
+The Beach Boys,That's Why God Made the Radio,2012-06-05,31,38.7,https://i.scdn.co/image/ab67616d0000b273cffe44cf73b1f2da9c08f004,0.459,0.586,0.43,0.09,-10.834,0.75,0.032,103.04,0.491
+The Beach Boys,Smile Sessions,2011-01-01,33,141.3,https://i.scdn.co/image/ab67616d0000b273a41cabe4a6ff208c8ccc0741,0.442,0.458,0.352,0.167,-12.0,0.85,0.075,117.329,0.381
+The Beatles,Revolver (Super Deluxe),2022-10-28,61,129.6,https://i.scdn.co/image/ab67616d0000b27333b139ea459f9d93c7b8fb30,0.41,0.508,0.516,0.184,-9.429,0.84,0.06,120.708,0.588
+The Beatles,Get Back (Rooftop Performance),2022-01-28,46,38.5,https://i.scdn.co/image/ab67616d0000b27304167cd5b7ddbf5c4a563456,0.276,0.564,0.565,0.094,-10.625,0.7,0.094,112.574,0.49
+The Beatles,Let It Be (Super Deluxe),2021-10-15,56,143.0,https://i.scdn.co/image/ab67616d0000b2735a18ca8e4cd3652ef2617886,0.533,0.545,0.529,0.012,-10.503,0.86,0.108,125.847,0.57
+The Beatles,Abbey Road (Super Deluxe Edition),2019-09-27,59,133.5,https://i.scdn.co/image/ab67616d0000b273c94603dcb78ec39322cebb5b,0.277,0.513,0.439,0.1,-12.183,0.775,0.062,121.44,0.444
+The Beatles,The Beatles,2018-11-09,58,152.1,https://i.scdn.co/image/ab67616d0000b2739daf50d073fd6e7ad9bc0076,0.464,0.528,0.455,0.044,-10.463,0.78,0.057,117.916,0.534
+The Beatles,Live At The Hollywood Bowl,2016-09-09,44,43.6,https://i.scdn.co/image/ab67616d0000b2731211f350b2fe058161c249f1,0.032,0.302,0.814,0.0,-7.647,0.765,0.051,123.071,0.601
+The Beatles,Yellow Submarine Songtrack,2014-01-01,63,45.6,https://i.scdn.co/image/ab67616d0000b273d807dd713cdfbeed142881e2,0.217,0.521,0.58,0.003,-7.358,0.733,0.062,121.643,0.667
+The Beatles,Let It Be... Naked (Remastered),2014-01-01,50,35.1,https://i.scdn.co/image/ab67616d0000b273b9dd63a105a5afe5d58a783b,0.312,0.55,0.577,0.001,-9.058,0.727,0.054,141.043,0.651
+The Beatles,On Air - Live At The BBC (Vol.2),2013-11-11,48,94.1,https://i.scdn.co/image/ab67616d0000b2735c123475e140d4e9b21c996d,0.709,0.632,0.454,0.022,-13.304,0.8,0.331,119.25,0.83
+The Beatles,Live At The BBC (Remastered),1994-11-30,47,94.7,https://i.scdn.co/image/ab67616d0000b273c4821abf3351f0eedd6aff3b,0.479,0.565,0.479,0.039,-13.902,0.78,0.168,112.449,0.801
+The Beatles,Let It Be (Remastered),1970-05-08,74,35.2,https://i.scdn.co/image/ab67616d0000b27384243a01af3c77b56fe01ab1,0.364,0.52,0.546,0.006,-9.831,0.75,0.067,134.586,0.615
+The Beatles,Abbey Road (Remastered),1969-09-26,81,47.5,https://i.scdn.co/image/ab67616d0000b273dc30583ba717007b00cceb25,0.225,0.518,0.457,0.123,-11.344,0.706,0.047,118.167,0.459
+The Beatles,Yellow Submarine (Remastered),1969-01-17,51,39.7,https://i.scdn.co/image/ab67616d0000b273d283808926ad3d2220e63c1c,0.547,0.388,0.376,0.452,-13.28,0.692,0.041,114.018,0.387
+The Beatles,The Beatles (Remastered),1968-11-22,77,93.7,https://i.scdn.co/image/ab67616d0000b2734ce8b4e42588bf18182a1ad2,0.395,0.503,0.504,0.154,-11.117,0.8,0.06,117.564,0.563
+The Beatles,Magical Mystery Tour (Remastered),1967-11-27,69,36.5,https://i.scdn.co/image/ab67616d0000b273692d9189b2bd75525893f0c1,0.311,0.467,0.487,0.083,-10.411,0.909,0.054,111.123,0.474
+The Beatles,Sgt. Pepper's Lonely Hearts Club Band (Remastered),1967-06-01,70,39.9,https://i.scdn.co/image/ab67616d0000b27334ef8f7d06cf2fc2146f420a,0.299,0.515,0.483,0.046,-9.94,0.769,0.05,115.734,0.628
+The Beatles,Sgt. Pepper's Lonely Hearts Club Band (Deluxe Edition),1967-06-01,51,100.2,https://i.scdn.co/image/ab67616d0000b27348eeac769c253bfc05a0d1fc,0.342,0.537,0.549,0.089,-8.816,0.839,0.081,119.549,0.481
+The Beatles,Sgt. Pepper's Lonely Hearts Club Band (Super Deluxe Edition),1967-05-26,58,152.7,https://i.scdn.co/image/ab67616d0000b273c92b57b8307e5999ec2fed69,0.433,0.547,0.472,0.096,-10.981,0.8,0.083,114.696,0.443
+The Beatles,Revolver (Remastered),1966-08-05,71,34.8,https://i.scdn.co/image/ab67616d0000b27328b8b9b46428896e6491e97a,0.406,0.482,0.531,0.026,-8.736,0.786,0.039,126.281,0.626
+The Beatles,Rubber Soul (Remastered),1965-12-03,75,35.5,https://i.scdn.co/image/ab67616d0000b273ed801e58a9ababdea6ac7ce4,0.151,0.588,0.539,0.0,-10.389,0.786,0.044,122.793,0.716
+The Jackson 5,Live At The Forum,2010-01-01,34,128.0,https://i.scdn.co/image/ab67616d0000b273a3e1cc8cb9127a2118fe916b,0.154,0.526,0.79,0.065,-7.335,0.789,0.174,116.589,0.672
+The Jackson 5,Motown Legends: Jackson 5 - Never Can Say Goodbye,1993-01-01,39,36.7,https://i.scdn.co/image/ab67616d0000b273099483e2c8177cb81930d050,0.376,0.572,0.599,0.009,-11.708,0.727,0.07,125.734,0.773
+The Jackson 5,Moving Violation,1975-05-15,40,42.0,https://i.scdn.co/image/ab67616d0000b273b26c68bdff804fc9a9535d8f,0.15,0.6,0.86,0.0,-6.435,0.6,0.064,118.935,0.768
+The Jackson 5,Dancing Machine,1974-09-05,47,32.3,https://i.scdn.co/image/ab67616d0000b27386775d200343e034dcc97678,0.228,0.62,0.778,0.012,-6.889,0.444,0.084,104.106,0.731
+The Jackson 5,Get It Together,1973-09-12,27,36.1,https://i.scdn.co/image/ab67616d0000b273d485fb2b173354a4d9d2fc86,0.012,0.57,0.769,0.068,-9.91,0.625,0.078,111.619,0.656
+The Jackson 5,Lookin' Through The Windows,1972-05-23,43,36.1,https://i.scdn.co/image/ab67616d0000b273c55bbd84d38b51dd60ef12f9,0.36,0.626,0.8,0.007,-6.847,0.833,0.048,113.979,0.819
+The Jackson 5,Maybe Tomorrow,1971-04-12,45,34.7,https://i.scdn.co/image/ab67616d0000b27347c5b8d335a8fb0dab98517a,0.402,0.578,0.683,0.0,-7.979,0.727,0.051,127.328,0.75
+The Jackson 5,Christmas Album,1970-10-15,43,33.6,https://i.scdn.co/image/ab67616d0000b27308a0fe33e91b991d2c9c9cde,0.507,0.586,0.589,0.002,-7.866,1.0,0.04,123.538,0.731
+The Jackson 5,Third Album,1970-09-08,58,37.4,https://i.scdn.co/image/ab67616d0000b27320112a0321d2efc7384db456,0.384,0.529,0.591,0.002,-8.786,0.909,0.042,117.78,0.715
+The Jackson 5,ABC,1970-05-08,63,37.1,https://i.scdn.co/image/ab67616d0000b2739df68560791d0b3dab491867,0.361,0.482,0.649,0.026,-9.425,0.833,0.064,151.031,0.764
+The Jackson 5,Diana Ross Presents The Jackson 5,1969-12-18,71,36.3,https://i.scdn.co/image/ab67616d0000b27316aaf05fe82237576a7d0e38,0.364,0.537,0.547,0.0,-12.853,0.833,0.05,121.846,0.729
+The Neighbourhood,Chip Chrome & The Mono-Tones (Deluxe),2020-12-11,68,46.9,https://i.scdn.co/image/ab67616d0000b2733552d3f419afe41cf9b0bd0a,0.326,0.543,0.562,0.188,-9.492,0.8,0.032,119.219,0.474
+The Neighbourhood,Chip Chrome & The Mono-Tones,2020-09-25,72,31.7,https://i.scdn.co/image/ab67616d0000b2731a721f3757e5b67f87e1acd3,0.371,0.561,0.568,0.151,-10.035,0.727,0.033,108.952,0.511
+The Neighbourhood,Hard To Imagine The Neighbourhood Ever Changing,2018-11-02,85,74.3,https://i.scdn.co/image/ab67616d0000b2739b6ac98a52f62d5cb473da40,0.116,0.562,0.652,0.104,-6.466,0.238,0.069,109.886,0.361
+The Neighbourhood,Wiped Out!,2015-10-30,81,45.4,https://i.scdn.co/image/ab67616d0000b2733066581d697fbdee4303d685,0.113,0.386,0.581,0.014,-12.019,0.091,0.039,86.498,0.196
+The Neighbourhood,#000000 & #FFFFFF (No DJ Version),2014-11-28,67,53.7,https://i.scdn.co/image/ab67616d0000b27399b792d6de97e6752f5233e8,0.323,0.567,0.617,0.134,-9.1,0.438,0.211,129.906,0.357
+The Neighbourhood,I Love You. (Chopped Not Slopped),2013-10-28,33,62.7,https://i.scdn.co/image/ab67616d0000b2738638d6dac9467c0b50da105e,0.125,0.516,0.736,0.453,-6.343,0.333,0.107,124.836,0.278
+The Neighbourhood,I Love You. (Slowed Down),2013-04-23,43,51.3,https://i.scdn.co/image/ab67616d0000b273fc1fd6dcb18589fa1c1a73e3,0.058,0.481,0.788,0.423,-5.538,0.455,0.047,133.155,0.275
+The Neighbourhood,I Love You. (10th Anniversary Edition),2013-04-23,59,59.8,https://i.scdn.co/image/ab67616d0000b273a6de8caf3859196ec74650f9,0.024,0.516,0.77,0.249,-4.954,0.267,0.043,119.121,0.347
+The Neighbourhood,I Love You. (Sped Up),2013-04-22,53,40.0,https://i.scdn.co/image/ab67616d0000b273425f3f68c76b11c5aa8cd51e,0.025,0.483,0.861,0.305,-4.46,0.273,0.069,111.34,0.353
+The Neighbourhood,I Love You.,2013-04-19,84,45.9,https://i.scdn.co/image/ab67616d0000b2738265a736a1eb838ad5a0b921,0.029,0.515,0.834,0.314,-4.056,0.273,0.043,126.629,0.359
+The Police,Flexible Strategies,2018-11-16,43,43.6,https://i.scdn.co/image/ab67616d0000b2739dc08ce02ec0096b965d3923,0.064,0.523,0.706,0.208,-10.708,0.667,0.106,140.138,0.614
+The Police,Certifiable (Live in Buenos Aires),2008-01-01,49,107.9,https://i.scdn.co/image/ab67616d0000b2731d565ac0ea72a7affd1c2e28,0.06,0.421,0.88,0.0,-4.775,0.737,0.147,136.609,0.351
+The Police,Live!,1995,34,144.1,https://i.scdn.co/image/ab67616d0000b27311faa942bbfd66ff5367f72f,0.07,0.425,0.816,0.049,-7.312,0.7,0.071,131.792,0.474
+The Police,Synchronicity (Remastered 2003),1983-06-17,80,44.5,https://i.scdn.co/image/ab67616d0000b273c8e97cafeb2acb85b21a777e,0.223,0.571,0.621,0.029,-10.986,0.455,0.056,149.846,0.643
+The Police,Ghost In The Machine (Remastered 2003),1981-10-02,70,41.1,https://i.scdn.co/image/ab67616d0000b273b7879980ef2ea7ac1cc29316,0.13,0.556,0.715,0.131,-9.035,0.636,0.051,139.075,0.564
+The Police,Ghost In The Machine (Alternate Sequence),1981-10-02,35,53.4,https://i.scdn.co/image/ab67616d0000b273737b9cdfe141fe82af579330,0.189,0.559,0.484,0.157,-16.105,0.571,0.045,133.595,0.57
+The Police,Zenyatta Mondatta (Remastered 2003),1980-10-03,67,38.2,https://i.scdn.co/image/ab67616d0000b273fb1bc65edf4717e75fbc70ab,0.034,0.68,0.612,0.263,-9.072,0.636,0.069,137.101,0.707
+The Police,Reggatta De Blanc (Remastered 2003),1979-10-02,71,41.7,https://i.scdn.co/image/ab67616d0000b2738ec81cc654b45ade8bdf1486,0.048,0.567,0.781,0.058,-8.991,0.636,0.067,136.555,0.681
+The Police,Outlandos D'Amour (Remastered 2003),1978-11-02,75,38.3,https://i.scdn.co/image/ab67616d0000b2732043dd3544a339547d04b436,0.123,0.555,0.752,0.081,-7.97,0.6,0.176,147.19,0.675
+The Rolling Stones,GRRR Live!,2023-02-10,46,135.1,https://i.scdn.co/image/ab67616d0000b2738c7439a76132a594815bba8e,0.09,0.427,0.901,0.139,-5.892,0.708,0.088,117.209,0.506
+The Rolling Stones,Licked Live In NYC,2022-06-10,37,129.1,https://i.scdn.co/image/ab67616d0000b273e8ea88fcdc8b70413bf61586,0.441,0.337,0.945,0.205,-5.773,0.826,0.104,123.734,0.271
+The Rolling Stones,Live At The El Mocambo,2022-05-13,39,107.5,https://i.scdn.co/image/ab67616d0000b2732ca908eb9f3741338ec8d5d9,0.161,0.394,0.843,0.091,-6.667,0.826,0.055,124.141,0.735
+The Rolling Stones,Tattoo You (Super Deluxe),2021-10-22,43,207.8,https://i.scdn.co/image/ab67616d0000b27306b22c84b37f280cbacdeffb,0.239,0.436,0.907,0.35,-4.82,0.87,0.089,123.416,0.58
+The Rolling Stones,A Bigger Bang (Live),2021-07-09,32,113.9,https://i.scdn.co/image/ab67616d0000b273e454edcacfa7bc87a4d114ef,0.398,0.334,0.948,0.431,-5.163,0.682,0.12,127.225,0.253
+The Rolling Stones,Steel Wheels Live,2020-09-25,35,151.1,https://i.scdn.co/image/ab67616d0000b2730202d6f3ac7b95e578539915,0.087,0.329,0.961,0.037,-4.724,0.704,0.115,119.68,0.304
+The Rolling Stones,Goats Head Soup (Deluxe),2020-09-04,43,173.2,https://i.scdn.co/image/ab67616d0000b273aa4b9597399ef187074ee07b,0.18,0.427,0.836,0.25,-5.256,0.811,0.055,123.876,0.641
+The Rolling Stones,Bridges To Bremen (Live),2019-06-21,33,139.3,https://i.scdn.co/image/ab67616d0000b273626ce6035cea9ff52727e1bc,0.23,0.369,0.921,0.012,-4.407,0.727,0.125,125.222,0.381
+The Rolling Stones,Honk (Deluxe),2019-04-19,53,201.0,https://i.scdn.co/image/ab67616d0000b273acb7f7039bbdfd01efcd148b,0.206,0.547,0.823,0.143,-5.028,0.787,0.048,121.609,0.667
+The Rolling Stones,Voodoo Lounge Uncut (Live),2018-11-16,27,147.0,https://i.scdn.co/image/ab67616d0000b273f216c9a17b87ef2229c3e36d,0.293,0.416,0.882,0.115,-8.119,0.893,0.138,127.413,0.405
+The Rolling Stones,From The Vault: No Security - San Jose 1999 (Live),2018-07-13,30,110.5,https://i.scdn.co/image/ab67616d0000b273e83a35844028e871fc9c9797,0.299,0.361,0.935,0.141,-4.899,0.9,0.12,129.803,0.405
+The Rolling Stones,On Air (Deluxe),2017-12-01,41,84.1,https://i.scdn.co/image/ab67616d0000b2739e1e755cf8ae12c3ac24664f,0.165,0.532,0.681,0.256,-9.322,0.844,0.055,132.734,0.773
+The Rolling Stones,Sticky Fingers Live At The Fonda Theatre,2017-09-29,32,79.6,https://i.scdn.co/image/ab67616d0000b2738e6b0c9504a52406e0f78f81,0.201,0.339,0.868,0.074,-4.207,0.75,0.06,128.763,0.434
+The Rolling Stones,Ladies & Gentlemen (Live),2017-06-16,35,76.6,https://i.scdn.co/image/ab67616d0000b2738a21eee13a899dd3dc63914e,0.086,0.343,0.806,0.067,-6.02,0.688,0.049,116.919,0.481
+The Rolling Stones,Blue & Lonesome,2016-12-02,47,42.7,https://i.scdn.co/image/ab67616d0000b273a7afce056f527eba678349a5,0.392,0.456,0.788,0.211,-4.488,0.833,0.058,120.68,0.511
+The Rolling Stones,Havana Moon (Live),2016-11-11,38,119.4,https://i.scdn.co/image/ab67616d0000b2734feab186503c543f60e9e242,0.186,0.395,0.896,0.14,-5.013,0.722,0.061,126.237,0.462
+The Rolling Stones,Totally Stripped - Brixton (Live),2016-06-06,27,115.2,https://i.scdn.co/image/ab67616d0000b273212998ca4cecb79da1d31b43,0.164,0.369,0.916,0.01,-6.106,0.909,0.082,128.825,0.436
+The Rolling Stones,Totally Stripped - Amsterdam (Live),2016-06-03,28,91.9,https://i.scdn.co/image/ab67616d0000b273e95bf07ab14c630651322c35,0.234,0.333,0.874,0.002,-6.633,0.9,0.088,133.457,0.413
+The Rolling Stones,Totally Stripped (Live),2016-06-03,36,78.9,https://i.scdn.co/image/ab67616d0000b2734252171ad92636c7e3d86853,0.169,0.365,0.915,0.004,-6.089,0.929,0.075,125.368,0.465
+The Smiths,Rank,1988-09-05,45,56.3,https://i.scdn.co/image/ab67616d0000b273a8daeaf94d82482223742b12,0.013,0.402,0.903,0.184,-6.756,0.643,0.071,136.216,0.539
+The Smiths,"Strangeways, Here We Come",1987-09-28,64,36.3,https://i.scdn.co/image/ab67616d0000b2736d965be72ad1bceb7f2bd089,0.132,0.521,0.687,0.022,-8.059,0.7,0.034,130.603,0.573
+The Smiths,The Queen Is Dead (Deluxe Edition),1986-06-16,60,145.6,https://i.scdn.co/image/ab67616d0000b2738abb33c7671ca773e148fef7,0.138,0.493,0.771,0.121,-6.983,0.667,0.054,129.054,0.626
+The Smiths,The Queen Is Dead,1986-06-16,76,37.2,https://i.scdn.co/image/ab67616d0000b273ada101c2e9e97feb8fae37a9,0.07,0.491,0.775,0.002,-7.325,0.7,0.037,134.194,0.657
+The Smiths,Meat Is Murder,1985-02-11,63,39.9,https://i.scdn.co/image/ab67616d0000b273ac345598e7697a319cb5b460,0.034,0.413,0.811,0.022,-7.221,0.333,0.051,134.022,0.634
+The Smiths,The Smiths,1984-02-20,74,45.7,https://i.scdn.co/image/ab67616d0000b273a09b231129ab1cb1a6efc57f,0.006,0.54,0.747,0.006,-8.171,0.636,0.051,130.563,0.712
+The Strokes,The Singles - Volume 01,2023-02-24,59,65.1,https://i.scdn.co/image/ab67616d0000b273f71abcb4d9ba0fbbc62fe867,0.122,0.485,0.719,0.358,-5.957,0.857,0.049,137.244,0.586
+The Strokes,The New Abnormal,2020-04-10,76,45.2,https://i.scdn.co/image/ab67616d0000b273bfa99afb5ef0d26d5064b23b,0.202,0.507,0.663,0.061,-4.919,0.778,0.04,127.807,0.341
+The Strokes,Comedown Machine,2013-03-25,68,39.9,https://i.scdn.co/image/ab67616d0000b273f07ef193e0bb6a238ea37f0a,0.132,0.57,0.719,0.424,-7.593,0.727,0.039,117.008,0.501
+The Strokes,Angles,2011-03-21,67,34.2,https://i.scdn.co/image/ab67616d0000b273397d02cfe1aab2923f9d1697,0.095,0.555,0.746,0.166,-5.756,0.7,0.045,143.286,0.563
+The Strokes,First Impressions Of Earth,2006-01-03,69,52.0,https://i.scdn.co/image/ab67616d0000b2736898a982ff3c6049ba52586c,0.065,0.467,0.823,0.43,-4.163,0.786,0.046,126.324,0.511
+The Strokes,Room On Fire,2003-10-28,73,33.1,https://i.scdn.co/image/ab67616d0000b2730f35726025e0f025da4c688f,0.067,0.476,0.751,0.777,-4.455,1.0,0.035,123.548,0.647
+The Strokes,Is This It,2001-07-30,69,35.2,https://i.scdn.co/image/ab67616d0000b27313f2466b83507515291acce4,0.05,0.533,0.761,0.268,-6.997,0.818,0.034,128.572,0.743
+The Weeknd,Starboy (Deluxe),2023-03-14,79,80.3,https://i.scdn.co/image/ab67616d0000b2738ad8f5243d6534e03b656c8b,0.188,0.646,0.579,0.008,-8.294,0.333,0.13,122.932,0.484
+The Weeknd,Live At SoFi Stadium,2023-03-03,70,95.4,https://i.scdn.co/image/ab67616d0000b273308f9319a3d6f6737f43b3fc,0.089,0.473,0.681,0.067,-7.855,0.323,0.07,120.696,0.272
+The Weeknd,Dawn FM (Alternate World),2022-01-07,63,80.9,https://i.scdn.co/image/ab67616d0000b273ade87e5f9c3764f0a1e5df64,0.236,0.597,0.664,0.033,-6.839,0.292,0.082,121.507,0.45
+The Weeknd,Dawn FM,2022-01-06,85,51.8,https://i.scdn.co/image/ab67616d0000b2734ab2520c2c77a1d66b9ee21d,0.264,0.59,0.655,0.012,-7.081,0.312,0.082,116.02,0.463
+The Weeknd,After Hours (Deluxe),2020-03-20,66,68.7,https://i.scdn.co/image/ab67616d0000b273ef017e899c0547766997d874,0.15,0.535,0.61,0.012,-7.445,0.5,0.06,124.437,0.263
+The Weeknd,After Hours,2020-03-20,91,56.3,https://i.scdn.co/image/ab67616d0000b2738863bc11d2aa12b54f5aeb36,0.122,0.501,0.641,0.012,-7.086,0.429,0.069,121.553,0.251
+The Weeknd,"My Dear Melancholy,",2018-03-30,85,25.6,https://i.scdn.co/image/ab67616d0000b2731f6a2a40bb692936879db730,0.512,0.44,0.615,0.001,-5.976,0.429,0.059,124.956,0.274
+The Weeknd,Starboy,2016-11-25,91,68.6,https://i.scdn.co/image/ab67616d0000b2734718e2b124f79258be7bc452,0.182,0.646,0.614,0.011,-7.371,0.333,0.115,130.64,0.469
+The Weeknd,Beauty Behind The Madness,2015-08-28,86,65.2,https://i.scdn.co/image/ab67616d0000b2737fcead687e99583072cc217b,0.218,0.563,0.52,0.001,-8.531,0.214,0.049,119.256,0.298
+The Weeknd,Kiss Land,2013-01-01,56,55.7,https://i.scdn.co/image/ab67616d0000b2730cc6c8a864d2d16a2bc507d4,0.162,0.563,0.703,0.041,-7.13,0.2,0.063,121.089,0.297
+The Weeknd,Trilogy,2012-11-13,68,159.6,https://i.scdn.co/image/ab67616d0000b273b5d7c1fb40878285bc547649,0.429,0.544,0.578,0.004,-7.802,0.233,0.079,128.912,0.266
+The Weeknd,Echoes Of Silence (Original),2011-12-21,55,45.8,https://i.scdn.co/image/ab67616d0000b27336fb79728dbb379579cef97e,0.6,0.571,0.617,0.0,-6.698,0.444,0.062,134.945,0.364
+The Weeknd,Thursday (Original),2011-08-18,55,50.3,https://i.scdn.co/image/ab67616d0000b273e01c2631218e2de27765b7d5,0.257,0.501,0.525,0.006,-8.925,0.222,0.045,131.805,0.265
+The Weeknd,House Of Balloons (Original),2011-03-21,74,49.4,https://i.scdn.co/image/ab67616d0000b273274b406a7e18acebcf743079,0.276,0.567,0.519,0.002,-8.518,0.222,0.049,102.026,0.18
+The Who,The Who With Orchestra: Live At Wembley,2023-03-31,41,105.2,https://i.scdn.co/image/ab67616d0000b2738e0712f60fe2d4d4e7fd67c0,0.15,0.422,0.758,0.04,-7.886,0.9,0.062,120.036,0.327
+The Who,The Who Sell Out (Super Deluxe),2021-04-23,47,153.4,https://i.scdn.co/image/ab67616d0000b27334894946601823e27fc08538,0.127,0.474,0.654,0.068,-8.81,0.84,0.058,129.086,0.49
+The Who,WHO (Deluxe),2019-12-06,35,57.1,https://i.scdn.co/image/ab67616d0000b273bfcb995de2a0d23ec5f7d24b,0.176,0.547,0.757,0.061,-5.543,0.857,0.037,124.79,0.434
+The Who,Tommy Live At The Royal Albert Hall,2017-09-15,27,117.9,https://i.scdn.co/image/ab67616d0000b27327da883239a71bf712062a8e,0.227,0.447,0.778,0.106,-7.092,0.903,0.06,116.106,0.361
+The Who,Live In Hyde Park,2015-11-20,32,110.4,https://i.scdn.co/image/ab67616d0000b273c064550e26dde66169b334d7,0.206,0.381,0.83,0.011,-6.508,0.842,0.069,118.73,0.37
+The Who,Quadrophenia - Live In London,2014-01-01,33,126.5,https://i.scdn.co/image/ab67616d0000b273a78dc9ca1ed202e914bed842,0.132,0.4,0.798,0.106,-6.533,0.87,0.054,119.641,0.28
+The Who,Join Together (Live U.S. Tour/1989),1990-01-01,26,131.1,https://i.scdn.co/image/ab67616d0000b2737cf9d99dae319062d7c22a8e,0.148,0.454,0.714,0.033,-14.743,0.735,0.055,128.456,0.397
+The Who,It's Hard,1982-09-04,55,70.8,https://i.scdn.co/image/ab67616d0000b273daa48b4b3385808beb8eb5db,0.234,0.532,0.774,0.055,-8.184,0.875,0.045,117.695,0.521
+The Who,Face Dances,1981-03-16,47,63.0,https://i.scdn.co/image/ab67616d0000b2731321857592dce3f0efa717ef,0.196,0.565,0.794,0.009,-8.494,1.0,0.047,128.184,0.642
+The Who,Quadrophenia (Original Motion Picture Soundtrack),1979-10-05,38,77.0,https://i.scdn.co/image/ab67616d0000b273b4ec33bc1d76a7315bc6ff39,0.421,0.496,0.74,0.291,-8.38,0.87,0.06,120.595,0.579
+The Who,The Kids Are Alright,1979-06-08,40,79.7,https://i.scdn.co/image/ab67616d0000b273abef710700c2ff38ef1c463f,0.263,0.369,0.811,0.256,-7.242,0.824,0.113,129.213,0.415
+The Who,Who Are You,1978-08-18,58,71.0,https://i.scdn.co/image/ab67616d0000b273238b25b3d5884cb4f6027663,0.424,0.586,0.589,0.089,-9.947,0.929,0.038,133.304,0.43
+The Who,The Who By Numbers (Expanded Edition),1975-10-03,52,49.9,https://i.scdn.co/image/ab67616d0000b273cc9dafab65a051efcf19a9ef,0.314,0.476,0.732,0.002,-8.76,1.0,0.066,132.016,0.513
+The Who,Quadrophenia (Super Deluxe Edition),1973-10-19,51,184.9,https://i.scdn.co/image/ab67616d0000b273700f438bf4d4468092798a4c,0.313,0.483,0.643,0.112,-9.058,0.833,0.045,126.336,0.433
+The Who,Who's Next (Expanded Edition),1971-08-14,46,78.0,https://i.scdn.co/image/ab67616d0000b2732d3eda886f81a2bad9274f02,0.157,0.442,0.731,0.03,-9.87,0.938,0.049,139.177,0.471
+The Who,Who's Next (Deluxe Edition),1971-08-14,73,153.9,https://i.scdn.co/image/ab67616d0000b273fe24dcd263c08c6dd84b6e8c,0.154,0.405,0.864,0.04,-7.218,0.897,0.099,143.556,0.441
+"Tyler, The Creator",CALL ME IF YOU GET LOST: The Estate Sale,2023-03-31,80,77.0,https://i.scdn.co/image/ab67616d0000b273aa95a399fd30fbb4f6f59fca,0.309,0.563,0.708,0.0,-6.025,0.625,0.24,113.883,0.553
+"Tyler, The Creator",CALL ME IF YOU GET LOST,2021-06-25,78,52.8,https://i.scdn.co/image/ab67616d0000b273696b4e67423edd64784bfbb4,0.265,0.547,0.693,0.0,-6.196,0.625,0.256,118.806,0.547
+"Tyler, The Creator",IGOR,2019-05-17,85,39.8,https://i.scdn.co/image/ab67616d0000b2737005885df706891a3c182a57,0.241,0.465,0.585,0.027,-8.93,0.417,0.143,106.011,0.338
+"Tyler, The Creator",Flower Boy,2017-07-21,87,46.7,https://i.scdn.co/image/ab67616d0000b2738940ac99f49e44f59e6f7fb3,0.363,0.565,0.564,0.062,-9.002,0.714,0.232,99.245,0.38
+"Tyler, The Creator",Cherry Bomb + Instrumentals,2015-04-13,54,109.8,https://i.scdn.co/image/ab67616d0000b27337906edcfbfde42b203097f2,0.052,0.496,0.682,0.305,-6.046,0.615,0.113,118.937,0.295
+"Tyler, The Creator",Cherry Bomb,2015-04-13,68,54.2,https://i.scdn.co/image/ab67616d0000b273e4bf0d3d9e0224a30ca5f665,0.064,0.466,0.74,0.074,-5.547,0.538,0.139,109.496,0.339
+"Tyler, The Creator",Wolf + Instrumentals,2013-04-01,53,141.6,https://i.scdn.co/image/ab67616d0000b273ecdf37c0fb7d35f589e2fb4d,0.132,0.578,0.603,0.353,-8.315,0.579,0.179,116.291,0.417
+"Tyler, The Creator",Wolf,2013-04-01,72,70.8,https://i.scdn.co/image/ab67616d0000b27322007a4aa8a55fe7b1de5632,0.13,0.519,0.655,0.003,-7.886,0.556,0.255,107.324,0.488
+"Tyler, The Creator",Goblin,2011-05-09,71,82.2,https://i.scdn.co/image/ab67616d0000b27328ae9a159d24cb0ab2552712,0.133,0.578,0.58,0.103,-10.176,0.556,0.344,102.803,0.376
+U2,Songs Of Surrender,2023-03-17,62,166.2,https://i.scdn.co/image/ab67616d0000b273ebc5c41aa8ec10f8e95d1a3c,0.571,0.584,0.396,0.016,-9.77,0.875,0.036,121.73,0.34
+U2,Achtung Baby (30th Anniversary Edition),2021-11-19,44,257.2,https://i.scdn.co/image/ab67616d0000b273963a6981d8f6af0a6b8f044e,0.072,0.518,0.669,0.247,-9.968,0.8,0.044,118.283,0.433
+U2,All That You Can’t Leave Behind (20th Anniversary Edition / Super Deluxe / Remastered 2020),2020-10-30,46,261.0,https://i.scdn.co/image/ab67616d0000b2739077f0ca0b9a9ea5bae3e03f,0.163,0.522,0.741,0.086,-7.155,0.84,0.053,119.567,0.414
+U2,Songs Of Experience (Deluxe Edition),2017-12-01,58,67.8,https://i.scdn.co/image/ab67616d0000b2731721039eb3dfadd939938d70,0.177,0.565,0.586,0.0,-9.447,0.588,0.041,136.045,0.437
+U2,Songs Of Innocence (Deluxe),2014-01-01,44,94.6,https://i.scdn.co/image/ab67616d0000b27335b4e22451dec9c7a08f0ab9,0.229,0.572,0.578,0.006,-9.782,0.571,0.039,127.788,0.438
+U2,Songs Of Innocence,2014-01-01,47,48.2,https://i.scdn.co/image/ab67616d0000b2731f3ecda94c647aeaa6c51907,0.09,0.551,0.652,0.005,-8.695,0.455,0.039,131.425,0.426
+U2,No Line On The Horizon,2009-01-01,40,53.7,https://i.scdn.co/image/ab67616d0000b273eba4d22b43b3dff989124c4e,0.139,0.453,0.679,0.076,-7.492,0.545,0.037,135.519,0.346
+U2,Under A Blood Red Sky,2008-01-01,32,34.7,https://i.scdn.co/image/ab67616d0000b2731f1e88d690015903d0e2aa34,0.04,0.317,0.894,0.016,-7.358,0.5,0.062,134.675,0.454
+U2,Boy,2008-01-01,27,42.8,https://i.scdn.co/image/ab67616d0000b27364fd51470c4c2581e56277fa,0.197,0.312,0.669,0.109,-10.048,0.667,0.053,137.846,0.4
+U2,How To Dismantle An Atomic Bomb,2004-01-01,63,52.2,https://i.scdn.co/image/ab67616d0000b273c1c82c472d758f4945ac15a8,0.042,0.414,0.735,0.107,-5.018,0.75,0.041,139.141,0.358
+U2,All That You Can't Leave Behind,2000-01-01,61,49.1,https://i.scdn.co/image/ab67616d0000b273e3f4221446f724b575a9aafb,0.174,0.542,0.66,0.025,-8.072,1.0,0.031,123.967,0.438
+U2,Pop,1997-03-03,52,60.1,https://i.scdn.co/image/ab67616d0000b2739b9cc2ad0ee4076cb900b4ee,0.175,0.523,0.597,0.277,-11.206,0.583,0.039,130.305,0.53
+U2,Zooropa,1993-07-05,58,51.2,https://i.scdn.co/image/ab67616d0000b2730e58384ac2789bb3ff8d6346,0.216,0.563,0.475,0.328,-15.549,0.7,0.041,113.571,0.424
+U2,Achtung Baby (Deluxe Edition),1991-11-18,71,118.1,https://i.scdn.co/image/ab67616d0000b27337cd18af5725b9cad0a5ab53,0.059,0.51,0.71,0.205,-9.268,0.846,0.039,121.148,0.487
+U2,Rattle And Hum,1988-10-10,63,72.4,https://i.scdn.co/image/ab67616d0000b2733f4be7b80314bc44154f2e1a,0.162,0.394,0.626,0.111,-13.354,0.824,0.048,125.655,0.473
+U2,The Joshua Tree,1987-03-10,59,50.2,https://i.scdn.co/image/ab67616d0000b273f8996a3f97e80d9d700635c3,0.145,0.448,0.533,0.228,-12.01,1.0,0.035,120.768,0.337
+U2,The Joshua Tree (Super Deluxe),1987-03-03,78,217.4,https://i.scdn.co/image/ab67616d0000b273b7bea3d01f04e6d0408d2afe,0.232,0.425,0.59,0.211,-11.548,0.796,0.041,118.251,0.335
+U2,The Joshua Tree (Deluxe),1987-03-03,47,126.9,https://i.scdn.co/image/ab67616d0000b2733251458b655b95a4f6efc1df,0.145,0.395,0.658,0.125,-10.313,0.786,0.041,120.25,0.319
+U2,The Unforgettable Fire (Remastered),1984-10-01,57,42.7,https://i.scdn.co/image/ab67616d0000b273f3a97984c9fb5074f87e938d,0.113,0.404,0.607,0.086,-12.037,1.0,0.058,120.038,0.364
+U2,The Unforgettable Fire (Deluxe Edition Remastered),1984-10-01,38,112.1,https://i.scdn.co/image/ab67616d0000b273555c0feab048e9d6fb93a18d,0.136,0.458,0.698,0.289,-10.726,0.808,0.055,121.256,0.488
