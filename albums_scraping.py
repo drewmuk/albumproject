@@ -29,7 +29,7 @@ from io import BytesIO
         return None
 
 client_id = "7ac4e70ee1f04c3aae177b5e0e1f060a"
-client_secret = "2fe457217294441697b5573074c716ec"
+client_secret = ""
 
 access_token = get_access_token(client_id, client_secret)
 if access_token:
