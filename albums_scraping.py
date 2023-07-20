@@ -1,6 +1,7 @@
 import requests
 from PIL import Image
 from io import BytesIO
+import csv
 
 # Get the API access token (updates every hour)
 
@@ -33,19 +34,19 @@ client_secret = ""
 
 access_token = get_access_token(client_id, client_secret)
 if access_token:
-    print("Access Token:", access_token) """
+    print("Access Token:", access_token)  """
 
 # current access token so I don't have to keep running the above code every time
-access_token = 'BQBTu69_DY4bYS8lWYvwue9JV0WlaJIydnCzIo3zxkv414vja-8ROLtm9qUeF2Qq_4xwIPiK0tSAwhDcqvHbGh3bMq3Eq_qiwaeHmeqswVjzAEn80MI'
-def get_albums_data(artist_ids, access_token):
+access_token = 'BQCtusRzKyS_CbJgTNHj2HR4qQ7xBWRTV_QTGKaftM3FgS5Q-BMEgpRT10ANC4iKZ0pr6SbTTofyWv7YM6wb9rV-hCb84x8OjglSTgtMhRjqD9AVZBo'
 
-    # Set the "Authorization" header with the access token
-    headers = {
+# Set the "Authorization" header with the access token
+headers = {
         "Authorization": f"Bearer {access_token}"
     }
 
+def get_albums_data(artist_ids, access_token):
     # Headers for the eventual table
-    all_albums = [['Artist','Album','Popularity','Length (Min)',
+    all_albums = [['Artist','Album','Year','Popularity','Length (Min)', 'Album Cover',
                    'acousticness','danceability','energy','instrumentalness',
                    'loudness','mode','speechiness','tempo','valence']]
 
@@ -72,7 +73,23 @@ def get_albums_data(artist_ids, access_token):
 
             if response_album.status_code == 200:
                 all_albums_data = response_album.json()
+                #print(all_albums_data['albums'][0]['artists'][0]['name'])
                 for k in range(0, len(all_albums_data['albums'])):
+                    all_track_ids = []
+
+                    total_duration_ms = 0
+                    for m in range(0,len(all_albums_data['albums'][k]['tracks']['items'])):
+                        total_duration_ms += all_albums_data['albums'][k]['tracks']['items'][m]['duration_ms']
+                        track_id = all_albums_data['albums'][k]['tracks']['items'][m]['id']
+                        all_track_ids.append(track_id)
+                    
+                    duration_min = round((total_duration_ms/1000/60),1)
+                    popularity = all_albums_data['albums'][k]['popularity']
+
+                    if duration_min < 25 or popularity < 25:
+                        continue
+                    
+                    print(all_albums_data['albums'][k]['name'])
                     album_cover_url = all_albums_data['albums'][k]["images"][0]["url"]
 
                     # Download the image using requests
@@ -87,15 +104,6 @@ def get_albums_data(artist_ids, access_token):
                     else:
                         print("Failed to download the album art.") """
                     
-                    popularity = all_albums_data['albums'][k]['popularity']
-                    total_duration_ms = 0
-
-                    all_track_ids = []
-                    for m in range(0,len(all_albums_data['albums'][k]['tracks']['items'])):
-                        total_duration_ms += all_albums_data['albums'][k]['tracks']['items'][m]['duration_ms']
-                        track_id = all_albums_data['albums'][k]['tracks']['items'][m]['id']
-                        all_track_ids.append(track_id)
-
                     query_track_params = {"ids": ",".join(all_track_ids)}
                     all_tracks_url = "https://api.spotify.com/v1/audio-features"
                     response_track = requests.get(all_tracks_url, headers=headers, params=query_track_params)  
@@ -110,27 +118,30 @@ def get_albums_data(artist_ids, access_token):
                     # mode = 0; speechiness = 0; tempo = 0; valence = 0
                         #af_keys = ['acousticness','danceability','energy','instrumentalness','loudness','mode','speechiness','tempo','valence']
                         af_values = [0,0,0,0,0,0,0,0,0]
-                        
+                        total_tracks = 0
                         for n in range(0,len(all_albums_data['albums'][k]['tracks']['items'])):
-                        
-                            af_values[0] += all_tracks_data['audio_features'][n]['acousticness']
-                            af_values[1] += all_tracks_data['audio_features'][n]['danceability']
-                            af_values[2] += all_tracks_data['audio_features'][n]['energy']
-                            af_values[3] += all_tracks_data['audio_features'][n]['instrumentalness']
-                            af_values[4] += all_tracks_data['audio_features'][n]['loudness']
-                            af_values[5] += all_tracks_data['audio_features'][n]['mode']
-                            af_values[6] += all_tracks_data['audio_features'][n]['speechiness']
-                            af_values[7] += all_tracks_data['audio_features'][n]['tempo']
-                            af_values[8] += all_tracks_data['audio_features'][n]['valence']
+                            try:
+                                af_values[0] += all_tracks_data['audio_features'][n]['acousticness']
+                                af_values[1] += all_tracks_data['audio_features'][n]['danceability']
+                                af_values[2] += all_tracks_data['audio_features'][n]['energy']
+                                af_values[3] += all_tracks_data['audio_features'][n]['instrumentalness']
+                                af_values[4] += all_tracks_data['audio_features'][n]['loudness']
+                                af_values[5] += all_tracks_data['audio_features'][n]['mode']
+                                af_values[6] += all_tracks_data['audio_features'][n]['speechiness']
+                                af_values[7] += all_tracks_data['audio_features'][n]['tempo']
+                                af_values[8] += all_tracks_data['audio_features'][n]['valence']
+                                total_tracks += 1
+                            except:
+                                total_tracks += 0
                             
-                        af_values = [round(x / len(all_albums_data['albums'][k]['tracks']['items']),3) for x in af_values]
+                        af_values = [round(x / total_tracks,3) for x in af_values]
                         #average_audio_features = dict(zip(af_keys,af_values))
 
-
-                    duration_min = round((total_duration_ms/1000/60),1)
                     if all_albums_data['albums'][k]['artists'][0]['id'] == indiv_id:
                         temp = [all_albums_data['albums'][k]['artists'][0]['name'],
-                                all_albums_data['albums'][k]['name'], popularity, duration_min, album_cover_url]
+                                all_albums_data['albums'][k]['name'],
+                                all_albums_data['albums'][k]['release_date'], 
+                                popularity, duration_min, album_cover_url]
                         for p in range(0,len(af_values)):
                             temp.append(af_values[p])
                         all_albums.append(temp)
@@ -149,11 +160,60 @@ def get_albums_data(artist_ids, access_token):
             return None
 
     return all_albums
-    
-# List of all the artist IDs I want to include, right now I'm just testing with Bad Bunny and Tyler
-artist_ids = ['4q3ewBCX7sLwd24euuV69X','4V8LLVI7PbaPR0K2TGSxFF']
+
+def find_artist_ids(artist_names):
+    search_url = "https://api.spotify.com/v1/search"
+    artist_ids = []
+
+    for q in range(0,len(artist_names)):
+        query_artist_params = {
+            "q": artist_names[q],
+            "type": "artist"
+        }
+
+        response_search = requests.get(search_url, headers=headers, params=query_artist_params)
+        if response_search.status_code == 200:
+            search_results = response_search.json()
+
+            # Extract artist details from the search results
+            artists = search_results["artists"]["items"]
+            if len(artists) > 0:
+                artist = artists[0]  # Get the first matching artist
+                artist_id = artist["id"]
+                artist_ids.append(artist_id)
+            else:
+                print("Artist not found.")
+        elif response_search.status_code == 401:
+            print("Authorization code expired")
+        else:
+            print("Search failed")
+
+    return artist_ids
+
+# List of all the artist IDs I want to include
+artist_names = []
+
+# File path of the CSV file
+csv_file_path = "C:/Users/drewm/Desktop/album_project/input_artists.csv"
+
+# Read the CSV file and extract the IDs
+with open(csv_file_path, "r", newline="") as csvfile:
+    csv_reader = csv.DictReader(csvfile)
+    for row in csv_reader:
+        artist_name = row["Artist Name"]
+        artist_names.append(artist_name)
+
+artist_ids = find_artist_ids(artist_names)
 
 all_albums = get_albums_data(artist_ids, access_token)
-if all_albums:
+""" if all_albums:
     print("Albums Data:")
-    print(all_albums)
+    print(all_albums) """
+
+csv_file_path = 'C:/Users/drewm/Desktop/album_project/output.csv'
+
+with open(csv_file_path, "w", newline="") as csvfile:
+    csv_writer = csv.writer(csvfile)
+    csv_writer.writerows(all_albums)
+
+print("CSV file has been created successfully.")
