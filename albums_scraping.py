@@ -3,6 +3,7 @@ from PIL import Image
 from io import BytesIO
 import csv
 import time
+from albums.albums import settings
 
 # Get the API access token (updates every hour)
 
@@ -30,8 +31,8 @@ def get_access_token(client_id, client_secret):
         print("Failed to obtain access token.")
         return None
 
-client_id = "7ac4e70ee1f04c3aae177b5e0e1f060a"
-client_secret = "2fe457217294441697b5573074c716ec"
+client_id = settings.SPOTIFY_CLIENT_ID
+client_secret = settings.SPOTIFY_CLIENT_SECRET
 
 """ access_token = get_access_token(client_id, client_secret)
 if access_token:
