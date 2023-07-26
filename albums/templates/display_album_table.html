@@ -1,0 +1,75 @@
+<!-- table_template.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>All Albums In Database</title>
+    <style>
+        table {
+            width: 100%; /* Set the table width to 100% of its container */
+            border-collapse: collapse; /* Combine cell borders for a cleaner look */
+        }
+
+        th, td {
+            padding: 10px; /* Add padding to cells for better spacing */
+            text-align: left; /* Align cell content to the left */
+        }
+
+        th {
+            background-color: #f2f2f2; /* Set a background color for the table header */
+        }
+    </style>
+</head>
+<body>
+    <h1>All Albums In Database</h1>
+    <h2>Count: 3,742</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Artist</th>
+                <th>Album</th>
+                <th>Year</th>
+                <th>Popularity</th>
+                <th>Length (Min)</th>
+                <th>Album Cover</th>
+                <th>ID</th>
+                <th>Language</th>
+                <th>Acousticness</th>
+                <th>Danceability</th>
+                <th>Energy</th>
+                <th>Instrumentalness</th>
+                <th>Loudness</th>
+                <th>Mode</th>
+                <th>Speechiness</th>
+                <th>Tempo</th>
+                <th>Valence</th>
+                <th>Liveness</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in data %}
+                <tr>
+                    <td>{{ row.Artist }}</td>
+                    <td>{{ row.Album }}</td>
+                    <td>{{ row.Year }}</td>
+                    <td>{{ row.Popularity }}</td>
+                    <td>{{ row.Length_Min }}</td>
+                    <td>{{ row.Album_Cover }}</td>
+                    <td>{{ row.ID }}</td>
+                    <td>{{ row.Language }}</td>
+                    <td>{{ row.acousticness }}</td>
+                    <td>{{ row.danceability }}</td>
+                    <td>{{ row.energy }}</td>
+                    <td>{{ row.instrumentalness }}</td>
+                    <td>{{ row.loudness }}</td>
+                    <td>{{ row.mode }}</td>
+                    <td>{{ row.speechiness }}</td>
+                    <td>{{ row.tempo }}</td>
+                    <td>{{ row.valence }}</td>
+                    <td>{{ row.liveness }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>All Albums In Database</title>
+    <style>
+        table {
+            width: 100%; /* Set the table width to 100% of its container */
+            border-collapse: collapse; /* Combine cell borders for a cleaner look */
+        }
+
+        th, td {
+            padding: 10px; /* Add padding to cells for better spacing */
+            text-align: left; /* Align cell content to the left */
+        }
+
+        th {
+            background-color: #f2f2f2; /* Set a background color for the table header */
+        }
+    </style>
+</head>
+<body>
+    <h1>All Albums In Database</h1>
+    <h2>Count: 3,742</h2>
+    <td>{{top_tracks}}</td>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Album</th>
+                <th>Artist</th>
+                <th>Year</th>
+                <th>Popularity</th>
+                <th>Audio Features</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in similar_albums %}
+                <tr>
+                    <td>{{ row.0 }}</td>
+                    <td>{{ row.1 }}</td>
+                    <td>{{ row.2 }}</td>
+                    <td>{{ row.3 }}</td>
+                    <td>{{ row.4 }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
