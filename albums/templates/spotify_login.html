@@ -1,0 +1,6 @@
+{% block content %}
+  <h2>Welcome, {{ user.username }}!</h2>
+  <p>To use our service, you need to log in to your Spotify account:</p>
+  <a href="{% url 'spotify_login' %}">Log in to Spotify</a>
+
+{% endblock %}

@@ -12,15 +12,18 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.cluster import KMeans
 from album_app.forms import UserChoiceForm
 from django.contrib.auth import logout
+from .models import SpotifyToken
+import time
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.models import User
+from datetime import datetime, timedelta
+from django.utils import timezone
 
 client_id = settings.SPOTIFY_CLIENT_ID
 client_secret = settings.SPOTIFY_CLIENT_SECRET
 
-means = []
-std_devs = []
-
-""" def standardize_column(column_data):
-    return (column_data - column_data.mean()) / column_data.std() """
+scope = "user-library-read"
 
 # read the csv file
 df_all = pd.read_csv('C:/Users/drewm/Desktop/album_project/output.csv', encoding='utf-8')
@@ -32,25 +35,12 @@ af_values_array = df_af_values.values
 scaler = StandardScaler()
 
 # Fit the scaler to the data and transform the data
-#weights = [1, 1, 1, .6, .75, .5, .6, .6, .8]
 data_np_scaled = np.round(scaler.fit_transform(af_values_array), 3)
 scaled_data = data_np_scaled.tolist()
 
 # if you want to convert the dataframe to a list of lists (where each sub-list is a row)
 af_values_all = data_np_scaled.tolist()
 all_album_data = df_all.values.tolist()
-
-"""df_af_values = round(((df_af_values - means) / std_devs),3)
-
-all_album_af_values = df_af_values.values.tolist() """
-
-# Standardize all columns
-""" def normalize_column(column_data, mean, std_dev):
-    return (column_data - mean) / std_dev
-
-# Use the apply method to normalize each column in the DataFrame
-for p in range(0,8):
-    df_af_values.iloc[p] = normalize_column(df_af_values.iloc[p],means[p],std_devs[p]) """
 
 def get_access_token(client_id, client_secret):
     # Endpoint for getting the access token
@@ -88,8 +78,6 @@ def weighted_euclidean(a, b, weights):
 
 weights = [.5,1,1,1,1,1,0,0,1,0]
 
-
-
 def find_similar_items(sample_stats, all_album_stats, top_n=20):
     data_np = np.array(all_album_stats) # Convert list to numpy array for efficient computation
     item_np = np.array(sample_stats)
@@ -101,15 +89,90 @@ def find_similar_items(sample_stats, all_album_stats, top_n=20):
 
 # Create your views here.
 def home_page(request):
+    tokens = SpotifyToken.objects.filter(user=request.user)
+    
+    if not tokens.exists():
+        # User is not logged in to Spotify
+        print('this')
+        return redirect('spotify_login')
+        
+    
+    token_info = tokens[0]
+    now = timezone.now()
+
+    if token_info.expires_in < now:
+        # Access token has expired
+        return redirect('spotify_login')
+    
     return HttpResponse("Hello, this is my view!")
 
+def user_login(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            # Redirect to a success page.
+            return redirect('spotify_login')
+        else:
+            # Return an 'invalid login' error message.
+            print('here instead')
+            return render(request, 'login.html', {'error': 'Invalid username or password.'})
+    else:
+        print('error')
+        return render(request, 'login.html')
+    
+def sign_up(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        if User.objects.filter(username=username).exists():
+            return render(request, 'sign_up.html', {'error': 'Username already exists.'})
+        user = User.objects.create_user(username=username, password=password)
+        login(request, user)
+        return redirect('spotify_login')
+    else:
+        return render(request, 'sign_up.html')
 
+    
+def spotify_login(request):
+    sp_oauth = SpotifyOAuth(
+        client_id=settings.SPOTIFY_CLIENT_ID,
+        client_secret=settings.SPOTIFY_CLIENT_SECRET,
+        redirect_uri=settings.SPOTIFY_REDIRECT_URI,
+        scope=scope
+    )
+    auth_url = sp_oauth.get_authorize_url()
+    return redirect(auth_url)
+
+@login_required
+def spotify_callback(request):
+    code = request.GET.get('code')
+    sp = SpotifyOAuth(client_id=settings.SPOTIFY_CLIENT_ID,
+                      client_secret=settings.SPOTIFY_CLIENT_SECRET,
+                      redirect_uri=settings.SPOTIFY_REDIRECT_URI)
+    
+    # Get the authorization code from the URL after the user grants access
+    token_info = sp.get_access_token(code)
+    expires_in = timezone.now() + timedelta(seconds=token_info['expires_in'])
+    
+    SpotifyToken.objects.update_or_create(
+        user=request.user,
+        defaults={
+            'access_token': token_info['access_token'],
+            'refresh_token': token_info['refresh_token'],
+            'token_type': token_info['token_type'],
+            'expires_in': expires_in
+        }
+    )
+
+    return redirect('home_page')
+
+@login_required
 def print_top_tracks(request):
-    scope = "user-library-read"
-    sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=settings.SPOTIFY_CLIENT_ID,
-                                               client_secret=settings.SPOTIFY_CLIENT_SECRET,
-                                               redirect_uri=settings.SPOTIFY_REDIRECT_URI,
-                                               scope='user-top-read'))
+    spotify_token = SpotifyToken.objects.get(user=request.user)
+    sp = spotipy.Spotify(auth=spotify_token.access_token)
 
     # Now you can make Spotify API requests using the sp object
     top_tracks_raw = sp.current_user_top_tracks(limit=30)
@@ -190,12 +253,9 @@ def print_top_tracks(request):
 
     # Fetch the items from the original list
     same_cluster_items = [all_album_data[i] for i in same_cluster_indices]
-    #print(same_cluster_items)
-
-    #print(label)
     similar_albums_indices = find_similar_items(list_values, af_values_all)
-    #print(similar_albums)
     similar_album_names = []
+    
     for m in range(0,len(similar_albums_indices)):
         album_info = []
         album_name = all_album_data[similar_albums_indices[m]][1]
@@ -213,21 +273,7 @@ def print_top_tracks(request):
     # Process the data and render the template...
     context = {'similar_albums': same_cluster_items, 'top_tracks': scaled_af_values, 'count': len(all_album_data)}
     return render(request, 'top_songs.html', context)
-    
-def callback(request):
-    # Get the authorization code from the URL after the user grants access
-    code = request.GET.get('code')
 
-    sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=settings.SPOTIFY_CLIENT_ID,
-                                               client_secret=settings.SPOTIFY_CLIENT_SECRET,
-                                               redirect_uri=settings.SPOTIFY_REDIRECT_URI,
-                                               scope='user-top-read'))
-
-    # Fetch the access token using the received authorization code
-    sp.auth_manager.get_access_token(code)
-
-    # Redirect the user back to your main page or any other route
-    return redirect('home_page')
 
 def all_albums(request):
     #sorted_data = sorted(all_album_data, key=lambda x: x['Popularity'], reverse=True)
@@ -244,35 +290,32 @@ def user_choice_view(request):
     return render(request, 'user_choice_form.html', {'form': form})
 
 def logout_view(request):
-    # Log the user out using Django's built-in logout function
-    #logout(request)
-    #code = request.GET.get('code')
-
-    sp = spotipy.oauth2.SpotifyOAuth(client_id=settings.SPOTIFY_CLIENT_ID,
-                                               client_secret=settings.SPOTIFY_CLIENT_SECRET,
-                                               redirect_uri=settings.SPOTIFY_REDIRECT_URI,
-                                               scope='user-top-read')
-
-    # Fetch the access token using the received authorization code
-    #sp.auth_manager.get_access_token(code)
-    access_token = sp.get_cached_token()['access_token']
-
-    
-    if access_token:
-        heading = {
-            "Authorization": f"Bearer {access_token}"
-        }
-        response = requests.post('https://accounts.spotify.com/api/token/revoke',
-                                 data={'token': access_token},
-                                 headers=heading)
-
-        if response.status_code == 200:
-            # Access token successfully revoked
-            print("Access token revoked.")
-        else:
-            # Failed to revoke access token
-            print(response.status_code)
-            print("Failed to revoke access token.")
-
-    # Redirect the user to a page after logging out (replace 'home' with the desired URL)
+    logout(request)
+    print('logged out')
     return redirect('home_page')
+
+from .forms import AcousticnessForm, DanceabilityForm
+
+def question1_view(request):
+    if request.method == 'POST':
+        form = AcousticnessForm(request.POST)
+        if form.is_valid():
+            # Process the form data for Question 1
+            selected_options = form.cleaned_data['selected_ac_options']
+            # ... Perform further processing ...
+    else:
+        form = AcousticnessForm()
+
+    return render(request, 'question1_template.html', {'form': form})
+
+def question2_view(request):
+    if request.method == 'POST':
+        form = DanceabilityForm(request.POST)
+        if form.is_valid():
+            # Process the form data for Question 1
+            selected_options = form.cleaned_data['selected_da_options']
+            # ... Perform further processing ...
+    else:
+        form = DanceabilityForm()
+
+    return render(request, 'question2_template.html', {'form': form})
