@@ -1,24 +1,25 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.contrib.auth import logout, authenticate, login
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+from django.utils import timezone
+from django.core.cache import cache
+from django_ratelimit.decorators import ratelimit
+
 from albums import settings
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
-import csv
+
+from datetime import datetime, timedelta
 import requests
 import numpy as np
-from scipy.spatial import distance
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
 from sklearn.cluster import KMeans
 from album_app.forms import UserChoiceForm
-from django.contrib.auth import logout
+
 from .models import SpotifyToken
-import time
-from django.contrib.auth.decorators import login_required
-from django.contrib.auth import authenticate, login
-from django.contrib.auth.models import User
-from datetime import datetime, timedelta
-from django.utils import timezone
 
 client_id = settings.SPOTIFY_CLIENT_ID
 client_secret = settings.SPOTIFY_CLIENT_SECRET
@@ -79,7 +80,7 @@ def weighted_euclidean(a, b, weights):
 weights = [.5,1,1,1,1,1,0,0,1,0]
 
 def find_similar_items(sample_stats, all_album_stats, top_n=20):
-    data_np = np.array(all_album_stats) # Convert list to numpy array for efficient computation
+    #data_np = np.array(all_album_stats) # Convert list to numpy array for efficient computation
     item_np = np.array(sample_stats)
     distances = np.array([weighted_euclidean(row, item_np, weights) for row in all_album_stats]) # Euclidean distance
     closest_indices = distances.argsort()[:top_n] # Get indices of top_n closest items
@@ -89,23 +90,26 @@ def find_similar_items(sample_stats, all_album_stats, top_n=20):
 
 # Create your views here.
 def home_page(request):
-    tokens = SpotifyToken.objects.filter(user=request.user)
+    try:
+        tokens = SpotifyToken.objects.filter(user=request.user)
     
-    if not tokens.exists():
-        # User is not logged in to Spotify
-        print('this')
-        return redirect('spotify_login')
+        if not tokens.exists():
+            # User is not logged in to Spotify
+            return redirect('spotify_login')
         
     
-    token_info = tokens[0]
-    now = timezone.now()
+        token_info = tokens[0]
+        now = timezone.now()
 
-    if token_info.expires_in < now:
-        # Access token has expired
-        return redirect('spotify_login')
-    
-    return HttpResponse("Hello, this is my view!")
+        if token_info.expires_in < now:
+            # Access token has expired
+            return redirect('spotify_login')
+        
+        return render(request, 'home.html')
+    except:
+        return render(request, 'home.html')
 
+@ratelimit(key='ip', rate='5/m')  # Limit of 5 attempts per minute
 def user_login(request):
     if request.method == 'POST':
         username = request.POST['username']
@@ -170,14 +174,16 @@ def spotify_callback(request):
     return redirect('home_page')
 
 @login_required
-def print_top_tracks(request):
+def most_similar_albums(request):
     spotify_token = SpotifyToken.objects.get(user=request.user)
     sp = spotipy.Spotify(auth=spotify_token.access_token)
 
     # Now you can make Spotify API requests using the sp object
     top_tracks_raw = sp.current_user_top_tracks(limit=30)
 
-    n_clusters = 20
+    print(top_tracks_raw)
+
+    n_clusters = 100
     kmeans = KMeans(n_clusters=n_clusters, n_init=10, random_state=42)
 
     weights = np.array([.3,2,2,2,2,2,0,1,0,0])
@@ -247,7 +253,6 @@ def print_top_tracks(request):
     list_values = scaled_af_values.tolist()
 
     cluster_label = kmeans.predict(scaled_af_values)
-    print(cluster_label)
 
     same_cluster_indices = [i for i, label in enumerate(labels) if label == cluster_label[0]]
 
@@ -271,7 +276,8 @@ def print_top_tracks(request):
         similar_album_names.append(album_info)
         
     # Process the data and render the template...
-    context = {'similar_albums': same_cluster_items, 'top_tracks': scaled_af_values, 'count': len(all_album_data)}
+    context = {'similar_albums': same_cluster_items, 'top_tracks': scaled_af_values, 
+               'similar_count': len(same_cluster_items), 'all_count': len(all_album_data)}
     return render(request, 'top_songs.html', context)
 
 
@@ -289,10 +295,12 @@ def user_choice_view(request):
         form = UserChoiceForm()
     return render(request, 'user_choice_form.html', {'form': form})
 
-def logout_view(request):
-    logout(request)
+def user_logout(request):
     print('logged out')
-    return redirect('home_page')
+    SpotifyToken.objects.filter(user=request.user).delete()
+    cache.clear()
+    logout(request)
+    return redirect('user_login')
 
 from .forms import AcousticnessForm, DanceabilityForm
 
