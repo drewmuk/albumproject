@@ -28,8 +28,13 @@ client_secret = settings.SPOTIFY_CLIENT_SECRET
 scope = "user-library-read"
 
 # read the csv file
-df_all = pd.read_csv('C:/Users/drewm/Desktop/album_project/output.csv', encoding='utf-8')
-df_af_values = pd.read_csv('C:/Users/drewm/Desktop/album_project/output.csv', usecols=[2,3,8,9,10,11,12,13,14,15,16], encoding='utf-8')
+try:
+    df_all = pd.read_csv('C:/Users/drewm/Desktop/album_project/output.csv', encoding='utf-8')
+    df_af_values = pd.read_csv('C:/Users/drewm/Desktop/album_project/output.csv', usecols=[2,3,8,9,10,11,12,13,14,15,16], encoding='utf-8')
+except:
+    df_all = pd.read_csv('/home/dm1202/albumproject/output.csv', encoding='utf-8')
+    df_af_values = pd.read_csv('/home/dm1202/albumproject/output.csv', usecols=[2,3,8,9,10,11,12,13,14,15,16], encoding='utf-8')
+
 
 af_values_array = df_af_values.values
 
