@@ -30,7 +30,8 @@ ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'www.spotifyenhance.com']
 
 SPOTIFY_CLIENT_ID = "7ac4e70ee1f04c3aae177b5e0e1f060a"
 SPOTIFY_CLIENT_SECRET = "2fe457217294441697b5573074c716ec"
-SPOTIFY_REDIRECT_URI = "http://127.0.0.1:8000/spotify/callback/"
+SPOTIFY_REDIRECT_URI_LOCAL = "http://127.0.0.1:8000/spotify/callback/"
+SPOTIFY_REDIRECT_URI_REMOTE = "https://www.spotifyenhance.com/spotify/callback/"
 
 # Application definition
 
@@ -62,7 +63,7 @@ STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

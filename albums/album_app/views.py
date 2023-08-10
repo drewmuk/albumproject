@@ -24,6 +24,12 @@ import base64
 
 client_id = settings.SPOTIFY_CLIENT_ID
 client_secret = settings.SPOTIFY_CLIENT_SECRET
+redirect_uri = settings.SPOTIFY_REDIRECT_URI_REMOTE
+
+local = 1
+if local:
+    redirect_uri = settings.SPOTIFY_REDIRECT_URI_LOCAL
+
 
 scope = "user-library-read"
 
@@ -158,7 +164,7 @@ def spotify_login(request):
     sp_oauth = SpotifyOAuth(
         client_id=settings.SPOTIFY_CLIENT_ID,
         client_secret=settings.SPOTIFY_CLIENT_SECRET,
-        redirect_uri=settings.SPOTIFY_REDIRECT_URI,
+        redirect_uri=redirect_uri,
         scope=scope
     )
     auth_url = sp_oauth.get_authorize_url()
@@ -169,7 +175,7 @@ def spotify_callback(request):
     code = request.GET.get('code')
     sp = SpotifyOAuth(client_id=settings.SPOTIFY_CLIENT_ID,
                       client_secret=settings.SPOTIFY_CLIENT_SECRET,
-                      redirect_uri=settings.SPOTIFY_REDIRECT_URI)
+                      redirect_uri=redirect_uri)
     
     # Get the authorization code from the URL after the user grants access
     token_info = sp.get_access_token(code)
