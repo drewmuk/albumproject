@@ -20,6 +20,7 @@ from sklearn.cluster import KMeans
 from album_app.forms import UserChoiceForm
 
 from .models import SpotifyToken
+import base64
 
 client_id = settings.SPOTIFY_CLIENT_ID
 client_secret = settings.SPOTIFY_CLIENT_SECRET
@@ -28,7 +29,7 @@ scope = "user-library-read"
 
 # read the csv file
 df_all = pd.read_csv('C:/Users/drewm/Desktop/album_project/output.csv', encoding='utf-8')
-df_af_values = pd.read_csv('C:/Users/drewm/Desktop/album_project/output.csv', usecols=[3,8,9,10,11,12,13,14,15,16], encoding='utf-8')
+df_af_values = pd.read_csv('C:/Users/drewm/Desktop/album_project/output.csv', usecols=[2,3,8,9,10,11,12,13,14,15,16], encoding='utf-8')
 
 af_values_array = df_af_values.values
 
@@ -42,6 +43,13 @@ scaled_data = data_np_scaled.tolist()
 # if you want to convert the dataframe to a list of lists (where each sub-list is a row)
 af_values_all = data_np_scaled.tolist()
 all_album_data = df_all.values.tolist()
+#print(list_temp)
+output_titles = ['Artist','Album','Year','Popularity','Length (Min)', 
+                      'Album Cover', 'ID', 'Language','acousticness',
+                      'danceability','energy','instrumentalness','loudness',
+                      'mode','speechiness','tempo','valence', 'liveness']
+
+#print(all_album_data)
 
 def get_access_token(client_id, client_secret):
     # Endpoint for getting the access token
@@ -77,9 +85,10 @@ def weighted_euclidean(a, b, weights):
     q = a - b
     return np.sqrt((weights*q*q).sum())
 
-weights = [.5,1,1,1,1,1,0,0,1,0]
+# Year, Pop, Acous, Dance, Energy, Instrum, Loud, Mode, Speech, Tempo, Valence
+weights = [0,.2,1,1,1,1,1,0,0,1,0]
 
-def find_similar_items(sample_stats, all_album_stats, top_n=20):
+def find_similar_items(sample_stats, all_album_stats, top_n=100):
     #data_np = np.array(all_album_stats) # Convert list to numpy array for efficient computation
     item_np = np.array(sample_stats)
     distances = np.array([weighted_euclidean(row, item_np, weights) for row in all_album_stats]) # Euclidean distance
@@ -90,24 +99,25 @@ def find_similar_items(sample_stats, all_album_stats, top_n=20):
 
 # Create your views here.
 def home_page(request):
+    logged_in = False
     try:
         tokens = SpotifyToken.objects.filter(user=request.user)
     
-        if not tokens.exists():
-            # User is not logged in to Spotify
-            return redirect('spotify_login')
+        if tokens.exists():
+            # User is logged in to Spotify
+            logged_in = True
         
     
         token_info = tokens[0]
         now = timezone.now()
 
-        if token_info.expires_in < now:
+        if token_info.expires_at < now:
             # Access token has expired
-            return redirect('spotify_login')
+            logged_in = False
         
-        return render(request, 'home.html')
+        return render(request, 'home.html', context = {'logged_in': logged_in})
     except:
-        return render(request, 'home.html')
+        return render(request, 'home.html', context = {'logged_in': logged_in})
 
 @ratelimit(key='ip', rate='5/m')  # Limit of 5 attempts per minute
 def user_login(request):
@@ -124,7 +134,6 @@ def user_login(request):
             print('here instead')
             return render(request, 'login.html', {'error': 'Invalid username or password.'})
     else:
-        print('error')
         return render(request, 'login.html')
     
 def sign_up(request):
@@ -159,7 +168,7 @@ def spotify_callback(request):
     
     # Get the authorization code from the URL after the user grants access
     token_info = sp.get_access_token(code)
-    expires_in = timezone.now() + timedelta(seconds=token_info['expires_in'])
+    expires_at = timezone.now() + timedelta(seconds=token_info['expires_at'])
     
     SpotifyToken.objects.update_or_create(
         user=request.user,
@@ -167,30 +176,81 @@ def spotify_callback(request):
             'access_token': token_info['access_token'],
             'refresh_token': token_info['refresh_token'],
             'token_type': token_info['token_type'],
-            'expires_in': expires_in
+            'expires_at': expires_at
         }
     )
 
     return redirect('home_page')
 
+def get_access_token(client_id, client_secret):
+    # Endpoint for getting the access token
+    token_url = "https://accounts.spotify.com/api/token"
+
+    # Set the client ID and client secret as the authentication parameters
+    auth_params = {
+        "client_id": client_id,
+        "client_secret": client_secret,
+        "grant_type": "client_credentials"
+    }
+
+    # Make a POST request to get the access token
+    response = requests.post(token_url, data=auth_params)
+
+    # Check if the request was successful
+    if response.status_code == 200:
+        # Parse the response JSON to get the access token
+        access_token = response.json()["access_token"]
+        return access_token
+    else:
+        # Handle the error if the request was unsuccessful
+        print("Failed to obtain access token.")
+        return None
+    
+def refresh_spotify_token(spotify_token, client_id, client_secret):
+    token_url = "https://accounts.spotify.com/api/token"
+    refresh_token = spotify_token.refresh_token
+
+    # Set the client ID and client secret as the authentication parameters
+    auth_params = {
+        "client_id": client_id,
+        "client_secret": client_secret,
+        "grant_type": "refresh_token",
+        'refresh_token': refresh_token
+    }
+
+    # Make a POST request to get the access token
+    response = requests.post(token_url, data=auth_params)
+
+    # Check if the request was successful
+    if response.status_code == 200:
+        print(response.json())
+        # Parse the response JSON to get the access token
+        access_token = response.json()["access_token"]
+        return access_token
+    else:
+        # Handle the error if the request was unsuccessful
+        print("Failed to obtain access token.")
+        return None
+
 @login_required
 def most_similar_albums(request):
     spotify_token = SpotifyToken.objects.get(user=request.user)
-    sp = spotipy.Spotify(auth=spotify_token.access_token)
 
-    # Now you can make Spotify API requests using the sp object
-    top_tracks_raw = sp.current_user_top_tracks(limit=30)
+    if spotify_token.expires_at <= timezone.now():
+        print('expired')
+        new_token = refresh_spotify_token(spotify_token, client_id, client_secret)
+    else:
+        new_token = spotify_token.access_token
+
+    sp = spotipy.Spotify(auth=new_token)
+
+    # Get the currently logged in user's top X tracks, cannot be over 50
+    limit_tracks = 30
+    top_tracks_raw = sp.current_user_top_tracks(limit=limit_tracks)
 
     print(top_tracks_raw)
 
-    n_clusters = 100
-    kmeans = KMeans(n_clusters=n_clusters, n_init=10, random_state=42)
-
-    weights = np.array([.3,2,2,2,2,2,0,1,0,0])
-
-    weighted_data = np.array(scaled_data) * weights
-    labels = kmeans.fit_predict(weighted_data)
-
+    # Get the audio features for these tracks
     all_track_ids = []
     for i in range(0,len(top_tracks_raw['items'])):
         track_id = top_tracks_raw['items'][i]['id']
@@ -225,8 +285,11 @@ def most_similar_albums(request):
                 total_tracks += 1
             except:
                 total_tracks += 0
+
+        # We want the average of the features over all the tracks
         af_values = [x / total_tracks for x in af_values]
 
+    # Need to individually search for each track to get its popularity
     all_tracks_url = "https://api.spotify.com/v1/tracks"
     response_tracks = requests.get(all_tracks_url, headers=headers, params=query_track_params)  
 
@@ -235,55 +298,89 @@ def most_similar_albums(request):
         #print(all_tracks_data)
 
         avg_pop = 0
+        avg_year = 0
         total_tracks = 0
         for n in range(0,len(all_tracks_data['tracks'])):
             try:
-                avg_pop += all_tracks_data['tracks'][n]['popularity']
+                avg_year += float(all_tracks_data['tracks'][n]['album']['release_date'][:4])
+                avg_pop += float(all_tracks_data['tracks'][n]['popularity'])
                 total_tracks += 1
             except:
                 total_tracks += 0
+        avg_year /= total_tracks
         avg_pop /= total_tracks
 
-    # Assuming sample_item is your original sample item
-    af_values.insert(0, avg_pop)
+    # Adding popularity and reshaping the user's top tracks data
+    af_values.insert(0, avg_year)
+    af_values.insert(1, avg_pop)
     sample_af_values = np.array(af_values).reshape(1, -1)
 
-    # Use the same scaler to transform the sample item
+    # Start fitting the K-means clusters model based on all the albums
+    n_clusters = 100
+    kmeans = KMeans(n_clusters=n_clusters, n_init=10, random_state=42)
+    weighted_data = np.array(scaled_data) * weights # scaled_data has all the available albums
+    labels = kmeans.fit_predict(weighted_data) # get the cluster value for each available album 
+
+    # Use the same scaler to transform the sample tracks' data
     scaled_af_values = np.round(scaler.transform(sample_af_values),3)
     list_values = scaled_af_values.tolist()
 
+    # I'm using two different methods to get the most similar albums, then checking which
+    # ones are in both. This is the first method: using the K-means clustering.
     cluster_label = kmeans.predict(scaled_af_values)
 
     same_cluster_indices = [i for i, label in enumerate(labels) if label == cluster_label[0]]
-
-    # Fetch the items from the original list
     same_cluster_items = [all_album_data[i] for i in same_cluster_indices]
-    similar_albums_indices = find_similar_items(list_values, af_values_all)
-    similar_album_names = []
     
-    for m in range(0,len(similar_albums_indices)):
-        album_info = []
-        album_name = all_album_data[similar_albums_indices[m]][1]
-        album_artist = all_album_data[similar_albums_indices[m]][0]
-        album_year = all_album_data[similar_albums_indices[m]][2]
-        album_pop = all_album_data[similar_albums_indices[m]][3]
-        album_af = data_np_scaled[similar_albums_indices[m]]
-        album_info.append(album_name)
-        album_info.append(album_artist)
-        album_info.append(album_year)
-        album_info.append(album_pop)
-        album_info.append(album_af)
-        similar_album_names.append(album_info)
+    similar_album_names_cat1 = []
+    similar_album_ids_cat1 = []
+    for m in range(0,len(same_cluster_indices)):
+        similar_album_names_cat1.append(all_album_data[same_cluster_indices[m]][1])
+        similar_album_ids_cat1.append(all_album_data[same_cluster_indices[m]][6])
+
+    # This is the second method: using the weighted Euclidian distance between items
+    distance_closest_indices = find_similar_items(list_values, af_values_all)
+
+    similar_album_names_cat2 = []
+    similar_album_ids_cat2 = []
+    for n in range(0, len(distance_closest_indices)):
+        similar_album_names_cat2.append(all_album_data[distance_closest_indices[n]][1])
+        similar_album_ids_cat2.append(all_album_data[distance_closest_indices[n]][6])
+
+    # Check which values are in both lists, and append those to the list of similar albums
+    all_similar_albums = []
+    for p in range(0, len(similar_album_ids_cat1)):
+        if similar_album_ids_cat1[p] in similar_album_ids_cat2:
+            album_info = []
+            album_name = all_album_data[same_cluster_indices[p]][1]
+            album_artist = all_album_data[same_cluster_indices[p]][0]
+            album_year = all_album_data[same_cluster_indices[p]][2]
+            album_pop = all_album_data[same_cluster_indices[p]][3]
+            album_length = all_album_data[same_cluster_indices[p]][4]
+            album_cover = all_album_data[same_cluster_indices[p]][5]
+            album_af = data_np_scaled[same_cluster_indices[p]]
+            album_info.append(album_name)
+            album_info.append(album_artist)
+            album_info.append(album_year)
+            album_info.append(album_pop)
+            album_info.append(album_length)
+            album_info.append(album_cover)
+            album_info.append(album_af)
+            all_similar_albums.append(album_info)
         
-    # Process the data and render the template...
-    context = {'similar_albums': same_cluster_items, 'top_tracks': scaled_af_values, 
-               'similar_count': len(same_cluster_items), 'all_count': len(all_album_data)}
-    return render(request, 'top_songs.html', context)
+    # Process the data and render the template
+    context = {'similar_albums': all_similar_albums, 'top_tracks': scaled_af_values, 
+               'similar_count': len(all_similar_albums), 'all_count': len(all_album_data)}
+    return render(request, 'similar_albums.html', context)
 
 
 def all_albums(request):
-    #sorted_data = sorted(all_album_data, key=lambda x: x['Popularity'], reverse=True)
-    return render(request, 'display_album_table.html', {'data': all_album_data})
+    album_table = [dict(zip(output_titles, row)) for row in all_album_data]
+    sorted_data = sorted(album_table, key=lambda x: x['Popularity'], reverse=True)
+    context = {'headers': output_titles,
+               'rows': sorted_data, 
+               'all_count': len(all_album_data)}
+    return render(request, 'display_album_table.html', context)
 
 def user_choice_view(request):
     if request.method == 'POST':

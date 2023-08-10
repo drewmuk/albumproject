@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}Spotify Boost{% endblock %}</title>
+    <!-- other headers -->
+</head>
+<body>
+    <header>
+        <a href="{% url 'home_page' %}">Return to Home</a>
+        <!-- other header information -->
+    </header>
+    {% block content %}
+    {% endblock %}
+</body>
+</html>

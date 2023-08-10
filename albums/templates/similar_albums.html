@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>All Similar Albums</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'mycss.css' %}">
+    <style>
+        table {
+            width: 100%; /* Set the table width to 100% of its container */
+            border-collapse: collapse; /* Combine cell borders for a cleaner look */
+        }
+
+        th, td {
+            padding: 1px; /* Add padding to cells for better spacing */
+            text-align: left; /* Align cell content to the left */
+        }
+
+        th {
+            background-color: #f2f2f2; /* Set a background color for the table header */
+        }
+    </style>
+</head>
+<body>
+    <h1>All Similar Albums</h1>
+    <h2>Selected {{ similar_count }} albums out of {{ all_count }} options </h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th class = "cover-column" >Cover</th>
+                <th class = "other-column">Artist</th>
+                <th class = "other-column">Year</th>
+                <th class = "other-column">Album</th>
+                <th class = "pop-column">Popularity</th>
+                <th class = "other-column">Length</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in similar_albums %}
+                <tr>
+                    <td class = "cover-column" ><img src="{{ row.5 }}" width="50" height="50"></td>
+                    <td class = "other-column">{{ row.0 }}</td>
+                    <td class = "other-column">{{ row.2 }}</td>
+                    <td class = "other-column">{{ row.1 }}</td>
+                    <td class = "pop-column">{{ row.3 }}</td>
+                    <td class = "other-column">{{ row.4 }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
+{% endblock %}

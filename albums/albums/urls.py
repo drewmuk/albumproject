@@ -17,19 +17,21 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from album_app import views
+from django.views.generic.base import RedirectView
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', RedirectView.as_view(url='/home/'), name='redirect-to-home'),
     path('home/', views.home_page, name='home_page'),
-    path('oauth2/', include('oauth2_provider.urls', namespace='oauth2_provider')),
+    #path('oauth2/', include('oauth2_provider.urls', namespace='oauth2_provider')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('spotify/login/', views.spotify_login, name='spotify_login'),
-    path('login/',views.user_login),
+    path('login/',views.user_login, name='user_login'),
     path('sign_up/',views.sign_up),
-    path('print_top_tracks/', views.print_top_tracks),
+    path('albums/most_similar', views.most_similar_albums, name='most_similar_albums'),
     path('spotify/callback/', views.spotify_callback),
     path('user-choice/', views.user_choice_view, name='user_choice'),
-    path('logout/', views.logout_view, name='logout'),
-    path('all_albums', views.all_albums)
+    path('logout/', views.user_logout, name='user_logout'),
+    path('albums/all', views.all_albums)
 ]

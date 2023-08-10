@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-=1_&yj63je^9vwaj$^)c68+eb5ap^4se1+cki8&cv_o2+^t4tw
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'www.spotifyenhance.com']
 
 SPOTIFY_CLIENT_ID = "7ac4e70ee1f04c3aae177b5e0e1f060a"
 SPOTIFY_CLIENT_SECRET = "2fe457217294441697b5573074c716ec"

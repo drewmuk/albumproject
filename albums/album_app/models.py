@@ -9,7 +9,7 @@ class SpotifyToken(models.Model):
     access_token = models.CharField(max_length=255)
     refresh_token = models.CharField(max_length=255)
     token_type = models.CharField(max_length=50)
-    expires_in = models.DateTimeField()
+    expires_at = models.DateTimeField()
     last_refreshed = models.DateTimeField(auto_now = True)
 
 class UserChoice(models.Model):
