@@ -66,7 +66,7 @@ def get_albums_data(artist_ids, other_album_ids, spanish_artists, omit_ids, test
         }
 
         if not test:
-            time.sleep(1.5)
+            time.sleep(1)
 
         language = "English"
 
@@ -142,157 +142,161 @@ def get_albums_data(artist_ids, other_album_ids, spanish_artists, omit_ids, test
                                 sp = all_tracks_data['audio_features'][n]['speechiness']
                                 te = all_tracks_data['audio_features'][n]['tempo']
                                 va = all_tracks_data['audio_features'][n]['valence']
+                                li = all_tracks_data['audio_features'][n]['liveness']
                                 af_values[0] += ac; af_values[1] += da
                                 af_values[2] += en; af_values[3] += ins
                                 af_values[4] += lo; af_values[5] += mo 
                                 af_values[6] += sp; af_values[7] += te
-                                af_values[8] += va
+                                af_values[8] += va; af_values[9] += li
 
-                                if len(highest_ac) < cutoff:
-                                    # If the list of highest tracks is not yet filled with X tracks, add the current track to the list
-                                    highest_ac.append((all_tracks_data['audio_features'][n]['id'], ac, "ac"))
-                                else:
-                                    # If the list is full, find the lowest track in the list of highest tracks and replace it with the current track if the current track is higher
-                                    min_ac = min(highest_ac, key=lambda x: x[1])
-                                    if ac > min_ac[1]:
-                                        highest_ac.remove(min_ac)
+                                if li < .6:
+                                    if len(highest_ac) < cutoff:
+                                        # If the list of highest tracks is not yet filled with X tracks, add the current track to the list
                                         highest_ac.append((all_tracks_data['audio_features'][n]['id'], ac, "ac"))
-                                if len(lowest_ac) < cutoff:
-                                    lowest_ac.append((all_tracks_data['audio_features'][n]['id'], ac, "ac"))
-                                else:
-                                    max_ac = max(lowest_ac, key=lambda x: x[1])
-                                    if ac < max_ac[1]:
-                                        lowest_ac.remove(max_ac)
+                                    else:
+                                        # If the list is full, find the lowest track in the list of highest tracks and replace it with the current track if the current track is higher
+                                        min_ac = min(highest_ac, key=lambda x: x[1])
+                                        if ac > min_ac[1]:
+                                            highest_ac.remove(min_ac)
+                                            highest_ac.append((all_tracks_data['audio_features'][n]['id'], ac, "ac"))
+                                    if len(lowest_ac) < cutoff:
                                         lowest_ac.append((all_tracks_data['audio_features'][n]['id'], ac, "ac"))
+                                    else:
+                                        max_ac = max(lowest_ac, key=lambda x: x[1])
+                                        if ac < max_ac[1]:
+                                            lowest_ac.remove(max_ac)
+                                            lowest_ac.append((all_tracks_data['audio_features'][n]['id'], ac, "ac"))
 
-                                # danceability
-                                if len(highest_da) < cutoff:
-                                    highest_da.append((all_tracks_data['audio_features'][n]['id'], da, "da"))
-                                else:
-                                    min_da = min(highest_da, key=lambda x: x[1])
-                                    if da > min_da[1]:
-                                        highest_da.remove(min_da)
+                                    # danceability
+                                    if len(highest_da) < cutoff:
                                         highest_da.append((all_tracks_data['audio_features'][n]['id'], da, "da"))
-                                if len(lowest_da) < cutoff:
-                                    lowest_da.append((all_tracks_data['audio_features'][n]['id'], da, "da"))
-                                else:
-                                    max_da = max(lowest_da, key=lambda x: x[1])
-                                    if da < max_da[1]:
-                                        lowest_da.remove(max_da)
+                                    else:
+                                        min_da = min(highest_da, key=lambda x: x[1])
+                                        if da > min_da[1]:
+                                            highest_da.remove(min_da)
+                                            highest_da.append((all_tracks_data['audio_features'][n]['id'], da, "da"))
+                                    if len(lowest_da) < cutoff:
                                         lowest_da.append((all_tracks_data['audio_features'][n]['id'], da, "da"))
+                                    else:
+                                        max_da = max(lowest_da, key=lambda x: x[1])
+                                        if da < max_da[1]:
+                                            lowest_da.remove(max_da)
+                                            lowest_da.append((all_tracks_data['audio_features'][n]['id'], da, "da"))
 
-                                # energy
-                                if len(highest_en) < cutoff:
-                                    highest_en.append((all_tracks_data['audio_features'][n]['id'], en, "en"))
-                                else:
-                                    min_en = min(highest_en, key=lambda x: x[1])
-                                    if en > min_en[1]:
-                                        highest_en.remove(min_en)
+                                    # energy
+                                    if len(highest_en) < cutoff:
                                         highest_en.append((all_tracks_data['audio_features'][n]['id'], en, "en"))
-                                if len(lowest_en) < cutoff:
-                                    lowest_en.append((all_tracks_data['audio_features'][n]['id'], en, "en"))
-                                else:
-                                    max_en = max(lowest_en, key=lambda x: x[1])
-                                    if en < max_en[1]:
-                                        lowest_en.remove(max_en)
+                                    else:
+                                        min_en = min(highest_en, key=lambda x: x[1])
+                                        if en > min_en[1]:
+                                            highest_en.remove(min_en)
+                                            highest_en.append((all_tracks_data['audio_features'][n]['id'], en, "en"))
+                                    if len(lowest_en) < cutoff:
                                         lowest_en.append((all_tracks_data['audio_features'][n]['id'], en, "en"))
+                                    else:
+                                        max_en = max(lowest_en, key=lambda x: x[1])
+                                        if en < max_en[1]:
+                                            lowest_en.remove(max_en)
+                                            lowest_en.append((all_tracks_data['audio_features'][n]['id'], en, "en"))
 
-                                # instrumentalness
-                                if len(highest_in) < cutoff:
-                                    highest_in.append((all_tracks_data['audio_features'][n]['id'], ins, "ins"))
-                                else:
-                                    min_in = min(highest_in, key=lambda x: x[1])
-                                    if ins > min_in[1]:
-                                        highest_in.remove(min_in)
+                                    # instrumentalness
+                                    if len(highest_in) < cutoff:
                                         highest_in.append((all_tracks_data['audio_features'][n]['id'], ins, "ins"))
-                                if len(lowest_in) < cutoff:
-                                    lowest_in.append((all_tracks_data['audio_features'][n]['id'], ins, "ins"))
-                                else:
-                                    max_in = max(lowest_in, key=lambda x: x[1])
-                                    if ins < max_in[1]:
-                                        lowest_in.remove(max_in)
+                                    else:
+                                        min_in = min(highest_in, key=lambda x: x[1])
+                                        if ins > min_in[1]:
+                                            highest_in.remove(min_in)
+                                            highest_in.append((all_tracks_data['audio_features'][n]['id'], ins, "ins"))
+                                    if len(lowest_in) < cutoff:
                                         lowest_in.append((all_tracks_data['audio_features'][n]['id'], ins, "ins"))
-                                
-                                # loudness
-                                if len(highest_lo) < cutoff:
-                                    highest_lo.append((all_tracks_data['audio_features'][n]['id'], lo, "lo"))
-                                else:
-                                    min_lo = min(highest_lo, key=lambda x: x[1])
-                                    if lo > min_lo[1]:
-                                        highest_lo.remove(min_lo)
+                                    else:
+                                        max_in = max(lowest_in, key=lambda x: x[1])
+                                        if ins < max_in[1]:
+                                            lowest_in.remove(max_in)
+                                            lowest_in.append((all_tracks_data['audio_features'][n]['id'], ins, "ins"))
+                                    
+                                    # loudness
+                                    if len(highest_lo) < cutoff:
                                         highest_lo.append((all_tracks_data['audio_features'][n]['id'], lo, "lo"))
-                                if len(lowest_lo) < cutoff:
-                                    lowest_lo.append((all_tracks_data['audio_features'][n]['id'], lo, "lo"))
-                                else:
-                                    max_lo = max(lowest_lo, key=lambda x: x[1])
-                                    if lo < max_lo[1]:
-                                        lowest_lo.remove(max_lo)
+                                    else:
+                                        min_lo = min(highest_lo, key=lambda x: x[1])
+                                        if lo > min_lo[1]:
+                                            highest_lo.remove(min_lo)
+                                            highest_lo.append((all_tracks_data['audio_features'][n]['id'], lo, "lo"))
+                                    if len(lowest_lo) < cutoff:
                                         lowest_lo.append((all_tracks_data['audio_features'][n]['id'], lo, "lo"))
+                                    else:
+                                        max_lo = max(lowest_lo, key=lambda x: x[1])
+                                        if lo < max_lo[1]:
+                                            lowest_lo.remove(max_lo)
+                                            lowest_lo.append((all_tracks_data['audio_features'][n]['id'], lo, "lo"))
 
-                                # mode
-                                if len(highest_mo) < cutoff:
-                                    highest_mo.append((all_tracks_data['audio_features'][n]['id'], mo, "mo"))
-                                else:
-                                    min_mo = min(highest_mo, key=lambda x: x[1])
-                                    if mo > min_mo[1]:
-                                        highest_mo.remove(min_mo)
+                                    # mode
+                                    if len(highest_mo) < cutoff:
                                         highest_mo.append((all_tracks_data['audio_features'][n]['id'], mo, "mo"))
-                                if len(lowest_mo) < cutoff:
-                                    lowest_mo.append((all_tracks_data['audio_features'][n]['id'], mo, "mo"))
-                                else:
-                                    max_mo = max(lowest_mo, key=lambda x: x[1])
-                                    if mo < max_mo[1]:
-                                        lowest_mo.remove(max_mo)
+                                    else:
+                                        min_mo = min(highest_mo, key=lambda x: x[1])
+                                        if mo > min_mo[1]:
+                                            highest_mo.remove(min_mo)
+                                            highest_mo.append((all_tracks_data['audio_features'][n]['id'], mo, "mo"))
+                                    if len(lowest_mo) < cutoff:
                                         lowest_mo.append((all_tracks_data['audio_features'][n]['id'], mo, "mo"))
+                                    else:
+                                        max_mo = max(lowest_mo, key=lambda x: x[1])
+                                        if mo < max_mo[1]:
+                                            lowest_mo.remove(max_mo)
+                                            lowest_mo.append((all_tracks_data['audio_features'][n]['id'], mo, "mo"))
 
-                                # speechiness
-                                if len(highest_sp) < cutoff:
-                                    highest_sp.append((all_tracks_data['audio_features'][n]['id'], sp, "sp"))
-                                else:
-                                    min_sp = min(highest_sp, key=lambda x: x[1])
-                                    if sp > min_sp[1]:
-                                        highest_sp.remove(min_sp)
+                                    # speechiness
+                                    if len(highest_sp) < cutoff:
                                         highest_sp.append((all_tracks_data['audio_features'][n]['id'], sp, "sp"))
-                                if len(lowest_sp) < cutoff:
-                                    lowest_sp.append((all_tracks_data['audio_features'][n]['id'], sp, "sp"))
-                                else:
-                                    max_sp = max(lowest_sp, key=lambda x: x[1])
-                                    if sp < max_sp[1]:
-                                        lowest_sp.remove(max_sp)
+                                    else:
+                                        min_sp = min(highest_sp, key=lambda x: x[1])
+                                        if sp > min_sp[1]:
+                                            highest_sp.remove(min_sp)
+                                            highest_sp.append((all_tracks_data['audio_features'][n]['id'], sp, "sp"))
+                                    if len(lowest_sp) < cutoff:
                                         lowest_sp.append((all_tracks_data['audio_features'][n]['id'], sp, "sp"))
+                                    else:
+                                        max_sp = max(lowest_sp, key=lambda x: x[1])
+                                        if sp < max_sp[1]:
+                                            lowest_sp.remove(max_sp)
+                                            lowest_sp.append((all_tracks_data['audio_features'][n]['id'], sp, "sp"))
 
-                                # tempo
-                                if len(highest_te) < cutoff:
-                                    highest_te.append((all_tracks_data['audio_features'][n]['id'], te, "te"))
-                                else:
-                                    min_te = min(highest_te, key=lambda x: x[1])
-                                    if te > min_te[1]:
-                                        highest_te.remove(min_te)
+                                    # tempo
+                                    if len(highest_te) < cutoff:
                                         highest_te.append((all_tracks_data['audio_features'][n]['id'], te, "te"))
-                                if len(lowest_te) < cutoff:
-                                    lowest_te.append((all_tracks_data['audio_features'][n]['id'], te, "te"))
-                                else:
-                                    max_te = max(lowest_te, key=lambda x: x[1])
-                                    if te < max_te[1]:
-                                        lowest_te.remove(max_te)
+                                    else:
+                                        min_te = min(highest_te, key=lambda x: x[1])
+                                        if te > min_te[1]:
+                                            highest_te.remove(min_te)
+                                            highest_te.append((all_tracks_data['audio_features'][n]['id'], te, "te"))
+                                    if len(lowest_te) < cutoff:
                                         lowest_te.append((all_tracks_data['audio_features'][n]['id'], te, "te"))
+                                    else:
+                                        max_te = max(lowest_te, key=lambda x: x[1])
+                                        if te < max_te[1]:
+                                            lowest_te.remove(max_te)
+                                            lowest_te.append((all_tracks_data['audio_features'][n]['id'], te, "te"))
 
-                                # valence
-                                if len(highest_va) < cutoff:
-                                    highest_va.append((all_tracks_data['audio_features'][n]['id'], va, "va"))
-                                else:
-                                    min_va = min(highest_va, key=lambda x: x[1])
-                                    if va > min_va[1]:
-                                        highest_va.remove(min_va)
+                                    # valence
+                                    if len(highest_va) < cutoff:
                                         highest_va.append((all_tracks_data['audio_features'][n]['id'], va, "va"))
-                                if len(lowest_va) < cutoff:
-                                    lowest_va.append((all_tracks_data['audio_features'][n]['id'], va, "va"))
-                                else:
-                                    max_va = max(lowest_va, key=lambda x: x[1])
-                                    if va < max_va[1]:
-                                        lowest_va.remove(max_va)
+                                    else:
+                                        min_va = min(highest_va, key=lambda x: x[1])
+                                        if va > min_va[1]:
+                                            highest_va.remove(min_va)
+                                            highest_va.append((all_tracks_data['audio_features'][n]['id'], va, "va"))
+                                    if len(lowest_va) < cutoff:
                                         lowest_va.append((all_tracks_data['audio_features'][n]['id'], va, "va"))
-                                total_tracks += 1
+                                    else:
+                                        max_va = max(lowest_va, key=lambda x: x[1])
+                                        if va < max_va[1]:
+                                            lowest_va.remove(max_va)
+                                            lowest_va.append((all_tracks_data['audio_features'][n]['id'], va, "va"))
+                                    total_tracks += 1
+                                else:
+                                    total_tracks += 1
                             except:
                                 total_tracks += 0
 
@@ -372,21 +376,23 @@ def get_albums_data(artist_ids, other_album_ids, spanish_artists, omit_ids, test
                 total_tracks = 0
                 for n in range(0,len(all_tracks_data['audio_features'])):
                     try:
-                                ac = all_tracks_data['audio_features'][n]['acousticness']
-                                da = all_tracks_data['audio_features'][n]['danceability']
-                                en = all_tracks_data['audio_features'][n]['energy']
-                                ins = all_tracks_data['audio_features'][n]['instrumentalness']
-                                lo = all_tracks_data['audio_features'][n]['loudness']
-                                mo = all_tracks_data['audio_features'][n]['mode']
-                                sp = all_tracks_data['audio_features'][n]['speechiness']
-                                te = all_tracks_data['audio_features'][n]['tempo']
-                                va = all_tracks_data['audio_features'][n]['valence']
-                                af_values[0] += ac; af_values[1] += da
-                                af_values[2] += en; af_values[3] += ins
-                                af_values[4] += lo; af_values[5] += mo 
-                                af_values[6] += sp; af_values[7] += te
-                                af_values[8] += va
+                            ac = all_tracks_data['audio_features'][n]['acousticness']
+                            da = all_tracks_data['audio_features'][n]['danceability']
+                            en = all_tracks_data['audio_features'][n]['energy']
+                            ins = all_tracks_data['audio_features'][n]['instrumentalness']
+                            lo = all_tracks_data['audio_features'][n]['loudness']
+                            mo = all_tracks_data['audio_features'][n]['mode']
+                            sp = all_tracks_data['audio_features'][n]['speechiness']
+                            te = all_tracks_data['audio_features'][n]['tempo']
+                            va = all_tracks_data['audio_features'][n]['valence']
+                            li = all_tracks_data['audio_features'][n]['liveness']
+                            af_values[0] += ac; af_values[1] += da
+                            af_values[2] += en; af_values[3] += ins
+                            af_values[4] += lo; af_values[5] += mo 
+                            af_values[6] += sp; af_values[7] += te
+                            af_values[8] += va; af_values[9] += li
 
+                            if li < .6:
                                 if len(highest_ac) < cutoff:
                                     # If the list of highest tracks is not yet filled with X tracks, add the current track to the list
                                     highest_ac.append((all_tracks_data['audio_features'][n]['id'], ac, "ac"))
@@ -532,6 +538,8 @@ def get_albums_data(artist_ids, other_album_ids, spanish_artists, omit_ids, test
                                         lowest_va.remove(max_va)
                                         lowest_va.append((all_tracks_data['audio_features'][n]['id'], va, "va"))
                                 total_tracks += 1
+                            else:
+                                total_tracks += 1
                     except:
                         total_tracks += 0
                             
@@ -583,7 +591,7 @@ def get_albums_data(artist_ids, other_album_ids, spanish_artists, omit_ids, test
     combined_list = [[artist_name, track_name, track_id, track_id_to_feature[track_id][0], 
                       track_id_to_feature[track_id][1]] for artist_name, track_name, track_id in all_track_info]
     
-    with open("C:/Users/drewm/Desktop/album_project/extreme_vals.csv", mode='w', newline='') as file:
+    with open("C:/Users/drewm/Desktop/album_project/extreme_vals.csv", mode='w', newline='', encoding="utf-8") as file:
         writer = csv.writer(file)
         writer.writerow(['Artist Name', 'Track Name', 'Track ID', 'Value', 'Type'])  # Write the header row
 
@@ -700,7 +708,7 @@ spanish_names = []
 
 omit_ids = []
 
-test = 1
+test = 0
 
 # File path of the CSV file
 if test:
@@ -748,8 +756,9 @@ start_time = time.time()
 
 artist_ids = find_artist_ids(artist_names, test)
 album_ids = find_album_ids(album_names, by_names)
-#spanish_artists = find_artist_ids(spanish_names, test)
-spanish_artists = ['2R21vXR83lH98kGeO99Y66', '4SsVbpTthjScTS7U2hmr1X', '1qto4hHid1P71emI6Fd8xi', '1mux8L6xg2Cmrc7k0wQczl', 
+spanish_artists = find_artist_ids(spanish_names, test)
+
+""" spanish_artists = ['2R21vXR83lH98kGeO99Y66', '4SsVbpTthjScTS7U2hmr1X', '1qto4hHid1P71emI6Fd8xi', '1mux8L6xg2Cmrc7k0wQczl', 
                    '4q3ewBCX7sLwd24euuV69X', '4obzFoKoKRHIphyHzJ35G3', '09xj0S68Y1OU1vHMCZAIvz', '28gNT5KBp7IjEOQoevXf9N', 
                    '0eecdvMrqBftK0M1VKhaF4', '4VMYDCV2IEDYJArk749S6m', '0KPX4Ucy9dk82uj4GpKesn', '2oQX8QiMXOyuqbcZEFsZfm', 
                    '329e4yvIujISKGKz1BZZbO', '2LRoIwlKmHjgvigdNGBHNo', '1QOmebWGB6FdFtW7Bo3F0W', '1vyhD5VmyZ7KMfW5gqLgo5', 
@@ -762,7 +771,7 @@ spanish_artists = ['2R21vXR83lH98kGeO99Y66', '4SsVbpTthjScTS7U2hmr1X', '1qto4hHi
                    '1mcTU81TzQhprhouKaTkpq', '0vR2qb8m9WHeZ5ByCbimq2', '2IMZYfNi21MGqxopj9fWx8', '5lwmRuXgjX8xIwlnauTZIP', 
                    '7ltDVBr6mKbRvohxheJ9h1', '07YUOmWljBTXwIseAUd9TW', '77ziqFxp5gaInVrF2lj4ht', '0EmeFodog0BfCgMzAIvKQp', 
                    '7An4yvF7hDYDolN4m5zKBp', '0GM7qgcRCORpGnfcN2tCiB', '5Y3MV9DZ0d87NnVm56qSY1', '1wZtkThiXbVNtj6hee6dz9', 
-                   '21451j1KhjAiaYKflxBjr1', '6IdtcAwaNVAggwd6sCKgTI']
+                   '21451j1KhjAiaYKflxBjr1', '6IdtcAwaNVAggwd6sCKgTI'] """
 
 all_albums = get_albums_data(artist_ids, album_ids, spanish_artists, omit_ids, test)
 
@@ -771,6 +780,7 @@ with open(output_file_path, "w", newline="", encoding="utf-8") as csvfile:
     csv_writer.writerows(all_albums)
 
 print("CSV file has been created successfully.")
+print(spanish_artists)
 
 end_time = time.time()
 elapsed_time = end_time - start_time
