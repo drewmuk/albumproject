@@ -539,9 +539,10 @@ def all_albums(request):
     return render(request, 'display_album_table.html', context)
 
 def choose_random(request):
-    random_row = df_all.sample()
+    random_row = df_all.sample().values.tolist()[0]
     print(random_row)
-    context = {'album': random_row}
+    context = {'album': random_row, 
+               'all_count': len(df_all)}
     return render(request, 'random_album.html', context)
 
 """ def form_based_recs(request):
