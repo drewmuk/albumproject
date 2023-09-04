@@ -33,5 +33,6 @@ urlpatterns = [
     path('spotify/callback/', views.spotify_callback),
     path('user-choice/', views.user_choice_view, name='user_choice'),
     path('logout/', views.user_logout, name='user_logout'),
-    path('albums/all', views.all_albums)
+    path('albums/all', views.all_albums, name='display_all_albums'),
+    path('albums/random', views.choose_random, name='choose_random')
 ]

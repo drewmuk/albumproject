@@ -38,7 +38,7 @@ def get_albums_data(artist_ids, other_album_ids, spanish_artists, omit_ids, test
     access_token = get_access_token(client_id, client_secret)
     last_access_time = time.time()
     # Headers for the eventual table
-    all_albums = [['Artist','Album','Year','Popularity','Length (Min)', 'Album Cover',
+    all_albums = [['Artist','Album','Year','Popularity','Duration', 'Cover',
                    'ID', 'Language',
                    'acousticness','danceability','energy','instrumentalness',
                    'loudness','mode','speechiness','tempo','valence', 'liveness']]
@@ -66,7 +66,7 @@ def get_albums_data(artist_ids, other_album_ids, spanish_artists, omit_ids, test
         }
 
         if not test:
-            time.sleep(1)
+            time.sleep(.5)
 
         language = "English"
 
@@ -98,7 +98,7 @@ def get_albums_data(artist_ids, other_album_ids, spanish_artists, omit_ids, test
                 print(all_albums_data['albums'][0]['artists'][0]['name'])
                 for k in range(0, len(all_albums_data['albums'])):
                     if not test:
-                        time.sleep(1)
+                        time.sleep(.5)
                     all_track_ids = []
 
                     total_duration_ms = 0
@@ -622,9 +622,17 @@ def find_artist_ids(artist_names, test):
             # Extract artist details from the search results
             artists = search_results["artists"]["items"]
             if len(artists) > 0:
-                artist = artists[0]  # Get the first matching artist
-                artist_id = artist["id"]
-                artist_ids.append(artist_id)
+                current_pop = 0
+                current_artist = []
+                for p in range(0, len(artists)):
+                    artist = artists[p]
+                    # Get the artist with the highest popularity that matches the name exactly
+                    if artist['name'] == artist_names[q]:
+                        if artist['popularity'] > current_pop:
+                            artist = artists[p] 
+                            current_artist = artist
+                            current_pop = artist['popularity']
+                artist_ids.append(current_artist['id'])
             else:
                 print("Artist not found.")
         elif response_search.status_code == 401:
@@ -756,22 +764,23 @@ start_time = time.time()
 
 artist_ids = find_artist_ids(artist_names, test)
 album_ids = find_album_ids(album_names, by_names)
-spanish_artists = find_artist_ids(spanish_names, test)
+#spanish_artists = find_artist_ids(spanish_names, test)
+#print(spanish_artists)
 
-""" spanish_artists = ['2R21vXR83lH98kGeO99Y66', '4SsVbpTthjScTS7U2hmr1X', '1qto4hHid1P71emI6Fd8xi', '1mux8L6xg2Cmrc7k0wQczl', 
+spanish_artists = ['2R21vXR83lH98kGeO99Y66', '4SsVbpTthjScTS7U2hmr1X', '1qto4hHid1P71emI6Fd8xi', '1mux8L6xg2Cmrc7k0wQczl', 
                    '4q3ewBCX7sLwd24euuV69X', '4obzFoKoKRHIphyHzJ35G3', '09xj0S68Y1OU1vHMCZAIvz', '28gNT5KBp7IjEOQoevXf9N', 
-                   '0eecdvMrqBftK0M1VKhaF4', '4VMYDCV2IEDYJArk749S6m', '0KPX4Ucy9dk82uj4GpKesn', '2oQX8QiMXOyuqbcZEFsZfm', 
-                   '329e4yvIujISKGKz1BZZbO', '2LRoIwlKmHjgvigdNGBHNo', '1QOmebWGB6FdFtW7Bo3F0W', '1vyhD5VmyZ7KMfW5gqLgo5', 
-                   '6nVcHLIgY5pE2YCl8ubca1', '2QWIScpFDNxmS6ZEMIUvgm', '1U1el3k54VvEUzo3ybLPlM', '790FomKkXshlbRYZFtlgla', 
-                   '4TK1gDgb7QKoPFlzRrBRgR', '2mSHY8JOR0nRi3mtHqVa04', '47MpMsUfWtgyIIBEFOr4FE', '1r4hJ1h58CWwUQe3MxPuau', 
-                   '7okwEbXzyT2VffBmyQBWLz', '0tmwSHipWxN12fsoLcFU3B', '1DxLCyH42yaHKGK3cl5bvG', '4boI7bJtmB1L3b1cuL75Zr', 
-                   '0Q8NcsJwoCbZOHHW63su5S', '5C4PDR4LnhZTbVnKWXuDKD', '1hcdI2N1023RvSwLzTtdsp', '1SupJlEpv7RS2tPNRaHViT', 
-                   '5hdhHgpxyniooUiQVaPxQ0', '1i8SpTcr7yvPOmcqrbnVXY', '3vQ0GE3mI0dAaxIMYe5g7z', '4QVBYiagIaa6ZGSPMbybpy', 
-                   '12GqGscKJx3aE4t07u7eVZ', '4bw2Am3p9ji3mYsXNXtQcd', '3MHaV05u0io8fQbZ2XPtlC', '52iwsT98xCoGgiGntTiR7K', 
-                   '1mcTU81TzQhprhouKaTkpq', '0vR2qb8m9WHeZ5ByCbimq2', '2IMZYfNi21MGqxopj9fWx8', '5lwmRuXgjX8xIwlnauTZIP', 
-                   '7ltDVBr6mKbRvohxheJ9h1', '07YUOmWljBTXwIseAUd9TW', '77ziqFxp5gaInVrF2lj4ht', '0EmeFodog0BfCgMzAIvKQp', 
-                   '7An4yvF7hDYDolN4m5zKBp', '0GM7qgcRCORpGnfcN2tCiB', '5Y3MV9DZ0d87NnVm56qSY1', '1wZtkThiXbVNtj6hee6dz9', 
-                   '21451j1KhjAiaYKflxBjr1', '6IdtcAwaNVAggwd6sCKgTI'] """
+                   '0XwVARXT135rw8lyw1EeWP', '0eecdvMrqBftK0M1VKhaF4', '4VMYDCV2IEDYJArk749S6m', '0KPX4Ucy9dk82uj4GpKesn', 
+                   '2oQX8QiMXOyuqbcZEFsZfm', '0XeEobZplHxzM9QzFQWLiR', '329e4yvIujISKGKz1BZZbO', '2LRoIwlKmHjgvigdNGBHNo', 
+                   '1QOmebWGB6FdFtW7Bo3F0W', '1vyhD5VmyZ7KMfW5gqLgo5', '6nVcHLIgY5pE2YCl8ubca1', '2QWIScpFDNxmS6ZEMIUvgm', 
+                   '1U1el3k54VvEUzo3ybLPlM', '790FomKkXshlbRYZFtlgla', '4TK1gDgb7QKoPFlzRrBRgR', '2mSHY8JOR0nRi3mtHqVa04', 
+                   '47MpMsUfWtgyIIBEFOr4FE', '1r4hJ1h58CWwUQe3MxPuau', '7okwEbXzyT2VffBmyQBWLz', '0tmwSHipWxN12fsoLcFU3B', 
+                   '4boI7bJtmB1L3b1cuL75Zr', '0Q8NcsJwoCbZOHHW63su5S', '5C4PDR4LnhZTbVnKWXuDKD', '7iK8PXO48WeuP03g8YR51W', 
+                   '1hcdI2N1023RvSwLzTtdsp', '1SupJlEpv7RS2tPNRaHViT', '5hdhHgpxyniooUiQVaPxQ0', '1i8SpTcr7yvPOmcqrbnVXY', 
+                   '3vQ0GE3mI0dAaxIMYe5g7z', '12GqGscKJx3aE4t07u7eVZ', '4bw2Am3p9ji3mYsXNXtQcd', '52iwsT98xCoGgiGntTiR7K', 
+                   '1mcTU81TzQhprhouKaTkpq', '2IMZYfNi21MGqxopj9fWx8', '7slfeZO9LsJbWgpkIoXBUJ', '5lwmRuXgjX8xIwlnauTZIP', 
+                   '7ltDVBr6mKbRvohxheJ9h1', '77ziqFxp5gaInVrF2lj4ht', '0EmeFodog0BfCgMzAIvKQp', '7An4yvF7hDYDolN4m5zKBp', 
+                   '0GM7qgcRCORpGnfcN2tCiB', '5Y3MV9DZ0d87NnVm56qSY1', '1wZtkThiXbVNtj6hee6dz9', '21451j1KhjAiaYKflxBjr1', 
+                   '6IdtcAwaNVAggwd6sCKgTI']
 
 all_albums = get_albums_data(artist_ids, album_ids, spanish_artists, omit_ids, test)
 

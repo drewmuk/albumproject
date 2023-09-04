@@ -20,7 +20,9 @@ from sklearn.cluster import KMeans
 from album_app.forms import UserChoiceForm
 
 from .models import SpotifyToken
-import base64
+import random
+from collections import Counter
+
 
 client_id = settings.SPOTIFY_CLIENT_ID
 client_secret = settings.SPOTIFY_CLIENT_SECRET
@@ -31,34 +33,54 @@ if local:
     redirect_uri = settings.SPOTIFY_REDIRECT_URI_LOCAL
 
 
-scope = "user-library-read"
+scope = "user-library-read, user-top-read"
 
 # read the csv file
 try:
     df_all = pd.read_csv('C:/Users/drewm/Desktop/album_project/output.csv', encoding='utf-8')
-    df_af_values = pd.read_csv('C:/Users/drewm/Desktop/album_project/output.csv', usecols=[2,3,8,9,10,11,12,13,14,15,16], encoding='utf-8')
 except:
     df_all = pd.read_csv('/home/dm1202/albumproject/output.csv', encoding='utf-8')
-    df_af_values = pd.read_csv('/home/dm1202/albumproject/output.csv', usecols=[2,3,8,9,10,11,12,13,14,15,16], encoding='utf-8')
 
+""" df_all_sp = df_all[df_all['Language'] == 'Spanish']
+df_all_en = df_all[df_all['Language'] == 'English']
 
-af_values_array = df_af_values.values
+usecols = [2,3,8,9,10,11,12,13,14,15,16]
+
+df_af_values = df_all.iloc[:, usecols]
+df_af_values_sp = df_all_sp.iloc[:, usecols]
+df_af_values_en = df_all_en.iloc[:, usecols] """
+
+""" af_values_array = df_af_values.values
+af_values_array_sp = df_af_values.values
+af_values_array_en = df_af_values.values """
 
 # Initialize a new StandardScaler instance
-scaler = StandardScaler()
+
 
 # Fit the scaler to the data and transform the data
-data_np_scaled = np.round(scaler.fit_transform(af_values_array), 3)
+""" data_np_scaled = np.round(scaler.fit_transform(af_values_array), 3)
+data_np_scaled_sp = np.round(scaler.fit_transform(af_values_array_sp), 3)
+data_np_scaled_en = np.round(scaler.fit_transform(af_values_array_en), 3)
+
 scaled_data = data_np_scaled.tolist()
+scaled_data_sp = data_np_scaled_sp.tolist()
+scaled_data_en = data_np_scaled_en.tolist()
 
 # if you want to convert the dataframe to a list of lists (where each sub-list is a row)
 af_values_all = data_np_scaled.tolist()
+af_values_all_sp = data_np_scaled_sp.tolist()
+af_values_all_en = data_np_scaled_en.tolist()
+
 all_album_data = df_all.values.tolist()
+all_album_data_sp = df_all_sp.values.tolist()
+all_album_data_en = df_all_en.values.tolist() """
+
 #print(list_temp)
-output_titles = ['Artist','Album','Year','Popularity','Length (Min)', 
-                      'Album Cover', 'ID', 'Language','acousticness',
+output_titles = ['Artist','Album','Year','Popularity','Duration', 
+                      'Cover', 'ID', 'Language','acousticness',
                       'danceability','energy','instrumentalness','loudness',
                       'mode','speechiness','tempo','valence', 'liveness']
+language_col = 7
 
 #print(all_album_data)
 
@@ -97,7 +119,7 @@ def weighted_euclidean(a, b, weights):
     return np.sqrt((weights*q*q).sum())
 
 # Year, Pop, Acous, Dance, Energy, Instrum, Loud, Mode, Speech, Tempo, Valence
-weights = [0,.2,1,1,1,1,1,0,0,1,0]
+weights = [.1,.2,1,1,1,1,1,0,0,1,0]
 
 def find_similar_items(sample_stats, all_album_stats, top_n=100):
     #data_np = np.array(all_album_stats) # Convert list to numpy array for efficient computation
@@ -147,6 +169,13 @@ def user_login(request):
     else:
         return render(request, 'login.html')
     
+def user_logout(request):
+    print('logged out')
+    SpotifyToken.objects.filter(user=request.user).delete()
+    cache.clear()
+    logout(request)
+    return redirect('user_login')
+    
 def sign_up(request):
     if request.method == 'POST':
         username = request.POST['username']
@@ -175,7 +204,8 @@ def spotify_callback(request):
     code = request.GET.get('code')
     sp = SpotifyOAuth(client_id=settings.SPOTIFY_CLIENT_ID,
                       client_secret=settings.SPOTIFY_CLIENT_SECRET,
-                      redirect_uri=redirect_uri)
+                      redirect_uri=redirect_uri,
+                      scope=scope)
     
     # Get the authorization code from the URL after the user grants access
     token_info = sp.get_access_token(code)
@@ -243,11 +273,75 @@ def refresh_spotify_token(spotify_token, client_id, client_secret):
         print("Failed to obtain access token.")
         return None
 
+def most_common_genres(request):
+    spotify_token = SpotifyToken.objects.get()
+    
+    if spotify_token.expires_at >= timezone.now():
+        print('expired')
+        new_token = refresh_spotify_token(spotify_token, client_id, client_secret)
+    else:
+        new_token = spotify_token.access_token
+
+    sp = spotipy.Spotify(auth=new_token)
+
+    limit_tracks = 30
+    top_tracks_raw = sp.current_user_top_tracks(limit=limit_tracks)
+
+    genre_list = []
+    for track in top_tracks_raw['items']:
+        track_artist_id = track['artists'][0]['id']
+        artist_url = f"https://api.spotify.com/v1/artists/{track_artist_id}"
+        response_artist = requests.get(artist_url, headers=headers)  
+
+        if response_artist.status_code == 200:
+            artist_data = response_artist.json()
+            artist_genres = artist_data['genres']
+        else:
+            print("Error", response_artist.status_code)
+        
+        genre_list.append(artist_genres)
+
+
+    item_counts = Counter(genre_list)
+
+    # Find the most common items and their counts
+    most_common = item_counts.most_common()
+
+    # Print the most common items
+    for item, count in most_common:
+        print(f"{item}: {count} times")
+
+
+
 @login_required
 def most_similar_albums(request):
-    spotify_token = SpotifyToken.objects.get(user=request.user)
+    spotify_token = SpotifyToken.objects.get(user_id=request.user.id)
+    language_input = request.GET.get('language_select', 'Both')
 
-    if spotify_token.expires_at <= timezone.now():
+    if language_input == 'English':
+        df_all_input = df_all[df_all['Language'] == 'English']
+    elif language_input == 'Spanish':
+        df_all_input = df_all[df_all['Language'] == 'Spanish']
+    else:
+        df_all_input = df_all
+
+    usecols = [2,3,8,9,10,11,12,13,14,15,16]
+
+    df_af_values = df_all_input.iloc[:, usecols]
+    af_values_array = df_af_values.values
+
+    scaler = StandardScaler()
+
+    # Fit the scaler to the data and transform the data
+    data_np_scaled = np.round(scaler.fit_transform(af_values_array), 3)
+    scaled_data = data_np_scaled.tolist()
+
+    # if you want to convert the dataframe to a list of lists (where each sub-list is a row)
+    af_values_all = data_np_scaled.tolist()
+
+    all_album_data = df_all_input.values.tolist()
+
+    if spotify_token.expires_at >= timezone.now():
         print('expired')
         new_token = refresh_spotify_token(spotify_token, client_id, client_secret)
     else:
@@ -313,11 +407,32 @@ def most_similar_albums(request):
         total_tracks = 0
         for n in range(0,len(all_tracks_data['tracks'])):
             try:
+                #print(all_tracks_data['tracks'][n]['album'])
                 avg_year += float(all_tracks_data['tracks'][n]['album']['release_date'][:4])
                 avg_pop += float(all_tracks_data['tracks'][n]['popularity'])
                 total_tracks += 1
             except:
                 total_tracks += 0
+
+        # in case genre data ever becomes available
+        """     if n < 20:
+                track_album = all_tracks_data['tracks'][n]['album']['id']
+                track_albums.append(track_album)
+
+        query_track_album_params = {"ids": ",".join(track_albums)}
+        all_track_albums_url = "https://api.spotify.com/v1/albums"
+        response_track_album = requests.get(all_track_albums_url, headers=headers, params=query_track_album_params)
+
+        genre_list = []
+
+        if response_track_album.status_code == 200:
+            all_track_albums_data = response_track_album.json()
+            for k in range(0, len(all_track_albums_data['albums'])):
+                print(all_track_albums_data['albums'][k])
+
+        else:
+            print(response_track_album.status_code) """
+
         avg_year /= total_tracks
         avg_pop /= total_tracks
 
@@ -350,7 +465,12 @@ def most_similar_albums(request):
         similar_album_ids_cat1.append(all_album_data[same_cluster_indices[m]][6])
 
     # This is the second method: using the weighted Euclidian distance between items
-    distance_closest_indices = find_similar_items(list_values, af_values_all)
+    if language_input == 'English':
+        distance_closest_indices = find_similar_items(list_values, af_values_all)
+    if language_input == 'Spanish':
+        distance_closest_indices = find_similar_items(list_values, af_values_all)
+    else:
+        distance_closest_indices = find_similar_items(list_values, af_values_all)
 
     similar_album_names_cat2 = []
     similar_album_ids_cat2 = []
@@ -379,6 +499,9 @@ def most_similar_albums(request):
             album_info.append(album_af)
             all_similar_albums.append(album_info)
         
+    # Mix up the albums so they're not in alphabetical order by artist
+    random.shuffle(all_similar_albums)
+
     # Process the data and render the template
     context = {'similar_albums': all_similar_albums, 'top_tracks': scaled_af_values, 
                'similar_count': len(all_similar_albums), 'all_count': len(all_album_data)}
@@ -386,12 +509,43 @@ def most_similar_albums(request):
 
 
 def all_albums(request):
-    album_table = [dict(zip(output_titles, row)) for row in all_album_data]
-    sorted_data = sorted(album_table, key=lambda x: x['Popularity'], reverse=True)
+    all_album_data = df_all.values.tolist()
+
+    sort_by1 = request.GET.get('sort_by1', 'Popularity')
+    sort_by2 = request.GET.get('sort_by2', 'Random')
+    type_sort = request.GET.get('type_sort1', 'desc') == 'desc'
+    language_input = request.GET.get('language_select', 'Both')
+    
+    
+    if language_input != 'Both':
+        album_table = [dict(zip(output_titles, row)) for row in all_album_data if row[language_col] == language_input] # language_col defined at top
+    else:
+        album_table = [dict(zip(output_titles, row)) for row in all_album_data]
+
+    if sort_by2 == 'Random':
+        try:
+            sorted_data = sorted(album_table, key=lambda x: (x[sort_by1].lower(), random.random()), reverse=type_sort)
+        except:
+            sorted_data = sorted(album_table, key=lambda x: (x[sort_by1], random.random()), reverse=type_sort)
+    else:
+        try:
+            sorted_data = sorted(album_table, key=lambda x: (x[sort_by1].lower(), random.random()), reverse=type_sort)
+        except:
+            sorted_data = sorted(album_table, key=lambda x: (x[sort_by1], x[sort_by2]), reverse=type_sort)
+
     context = {'headers': output_titles,
                'rows': sorted_data, 
                'all_count': len(all_album_data)}
     return render(request, 'display_album_table.html', context)
+
+def choose_random(request):
+    random_row = df_all.sample()
+    print(random_row)
+    context = {'album': random_row}
+    return render(request, 'random_album.html', context)
+
+""" def form_based_recs(request):
+     """
 
 def user_choice_view(request):
     if request.method == 'POST':
@@ -402,13 +556,6 @@ def user_choice_view(request):
     else:
         form = UserChoiceForm()
     return render(request, 'user_choice_form.html', {'form': form})
-
-def user_logout(request):
-    print('logged out')
-    SpotifyToken.objects.filter(user=request.user).delete()
-    cache.clear()
-    logout(request)
-    return redirect('user_login')
 
 from .forms import AcousticnessForm, DanceabilityForm
 

@@ -7,6 +7,15 @@
 <head>
     <title>All Similar Albums</title>
     <link rel="stylesheet" type="text/css" href="{% static 'mycss.css' %}">
+    <form action="{% url 'most_similar_albums' %}" method="get">
+        <div style="margin-bottom: 10px;">
+            <select name="language_select">
+                <option value="Both">English and Spanish (default)</option>
+                <option value="English">English Only</option>
+                <option value="Spanish">Spanish Only</option>
+            </select>
+            <button type="submit">Sort</button>
+        </div>
     <style>
         table {
             width: 100%; /* Set the table width to 100% of its container */
@@ -25,7 +34,7 @@
 </head>
 <body>
     <h1>All Similar Albums</h1>
-    <h2>Selected {{ similar_count }} albums out of {{ all_count }} options </h2>
+    <h2>Selected {{ similar_count }} albums (in no particular order) out of {{ all_count }} options </h2>
     <table border="1">
         <thead>
             <tr>
