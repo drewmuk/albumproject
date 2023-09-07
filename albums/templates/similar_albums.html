@@ -14,7 +14,7 @@
                 <option value="English">English Only</option>
                 <option value="Spanish">Spanish Only</option>
             </select>
-            <button type="submit">Sort</button>
+            <button type="submit">Filter</button>
         </div>
     <style>
         table {
@@ -39,11 +39,12 @@
         <thead>
             <tr>
                 <th class = "cover-column" >Cover</th>
+                <th class = "other-column">Album</th>
                 <th class = "other-column">Artist</th>
                 <th class = "other-column">Year</th>
-                <th class = "other-column">Album</th>
                 <th class = "pop-column">Popularity</th>
-                <th class = "other-column">Length</th>
+                <th class = "other-column">Length (Min)</th>
+                <th class = "other-column">Save</th>
             </tr>
         </thead>
         <tbody>
@@ -51,10 +52,11 @@
                 <tr>
                     <td class = "cover-column" ><img src="{{ row.5 }}" width="50" height="50"></td>
                     <td class = "other-column">{{ row.0 }}</td>
-                    <td class = "other-column">{{ row.2 }}</td>
                     <td class = "other-column">{{ row.1 }}</td>
+                    <td class = "other-column">{{ row.2 }}</td>
                     <td class = "pop-column">{{ row.3 }}</td>
                     <td class = "other-column">{{ row.4 }}</td>
+                    <td class = "other-column"><a href="{% url 'add_to_lib' %}?album_id={{row.6}}&album_name={{row.0|urlencode}}&artist_name={{row.1|urlencode}}">Save To Your Library</a></td>
                 </tr>
             {% endfor %}
         </tbody>

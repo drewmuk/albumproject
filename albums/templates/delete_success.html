@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+    <br>
+    <!-- {% if already_saved %}
+        <div>
+            <a>{{ album_name }} is already saved to your library.</a>
+        </div>
+    {% else %} -->
+        <div>
+            <a>Removed <b>{{ album_name }}</b> by <b>{{ artist_name }}</b> from your library.</a>
+        </div>
+    <!-- {% endif %} -->
+    <br>
+    <div>
+        <a>Accident?</a>
+        <a href="{% url 'add_to_lib' %}?album_id={{album_id}}&album_name={{album_name}}&artist_name={{artist_name}}">Add back to library</a>
+    </div>
+    <br>
+    <div>
+        <a href="javascript:history.back()">Return to previous page</a>
+    </div>
+    
+</html>
+{% endblock %}

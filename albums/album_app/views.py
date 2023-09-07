@@ -22,6 +22,7 @@ from album_app.forms import UserChoiceForm
 from .models import SpotifyToken
 import random
 from collections import Counter
+import urllib.parse
 
 from .forms import YearFilterForm
 
@@ -36,13 +37,13 @@ if local:
     redirect_uri = settings.SPOTIFY_REDIRECT_URI_LOCAL
 
 
-scope = "user-library-read, user-top-read"
+scope = "user-library-read user-top-read user-library-modify"
 
 # read the csv file
 try:
-    df_all = pd.read_csv('C:/Users/drewm/Desktop/album_project/output.csv', encoding='utf-8')
+    df_all = pd.read_csv('C:/Users/drewm/Desktop/album_project/input_output/output.csv', encoding='utf-8')
 except:
-    df_all = pd.read_csv('/home/dm1202/albumproject/output.csv', encoding='utf-8')
+    df_all = pd.read_csv('/home/dm1202/albumproject/input_output/output.csv', encoding='utf-8')
 
 """ df_all_sp = df_all[df_all['Language'] == 'Spanish']
 df_all_en = df_all[df_all['Language'] == 'English']
@@ -340,7 +341,7 @@ def most_similar_albums(request):
     limit_tracks = 30
     top_tracks_raw = sp.current_user_top_tracks(limit=limit_tracks)
 
-    print(top_tracks_raw)
+    #print(top_tracks_raw)
 
     # Get the audio features for these tracks
     all_track_ids = []
@@ -476,6 +477,7 @@ def most_similar_albums(request):
             album_pop = all_album_data[same_cluster_indices[p]][3]
             album_length = all_album_data[same_cluster_indices[p]][4]
             album_cover = all_album_data[same_cluster_indices[p]][5]
+            album_id = all_album_data[same_cluster_indices[p]][6]
             album_af = data_np_scaled[same_cluster_indices[p]]
             album_genres = all_album_data[same_cluster_indices[p]][18]
             album_info.append(album_name)
@@ -484,6 +486,7 @@ def most_similar_albums(request):
             album_info.append(album_pop)
             album_info.append(album_length)
             album_info.append(album_cover)
+            album_info.append(album_id)
             album_info.append(album_af)
             album_info.append(album_genres)
             sim_albums_temp.append(album_info)
@@ -491,20 +494,21 @@ def most_similar_albums(request):
     all_similar_albums = []
 
     top_genres = get_genres(top_tracks_raw)
-    for i in top_genres:
-        print(i)
+    #for i in top_genres:
+        #print(i)
     for sim_album in sim_albums_temp:
-        album_genres = sim_album[7].split(',')
-        print(album_genres)
+        album_genres = sim_album[8].split(',')
+        #print(album_genres)
         for genre in album_genres:
             cleaned_genre = genre.replace("'", '').replace('[', '').replace(']', '')
-            print(cleaned_genre)
+            #print(cleaned_genre)
             if cleaned_genre in top_genres:
-                print('True')
+                #print('True')
                 #print(album_genres[r])
                 all_similar_albums.append(sim_album)
                 
-        
+    print(scope)
+
     # Mix up the albums so they're not in alphabetical order by artist
     random.shuffle(all_similar_albums)
 
@@ -513,6 +517,60 @@ def most_similar_albums(request):
                'similar_count': len(all_similar_albums), 'all_count': len(all_album_data)}
     return render(request, 'similar_albums.html', context)
 
+    
+
+def add_to_lib(request):
+    spotify_token = SpotifyToken.objects.get(user_id=request.user.id)
+
+    if spotify_token.expires_at >= timezone.now():
+        print('expired')
+        new_token = refresh_spotify_token(spotify_token, client_id, client_secret)
+    else:
+        new_token = spotify_token.access_token
+
+    sp = spotipy.Spotify(auth=new_token)
+
+    album_id = request.GET.get('album_id', '')
+    album_name = urllib.parse.unquote(request.GET.get('album_name', ''))
+    artist_name = urllib.parse.unquote(request.GET.get('artist_name', ''))
+
+    
+
+    if album_id:
+        """ already_saved = False
+        if sp.current_user_saved_albums_contains(albums=[album_id]):
+            already_saved = True """
+        # Save the album to your library
+        context = {'album_name': album_name,
+                    'artist_name': artist_name,
+                    'album_id': album_id}
+            
+        sp.current_user_saved_albums_add([album_id])
+        return render(request, 'save_success.html', context)
+    
+def rem_from_lib(request):
+    spotify_token = SpotifyToken.objects.get(user_id=request.user.id)
+
+    if spotify_token.expires_at >= timezone.now():
+        print('expired')
+        new_token = refresh_spotify_token(spotify_token, client_id, client_secret)
+    else:
+        new_token = spotify_token.access_token
+
+    sp = spotipy.Spotify(auth=new_token)
+
+    album_id = request.GET.get('album_id', '')
+    album_name = urllib.parse.unquote(request.GET.get('album_name', ''))
+    artist_name = urllib.parse.unquote(request.GET.get('artist_name', ''))
+
+    if album_id:
+        # Remove the album from your library
+        context = {'album_name': album_name,
+                    'artist_name': artist_name,
+                    'album_id': album_id}
+            
+        sp.current_user_saved_albums_delete([album_id])
+        return render(request, 'delete_success.html', context)
 
 def all_albums(request):
     all_album_data = df_all.values.tolist()

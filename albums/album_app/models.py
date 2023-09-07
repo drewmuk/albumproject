@@ -11,6 +11,7 @@ class SpotifyToken(models.Model):
     token_type = models.CharField(max_length=50)
     expires_at = models.DateTimeField()
     last_refreshed = models.DateTimeField(auto_now = True)
+    scope = models.CharField(max_length=255)
 
 class Song(models.Model):
     name = models.CharField(max_length=255)
