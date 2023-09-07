@@ -23,6 +23,9 @@ from .models import SpotifyToken
 import random
 from collections import Counter
 
+from .forms import YearFilterForm
+
+
 
 client_id = settings.SPOTIFY_CLIENT_ID
 client_secret = settings.SPOTIFY_CLIENT_SECRET
@@ -79,7 +82,10 @@ all_album_data_en = df_all_en.values.tolist() """
 output_titles = ['Artist','Album','Year','Popularity','Duration', 
                       'Cover', 'ID', 'Language','acousticness',
                       'danceability','energy','instrumentalness','loudness',
-                      'mode','speechiness','tempo','valence', 'liveness']
+                      'mode','speechiness','tempo','valence', 'liveness',
+                      'genres']
+year_col = 2
+pop_col = 3
 language_col = 7
 
 #print(all_album_data)
@@ -273,49 +279,28 @@ def refresh_spotify_token(spotify_token, client_id, client_secret):
         print("Failed to obtain access token.")
         return None
 
-def most_common_genres(request):
-    spotify_token = SpotifyToken.objects.get()
-    
-    if spotify_token.expires_at >= timezone.now():
-        print('expired')
-        new_token = refresh_spotify_token(spotify_token, client_id, client_secret)
-    else:
-        new_token = spotify_token.access_token
-
-    sp = spotipy.Spotify(auth=new_token)
-
-    limit_tracks = 30
-    top_tracks_raw = sp.current_user_top_tracks(limit=limit_tracks)
+def get_genres(top_tracks):
 
     genre_list = []
-    for track in top_tracks_raw['items']:
+    for track in top_tracks['items']:
         track_artist_id = track['artists'][0]['id']
         artist_url = f"https://api.spotify.com/v1/artists/{track_artist_id}"
         response_artist = requests.get(artist_url, headers=headers)  
 
         if response_artist.status_code == 200:
             artist_data = response_artist.json()
-            artist_genres = artist_data['genres']
+            for genre in artist_data['genres']:
+                genre_list.append(genre)
         else:
             print("Error", response_artist.status_code)
-        
-        genre_list.append(artist_genres)
 
+    unique_temp = set(genre_list)
+    all_genres = list(unique_temp)
 
-    item_counts = Counter(genre_list)
-
-    # Find the most common items and their counts
-    most_common = item_counts.most_common()
-
-    # Print the most common items
-    for item, count in most_common:
-        print(f"{item}: {count} times")
-
-
+    return all_genres
 
 @login_required
 def most_similar_albums(request):
-    spotify_token = SpotifyToken.objects.get(user_id=request.user.id)
     language_input = request.GET.get('language_select', 'Both')
 
     if language_input == 'English':
@@ -340,6 +325,8 @@ def most_similar_albums(request):
     af_values_all = data_np_scaled.tolist()
 
     all_album_data = df_all_input.values.tolist()
+
+    spotify_token = SpotifyToken.objects.get(user_id=request.user.id)
 
     if spotify_token.expires_at >= timezone.now():
         print('expired')
@@ -479,7 +466,7 @@ def most_similar_albums(request):
         similar_album_ids_cat2.append(all_album_data[distance_closest_indices[n]][6])
 
     # Check which values are in both lists, and append those to the list of similar albums
-    all_similar_albums = []
+    sim_albums_temp = []
     for p in range(0, len(similar_album_ids_cat1)):
         if similar_album_ids_cat1[p] in similar_album_ids_cat2:
             album_info = []
@@ -490,6 +477,7 @@ def most_similar_albums(request):
             album_length = all_album_data[same_cluster_indices[p]][4]
             album_cover = all_album_data[same_cluster_indices[p]][5]
             album_af = data_np_scaled[same_cluster_indices[p]]
+            album_genres = all_album_data[same_cluster_indices[p]][18]
             album_info.append(album_name)
             album_info.append(album_artist)
             album_info.append(album_year)
@@ -497,7 +485,25 @@ def most_similar_albums(request):
             album_info.append(album_length)
             album_info.append(album_cover)
             album_info.append(album_af)
-            all_similar_albums.append(album_info)
+            album_info.append(album_genres)
+            sim_albums_temp.append(album_info)
+
+    all_similar_albums = []
+
+    top_genres = get_genres(top_tracks_raw)
+    for i in top_genres:
+        print(i)
+    for sim_album in sim_albums_temp:
+        album_genres = sim_album[7].split(',')
+        print(album_genres)
+        for genre in album_genres:
+            cleaned_genre = genre.replace("'", '').replace('[', '').replace(']', '')
+            print(cleaned_genre)
+            if cleaned_genre in top_genres:
+                print('True')
+                #print(album_genres[r])
+                all_similar_albums.append(sim_album)
+                
         
     # Mix up the albums so they're not in alphabetical order by artist
     random.shuffle(all_similar_albums)
@@ -515,12 +521,70 @@ def all_albums(request):
     sort_by2 = request.GET.get('sort_by2', 'Random')
     type_sort = request.GET.get('type_sort1', 'desc') == 'desc'
     language_input = request.GET.get('language_select', 'Both')
-    
-    
-    if language_input != 'Both':
-        album_table = [dict(zip(output_titles, row)) for row in all_album_data if row[language_col] == language_input] # language_col defined at top
+    pop_input = request.GET.get('pop_select')
+
+    form = YearFilterForm(request.GET)  # Get the form data from the request
+
+    if form.is_valid():
+        min_year = form.cleaned_data['min_year']
+        max_year = form.cleaned_data['max_year']
     else:
-        album_table = [dict(zip(output_titles, row)) for row in all_album_data]
+        print('invalid form')
+    
+    if min_year == None and max_year == None:
+        mtitle = ''
+        min_year = 0
+        max_year = 3000
+    elif min_year == None:
+        mtitle = ' pre-' + str(max_year)
+        min_year = 0
+    elif max_year == None:
+        mtitle = ' post-' + str(min_year)
+        max_year = 3000
+    else:
+        mtitle = ' between ' + str(min_year) + ' and ' + str(max_year)
+
+    min_pop = 0
+    max_pop = 100
+
+    ptitle = ''
+    
+    if pop_input == 'High':
+        ptitle = 'High Popularity'
+        min_pop = 75
+    elif pop_input == 'Medium':
+        ptitle = 'Medium Popularity'
+        min_pop = 50
+        max_pop = 75
+    elif pop_input == 'Low':
+        ptitle = 'Low Popularity'
+        max_pop = 50
+
+    ltitle = ''
+
+    if language_input != 'Both':
+        ltitle = language_input
+        album_table = [
+            dict(zip(output_titles, row)) 
+            for row in all_album_data 
+            if row[language_col] == language_input
+            and int(row[year_col]) >= min_year
+            and int(row[year_col]) < max_year
+            and int(row[pop_col]) > min_pop
+            and int(row[pop_col]) <= max_pop
+        ] 
+        # language_col and year_col defined at top
+    else:
+        album_table = [
+            dict(zip(output_titles, row)) 
+            for row in all_album_data 
+            if int(row[year_col]) >= min_year
+            and int(row[year_col]) < max_year
+            and int(row[pop_col]) > min_pop
+            and int(row[pop_col]) <= max_pop
+        ] 
+
+    title = 'All ' + ltitle + ' ' + ptitle + ' Albums in Database ' + mtitle
 
     if sort_by2 == 'Random':
         try:
@@ -535,7 +599,10 @@ def all_albums(request):
 
     context = {'headers': output_titles,
                'rows': sorted_data, 
-               'all_count': len(all_album_data)}
+               'title': title,
+               'cat_count': len(album_table),
+               'all_count': len(all_album_data),
+               'form': form}
     return render(request, 'display_album_table.html', context)
 
 def choose_random(request):

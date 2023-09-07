@@ -6,11 +6,16 @@ class UserChoiceForm(forms.ModelForm):
         model = UserChoice
         fields = ['choice']
 
+class YearFilterForm(forms.Form):
+    min_year = forms.IntegerField(required=False, label='Minimum')
+    max_year = forms.IntegerField(required=False, label='Maximum')
+
+
 class AcousticnessForm(forms.Form):
     OPTIONS = (
         ('option1', "when the party's over - Billie Eilish"),
         ('option2', "American Idiot - Green Day"),
-        ('option3', 'Option 3'),
+        ('option3', 'Me & You Together Song - The 1975'),
         ('option4', 'Option 4'),
         ('option5', 'Option 5'),
     )

@@ -10,23 +10,32 @@
     <body>
             {% if user.is_authenticated %}
                 <div class = "user-actions">
-                <p>Welcome, {{ user.username }}!</p>
-                <a href="{% url 'user_logout' %}">Log out</a>
+                    <p>Welcome, {{ user.username }}!</p>
+                    <a href="{% url 'user_logout' %}">Log out</a>
                 </div>
                 <div class="spotify-account">
                     {% if logged_in %}
-                        <a href="https://accounts.spotify.com/" target="_blank">View Spotify account</a>
+                        <a href="https://accounts.spotify.com/" target="_blank">View Spotify account </a>
                     {% else %}
                         <p> You are not logged into a Spotify account. </p>
                         <a href="{% url 'spotify_login' %}"target="_blank">Log into Spotify</a>
-                        <p>Note: once you sign into Spotify with this SpotifyEnhance account,
-                            you cannot switch to a different Spotify account.</p>
                     {% endif %}
+                    <div class="spotify-note">
+                        <p>Note: once you sign into Spotify with this SpotifyEnhance account,
+                        you cannot switch to a different Spotify account.</p>
+                    </div>
                 </div>
+                
                 <div class="app-functions">
                     <body>
                         <div class="most-similar-albums">
                             <a href="{% url 'most_similar_albums' %}">Find Most Similar Albums</a>
+                        </div>
+                        <div class="display-all-albums">
+                            <a href="{% url 'display_all_albums' %}">Display All Albums In Database</a>
+                        </div>
+                        <div class="choose-random">
+                            <a href="{% url 'choose_random' %}">Pick A Random Album</a>
                         </div>
                     </body>
                 </div>

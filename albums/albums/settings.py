@@ -52,7 +52,7 @@ INSTALLED_APPS = [
 ) """
 
 OAUTH2_PROVIDER = {
-    'SCOPES': {'read', 'playlist-read-private'},  # Set the desired scopes for your app
+    'SCOPES': {'user-read-library', 'user-modify-library'},  # Set the desired scopes for your app
 }
 
 AUTHORIZATION_CODE_GRANT_TYPE = True

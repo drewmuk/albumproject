@@ -1,75 +1,136 @@
 <!-- table_template.html -->
+{% extends "base.html" %}
+{% load static %}
 
+{% block content %}
 <!DOCTYPE html>
 <html>
-<head>
-    <title>All Albums In Database</title>
-    <style>
-        table {
-            width: 100%; /* Set the table width to 100% of its container */
-            border-collapse: collapse; /* Combine cell borders for a cleaner look */
-        }
-
-        th, td {
-            padding: 10px; /* Add padding to cells for better spacing */
-            text-align: left; /* Align cell content to the left */
-        }
-
-        th {
-            background-color: #f2f2f2; /* Set a background color for the table header */
-        }
-    </style>
-</head>
-<body>
-    <h1>All Albums In Database</h1>
-    <h2>Count: 3,742</h2>
-    <table border="1">
+    <link rel="stylesheet" type="text/css" href="{% static 'mycss.css' %}">
+    <form action="{% url 'display_all_albums' %}" method="get">
+        <div style="margin-bottom: 10px;">
+            <b>Sort by:</b>
+            <label for="sort_by1">Column 1:</label>
+            <select name="sort_by1">
+                <option value="Popularity">Popularity (default)</option>
+                <option value="Album">Album Name</option>
+                <option value="Artist">Artist Name</option>
+                <option value="Year">Year</option>
+                <option value="Duration">Length (Min)</option>
+            </select>
+            <label for="sort_by2">Column 2:</label>
+            <select name="sort_by2">
+                <option value="Random">Random (default)</option>
+                <option value="Popularity">Popularity</option>
+                <option value="Album">Album Name</option>
+                <option value="Artist">Artist Name</option>
+                <option value="Year">Year</option>
+                <option value="Duration">Length (Min)</option>
+            </select>
+            <label for="type_sort">Order:</label>
+            <select name="type_sort1">
+                <option value="desc">Descending</option>
+                <option value="asc">Ascending</option>
+            </select>
+            <button type="submit">Apply Sort</button>
+            
+        </div>
+        <div>
+            <b>Language Filter:</b>
+            <select name="language_select">
+                <option value="Both">English and Spanish (default)</option>
+                <option value="English">English Only</option>
+                <option value="Spanish">Spanish Only</option>
+            </select>
+        </div>
+        <div>
+            <b>Popularity Filter:</b>
+            <select name="pop_select">
+                <option value="All">All (default)</option>
+                <option value="High">High</option>
+                <option value="Medium">Medium</option>
+                <option value="Low">Low</option>
+            </select>
+        </div>
+        
+        <div>
+            <b>Year Filter:</b>
+            <form method="get">
+                {{ form }}
+            </form>
+            <div>
+                <button type="submit">Apply Filters</button>
+            </div>
+        </div>
+    </form>
+    <table id="myTable">
         <thead>
-            <tr>
-                <th>Artist</th>
-                <th>Album</th>
-                <th>Year</th>
-                <th>Popularity</th>
-                <th>Length (Min)</th>
-                <th>Album Cover</th>
-                <th>ID</th>
-                <th>Language</th>
-                <th>Acousticness</th>
-                <th>Danceability</th>
-                <th>Energy</th>
-                <th>Instrumentalness</th>
-                <th>Loudness</th>
-                <th>Mode</th>
-                <th>Speechiness</th>
-                <th>Tempo</th>
-                <th>Valence</th>
-                <th>Liveness</th>
-            </tr>
+            <title>All Albums In Database</title>
+            <style>
+                table {
+                    width: 100%; /* Set the table width to 100% of its container */
+                    border-collapse: collapse; /* Combine cell borders for a cleaner look */
+                }
+
+                th, td {
+                    padding: 1px; /* Add padding to cells for better spacing */
+                    text-align: left; /* Align cell content to the left */
+                }
+
+                th {
+                    background-color: #f2f2f2; /* Set a background color for the table header */
+                }
+            </style>
         </thead>
         <tbody>
-            {% for row in data %}
-                <tr>
-                    <td>{{ row.Artist }}</td>
-                    <td>{{ row.Album }}</td>
-                    <td>{{ row.Year }}</td>
-                    <td>{{ row.Popularity }}</td>
-                    <td>{{ row.Length_Min }}</td>
-                    <td>{{ row.Album_Cover }}</td>
-                    <td>{{ row.ID }}</td>
-                    <td>{{ row.Language }}</td>
-                    <td>{{ row.acousticness }}</td>
-                    <td>{{ row.danceability }}</td>
-                    <td>{{ row.energy }}</td>
-                    <td>{{ row.instrumentalness }}</td>
-                    <td>{{ row.loudness }}</td>
-                    <td>{{ row.mode }}</td>
-                    <td>{{ row.speechiness }}</td>
-                    <td>{{ row.tempo }}</td>
-                    <td>{{ row.valence }}</td>
-                    <td>{{ row.liveness }}</td>
-                </tr>
-            {% endfor %}
+            <h1>{{ title }}</h1>
+            <h2>Count: {{ cat_count }} of {{ all_count }} </h2>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th class = "cover-column">Cover</th>
+                        <th class = "other-column">Album</th>
+                        <th class = "other-column">Artist</th>
+                        <th class = "pop-column">Year</th>
+                        <th class = "pop-column">Popularity</th>
+                        <th class = "pop-column">Length (Min)</th>
+                        <!-- <th>ID</th> -->
+                        <th class = "pop-column">Language</th>
+                        <!-- <th>Acousticness</th>
+                        <th>Danceability</th>
+                        <th>Energy</th>
+                        <th>Instrumentalness</th>
+                        <th>Loudness</th>
+                        <th>Mode</th>
+                        <th>Speechiness</th>
+                        <th>Tempo</th>
+                        <th>Valence</th> -->
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in rows %}
+                        <tr>
+                            <td class = "cover-column"><img src="{{ row.Cover }}" width="50" height="50"></td>
+                            <td class = "other-column">{{ row.Album }}</td>
+                            <td class = "other-column">{{ row.Artist }}</td>
+                            <td class = "pop-column">{{ row.Year }}</td>
+                            <td class = "pop-column">{{ row.Popularity }}</td>
+                            <td class = "pop-column">{{ row.Duration }}</td>
+                            <!-- <td>{{ row.ID }}</td> -->
+                            <td class = "pop-column">{{ row.Language }}</td>
+                            <!-- <td>{{ row.acousticness }}</td>
+                            <td>{{ row.danceability }}</td>
+                            <td>{{ row.energy }}</td>
+                            <td>{{ row.instrumentalness }}</td>
+                            <td>{{ row.loudness }}</td>
+                            <td>{{ row.mode }}</td>
+                            <td>{{ row.speechiness }}</td>
+                            <td>{{ row.tempo }}</td>
+                            <td>{{ row.valence }}</td> -->
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
         </tbody>
     </table>
-</body>
 </html>
+{% endblock %}

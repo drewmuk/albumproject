@@ -1,12 +1,13 @@
 import requests
-from PIL import Image
-from io import BytesIO
 import csv
 import time
+import os
+
 from albums.albums import settings
 
-# Get the API access token (updates every hour)
+#from albums.album_app.models import Album, Song  # Import models?
 
+# Get the API access token (updates every hour)
 def get_access_token(client_id, client_secret):
     # Endpoint for getting the access token
     token_url = "https://accounts.spotify.com/api/token"
@@ -41,7 +42,8 @@ def get_albums_data(artist_ids, other_album_ids, spanish_artists, omit_ids, test
     all_albums = [['Artist','Album','Year','Popularity','Duration', 'Cover',
                    'ID', 'Language',
                    'acousticness','danceability','energy','instrumentalness',
-                   'loudness','mode','speechiness','tempo','valence', 'liveness']]
+                   'loudness','mode','speechiness','tempo','valence', 'liveness',
+                   'Genres']]
     
     highest_ac = []; lowest_ac = []
     highest_da = []; lowest_da = []
@@ -74,15 +76,25 @@ def get_albums_data(artist_ids, other_album_ids, spanish_artists, omit_ids, test
         if indiv_id in spanish_artists:
             language = "Spanish"
 
-        artist_url = f"https://api.spotify.com/v1/artists/{artist_ids[i]}/albums?include_groups=album" # filter out singles, comps, etc.
+        artist_url = f"https://api.spotify.com/v1/artists/{indiv_id}"
 
-        # Make a GET request to get the album data
         response_artist = requests.get(artist_url, headers=headers)
 
-        # Check if the request was successful
         if response_artist.status_code == 200:
-            # Parse the response JSON to access the album data
             artist_data = response_artist.json()
+            artist_genres = artist_data['genres']
+        else:
+            print(response_artist.status_code)
+
+        artist_albums_url = f"https://api.spotify.com/v1/artists/{indiv_id}/albums?include_groups=album" # filter out singles, comps, etc.
+
+        # Make a GET request to get the album data
+        response_artist_albums = requests.get(artist_albums_url, headers=headers)
+
+        # Check if the request was successful
+        if response_artist_albums.status_code == 200:
+            # Parse the response JSON to access the album data
+            artist_data = response_artist_albums.json()
             all_album_ids = []
             for j in range(0,len(artist_data['items'])):
                 album_id = artist_data['items'][j]['id']
@@ -98,7 +110,7 @@ def get_albums_data(artist_ids, other_album_ids, spanish_artists, omit_ids, test
                 print(all_albums_data['albums'][0]['artists'][0]['name'])
                 for k in range(0, len(all_albums_data['albums'])):
                     if not test:
-                        time.sleep(.5)
+                        time.sleep(.6)
                     all_track_ids = []
 
                     total_duration_ms = 0
@@ -317,8 +329,26 @@ def get_albums_data(artist_ids, other_album_ids, spanish_artists, omit_ids, test
                                 all_albums_data['albums'][k]['id'], language]
                         for p in range(0,len(af_values)):
                             temp.append(af_values[p])
+                        temp.append(artist_genres)
                         all_albums.append(temp)
                     
+                    """ if all_albums_data['albums'][k]['artists'][0]['id'] == indiv_id:
+                        new_album = Album(
+                            artist = all_albums_data['albums'][k]['artists'][0]['name'], 
+                            name = all_albums_data['albums'][k]['name'],
+                            year = all_albums_data['albums'][k]['release_date'][:4], 
+                            pop = popularity, duration = duration_min, cover = album_cover_url,
+                            id = all_albums_data['albums'][k]['id'], language = language,
+                            acousticness = af_values[0], danceability = af_values[1],
+                            energy = af_values[2], instrumentalness = af_values[3],
+                            loudness = af_values[4], mode = af_values[5],
+                            speechiness = af_values[6], tempo = af_values[7],
+                            valence = af_values[8], liveness = af_values[9],
+                            genres = artist_genres
+                            )
+                        new_album.save() """
+
+
             else:
                 print("Failed on individual album level")
                 return None
@@ -331,7 +361,6 @@ def get_albums_data(artist_ids, other_album_ids, spanish_artists, omit_ids, test
             print("Error code:", response_artist.status_code)
             print("Failed on artist level")
             return None
-        
     
     for s in range(0, len(other_album_ids)):
         if time.time() - last_access_time > 3200:
@@ -350,6 +379,19 @@ def get_albums_data(artist_ids, other_album_ids, spanish_artists, omit_ids, test
 
         if response_other_album.status_code == 200:
             other_album_data = response_other_album.json()
+
+            indiv_id = other_album_data['artists'][0]['id']
+            
+            artist_url = f"https://api.spotify.com/v1/artists/{indiv_id}"
+
+            response_artist = requests.get(artist_url, headers=headers)
+
+            if response_artist.status_code == 200:
+                artist_data = response_artist.json()
+                artist_genres = artist_data['genres']
+            else:
+                print(response_artist.status_code)
+
             all_track_ids = []
 
             total_duration_ms = 0
@@ -553,6 +595,7 @@ def get_albums_data(artist_ids, other_album_ids, spanish_artists, omit_ids, test
                         other_album_id, language]
                 for p in range(0,len(af_values)):
                     temp.append(af_values[p])
+                temp.append(artist_genres)
                 print(other_album_data['name'])
                 all_albums.append(temp)
 
@@ -789,7 +832,6 @@ with open(output_file_path, "w", newline="", encoding="utf-8") as csvfile:
     csv_writer.writerows(all_albums)
 
 print("CSV file has been created successfully.")
-print(spanish_artists)
 
 end_time = time.time()
 elapsed_time = end_time - start_time
