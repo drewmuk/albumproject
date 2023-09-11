@@ -51,7 +51,7 @@
             {% for row in similar_albums %}
                 <tr>
                     <td class = "cover-column" ><img src="{{ row.5 }}" width="50" height="50"></td>
-                    <td class = "other-column">{{ row.0 }}</td>
+                    <td class = "other-column"><a href="{% url 'album_detail' row.6 %}">{{ row.0 }}</a></td>
                     <td class = "other-column">{{ row.1 }}</td>
                     <td class = "other-column">{{ row.2 }}</td>
                     <td class = "pop-column">{{ row.3 }}</td>

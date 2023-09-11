@@ -111,7 +111,7 @@
                     {% for row in rows %}
                         <tr>
                             <td class = "cover-column"><img src="{{ row.Cover }}" width="50" height="50"></td>
-                            <td class = "other-column">{{ row.Album }}</td>
+                            <td class = "other-column"><a href="{% url 'album_detail' row.ID %}">{{ row.Album }}</a></td>
                             <td class = "other-column">{{ row.Artist }}</td>
                             <td class = "pop-column">{{ row.Year }}</td>
                             <td class = "pop-column">{{ row.Popularity }}</td>

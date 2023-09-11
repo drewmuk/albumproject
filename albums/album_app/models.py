@@ -19,11 +19,11 @@ class Artist(models.Model):
     def __str__(self):
         return self.name
 
-
 class Song(models.Model):
     name = models.CharField(max_length=255)
     artists = models.ManyToManyField(Artist, related_name='song_artists')
-    duration = models.FloatField()
+    duration_min = models.FloatField()
+    duration_sec = models.FloatField()
     number = models.IntegerField()
     song_id = models.CharField(max_length=255)
     
@@ -39,7 +39,7 @@ class Genre(models.Model):
 
 class Album(models.Model):
     artists = models.ManyToManyField(Artist, related_name='album_artists')
-    primary_artist = models.CharField(max_length=255)
+    #primary_artist = models.CharField(max_length=255)
     name = models.CharField(max_length=255)
     year = models.IntegerField()
     pop = models.IntegerField()

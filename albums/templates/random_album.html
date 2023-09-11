@@ -28,13 +28,14 @@
     <h1>Random Album (1 of {{ all_count }})</h1>
     <div class="album-card">
         <img class="album-cover" src="{{ album.5 }}" width=300 height = 300 alt="Album Cover">
-        <div class="album-name">{{ album.1 }} </div>
+        <div class = "album_name"><a href="{% url 'album_detail' album.6 %}">{{ album.1 }}</a></div>
         <div class="album-artist">{{ album.0 }}</div>
         <div class="album-year">{{ album.2 }}</div>
         <div class="album-details">
             <div class="album-popularity">Popularity: {{ album.3 }}</div>
             <div class="album-duration">{{ album.4 }} minutes </div>
         </div>
+        <div class = "album-duration"><a href="{% url 'add_to_lib' %}?album_id={{album.6}}&album_name={{album.1|urlencode}}&artist_name={{album.0|urlencode}}">Save To Your Library</a></div>
     </div>
 </body>
 </html>

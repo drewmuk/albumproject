@@ -36,5 +36,7 @@ urlpatterns = [
     path('albums/all', views.all_albums, name='display_all_albums'),
     path('albums/random', views.choose_random, name='choose_random'),
     path('albums/add', views.add_to_lib, name='add_to_lib'),
-    path('albums/remove', views.rem_from_lib, name='rem_from_lib')
+    path('albums/remove', views.rem_from_lib, name='rem_from_lib'),
+    path('album/<str:input_album_id>/', views.album_detail, name='album_detail'),
+
 ]

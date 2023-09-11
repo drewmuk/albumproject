@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ album.name }} Details</title>
+</head>
+<body>
+    <h1>{{ album.name }}</h1>
+    <!-- <p>Artist: {{ album.primary_artist }}</p> -->
+    <p>Release Year: {{ album.year }}</p>
+
+    <h2>{{num_songs}} Songs:</h2>
+    <ol>
+        {% for song in songs %}
+            <li>{{ song.name }} - {{ song.duration_min }} minutes {{ song.duration_sec }} seconds</li>
+        {% endfor %}
+    </ol>
+</body>
+<div>
+    <a href="javascript:history.back()">Return to previous page</a>
+</div>
+</html>
+{% endblock %}

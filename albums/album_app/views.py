@@ -46,15 +46,15 @@ if local:
     redirect_uri = settings.SPOTIFY_REDIRECT_URI_LOCAL
 
 #print(list_temp)
-output_titles = ['ID','Artist','Album','Year','Popularity','Duration', 
+output_titles = ['ID','Album','Year','Popularity','Duration', 
                       'Cover', 'ID', 'Language','acousticness',
                       'danceability','energy','instrumentalness','loudness',
                       'mode','speechiness','tempo','valence', 'liveness',
                       'genres']
-year_col = 3
-pop_col = 4
-id_col = 7
-language_col = 8
+year_col = 2
+pop_col = 3
+id_col = 6
+language_col = 7
 
 # Year, Pop, Acous, Dance, Energy, Instrum, Loud, Mode, Speech, Tempo, Valence
 weights = [.1,.2,1,1,1,1,1,0,0,1,0]
@@ -635,6 +635,14 @@ def all_albums(request):
                'form': form}
     
     return render(request, 'display_album_table.html', context)
+
+def album_detail(request, input_album_id):
+    album = Album.objects.get(album_id=input_album_id)
+    songs = album.songs.all()
+
+    return render(request, 'album_details.html', {'album': album, 
+                                                  'songs': songs, 
+                                                  'num_songs': len(songs)})
 
 def choose_random(request):
     random_row = df_all.sample().values.tolist()[0]
