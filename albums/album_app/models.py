@@ -11,21 +11,39 @@ class SpotifyToken(models.Model):
     token_type = models.CharField(max_length=50)
     expires_at = models.DateTimeField()
     last_refreshed = models.DateTimeField(auto_now = True)
-    scope = models.CharField(max_length=255)
+
+class Artist(models.Model):
+    name = models.CharField(max_length=255)
+    artist_id = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.name
+
 
 class Song(models.Model):
     name = models.CharField(max_length=255)
-    artist = models.CharField(max_length=255)
-    album = models.ForeignKey('Album', on_delete=models.CASCADE)
+    artists = models.ManyToManyField(Artist, related_name='song_artists')
     duration = models.FloatField()
     number = models.IntegerField()
+    song_id = models.CharField(max_length=255)
+    
+    def __str__(self):
+        return self.name
+
+class Genre(models.Model):
+    name = models.CharField(max_length=255)
+    #genre_id = models.CharField(max_length=255, primary_key=True)
+
+    def __str__(self):
+        return self.name
 
 class Album(models.Model):
-    artist = models.CharField(max_length=255)
-    name = models.CharField(max_length=255, primary_key=True)
+    artists = models.ManyToManyField(Artist, related_name='album_artists')
+    primary_artist = models.CharField(max_length=255)
+    name = models.CharField(max_length=255)
     year = models.IntegerField()
     pop = models.IntegerField()
-    duration = models.IntegerField()
+    duration = models.FloatField()
     cover = models.CharField(max_length=255)
     album_id = models.CharField(max_length=255)
     language = models.CharField(max_length=255)
@@ -39,12 +57,11 @@ class Album(models.Model):
     tempo = models.FloatField()
     valence = models.FloatField()
     liveness = models.FloatField()
-    genres = models.JSONField(blank=True, null=True)
-    songs = models.JSONField(blank=True, null=True)
+    genres = models.ManyToManyField(Genre, related_name='album_genre')
+    songs = models.ManyToManyField(Song, related_name='albums_songs')
 
-
-    # Other album attributes
-
+    def __str__(self):
+        return self.name
 
 class UserChoice(models.Model):
     CHOICES = (
