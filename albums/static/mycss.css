@@ -4,6 +4,10 @@
     position: relative; /* relative position to the parent for right-element's absolute positioning */
 }
 
+.home-title {
+    text-align: center;
+}
+
 .user-actions {
     width: 100%;
     text-align: center;
@@ -24,6 +28,11 @@
 }
 
 .cover-column {
+    width: 50px;
+}
+
+.album-column {
+    text-align: center;
     width: 50px;
 }
 
@@ -49,28 +58,38 @@
     padding: 20px;
     width: 300px;
     text-align: center;
+    height:1000px
 }
 .album-cover {
     border-radius: 8px;
     margin-bottom: 15px;
 }
 .album-name {
-    font-size: 4rem;
+    font-size: 1.5;
     font-weight: bold;
     margin-bottom: 5px;
 }
 .album-artist {
-    font-size: 3rem;
+    font-size: 1.2rem;
     color: #777;
     margin-bottom: 10px;
 }
 .album-year {
-    font-size: 2rem;
+    font-size: 1.2rem;
     color: #777;
     margin-bottom: 10px;
 }
 .album-details {
-    font-size: 2rem;
+    font-size: 1rem;
     color: #333;
     margin-bottom: 15px;
+}
+
+.container {
+    display: flex;
+}
+
+.column {
+    flex: 1;
+    text-align:center;
 }

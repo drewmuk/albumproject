@@ -112,7 +112,7 @@ def get_albums_data(artist_ids, other_album_ids, spanish_artists, omit_ids):
                 all_albums_data = response_album.json()
                 print(all_albums_data['albums'][0]['artists'][0]['name'])
                 for k in range(0, len(all_albums_data['albums'])):
-                    time.sleep(.7)
+                    time.sleep(.5)
                     all_track_ids = []
 
                     total_duration_ms = 0
@@ -342,7 +342,7 @@ def get_albums_data(artist_ids, other_album_ids, spanish_artists, omit_ids):
                     
                     if all_albums_data['albums'][k]['artists'][0]['id'] == indiv_id:
                         new_album = Album.objects.create(
-                            primary_artist = all_albums_data['albums'][k]['arists'][0]['name'],
+                            primary_artist = all_albums_data['albums'][k]['artists'][0]['name'],
                             name = all_albums_data['albums'][k]['name'],
                             year = all_albums_data['albums'][k]['release_date'][:4], 
                             pop = popularity, duration = duration_min, cover = album_cover_url,
@@ -358,7 +358,8 @@ def get_albums_data(artist_ids, other_album_ids, spanish_artists, omit_ids):
                         for track in all_albums_data['albums'][k]['tracks']['items']:
                             current_song = Song(
                                 name = track['name'],
-                                duration = track['duration_ms'] / 1000,
+                                duration_min = round((track['duration_ms'] / 1000) / 60, 0),
+                                duration_sec = round((track['duration_ms'] / 1000) % 60, 0),
                                 number = track['track_number'],
                                 song_id = track['id']
                             )
@@ -656,7 +657,8 @@ def get_albums_data(artist_ids, other_album_ids, spanish_artists, omit_ids):
                         for track in other_album_data['tracks']['items']:
                             current_song = Song(
                                 name = track['name'],
-                                duration = track['duration_ms'] / 1000,
+                                duration_min = round((track['duration_ms'] / 1000) / 60, 0),
+                                duration_sec = round((track['duration_ms'] / 1000) % 60, 0),
                                 number = track['track_number'],
                                 song_id = track['id']
                             )
@@ -684,7 +686,7 @@ def get_albums_data(artist_ids, other_album_ids, spanish_artists, omit_ids):
         else:
             print(response_other_album.status_code)
 
-    lists_names = ['high acousticness','high danceability','high energy','high instrumentalness',
+    """ lists_names = ['high acousticness','high danceability','high energy','high instrumentalness',
                    'high loudness','high mode','high speechiness','high tempo','high valence',
                    'low acousticness','low danceability','low energy','low instrumentalness',
                    'low loudness','low mode','low speechiness','low tempo','low valence']
@@ -721,7 +723,7 @@ def get_albums_data(artist_ids, other_album_ids, spanish_artists, omit_ids):
         writer.writerow(['Artist Name', 'Track Name', 'Track ID', 'Value', 'Type'])  # Write the header row
 
         for data in combined_list:
-            writer.writerow(data)
+            writer.writerow(data) """
 
     return all_albums
 

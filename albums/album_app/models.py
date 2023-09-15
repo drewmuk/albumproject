@@ -39,7 +39,7 @@ class Genre(models.Model):
 
 class Album(models.Model):
     artists = models.ManyToManyField(Artist, related_name='album_artists')
-    #primary_artist = models.CharField(max_length=255)
+    primary_artist = models.CharField(max_length=255)
     name = models.CharField(max_length=255)
     year = models.IntegerField()
     pop = models.IntegerField()
