@@ -30,14 +30,18 @@ redirect_uri = settings.SPOTIFY_REDIRECT_URI_REMOTE
 scope = "user-library-read user-top-read user-library-modify"
 
 local = 0
-""" # read the csv file
-try:
+# read the csv file
+"""try:
     df_all = pd.read_csv('C:/Users/drewm/Desktop/album_project/input_output/output.csv', encoding='utf-8')
     local = 1
 except:
-    df_all = pd.read_csv('/home/dm1202/albumproject/input_output/output.csv', encoding='utf-8') """
+    df_all = pd.read_csv('/home/dm1202/albumproject/input_output/output.csv', encoding='utf-8')"""
 
-df_all = pd.DataFrame(list(Album.objects.all().values()))
+try:
+    df_all = pd.DataFrame(list(Album.objects.all().values()))
+except:
+    df_all = pd.DataFrame([])
+
 all_album_data = df_all.values.tolist()
 #df_all = pd.DataFrame(list_df_all)
 #list_raw_albums = list(raw_all_albums)
@@ -46,15 +50,15 @@ if local:
     redirect_uri = settings.SPOTIFY_REDIRECT_URI_LOCAL
 
 #print(list_temp)
-output_titles = ['ID','Album','Year','Popularity','Duration', 
+output_titles = ['ID','Artist','Album','Year','Popularity','Duration', 
                       'Cover', 'ID', 'Language','acousticness',
                       'danceability','energy','instrumentalness','loudness',
                       'mode','speechiness','tempo','valence', 'liveness',
                       'genres']
-year_col = 2
-pop_col = 3
-id_col = 6
-language_col = 7
+year_col = 3
+pop_col = 4
+id_col = 7
+language_col = 8
 
 # Year, Pop, Acous, Dance, Energy, Instrum, Loud, Mode, Speech, Tempo, Valence
 weights = [.1,.2,1,1,1,1,1,0,0,1,0]
@@ -119,7 +123,7 @@ def user_login(request):
         if user is not None:
             login(request, user)
             # Redirect to a success page.
-            return redirect('spotify_login')
+            return redirect('home_page')
         else:
             # Return an 'invalid login' error message.
             print('here instead')
@@ -142,7 +146,7 @@ def sign_up(request):
             return render(request, 'sign_up.html', {'error': 'Username already exists.'})
         user = User.objects.create_user(username=username, password=password)
         login(request, user)
-        return redirect('spotify_login')
+        return redirect('home_page')
     else:
         return render(request, 'sign_up.html')
 
@@ -299,7 +303,10 @@ def most_similar_albums(request):
 
     all_album_data = df_all_input.values.tolist()
 
-    spotify_token = SpotifyToken.objects.get(user_id=request.user.id)
+    try:
+        spotify_token = SpotifyToken.objects.get(user_id=request.user.id)
+    except:
+        return redirect('spotify_login')
 
     if spotify_token.expires_at >= timezone.now():
         new_token = refresh_spotify_token(spotify_token, client_id, client_secret)
@@ -646,7 +653,6 @@ def album_detail(request, input_album_id):
 
 def choose_random(request):
     random_row = df_all.sample().values.tolist()[0]
-    print(random_row)
     context = {'album': random_row, 
                'all_count': len(df_all)}
     return render(request, 'random_album.html', context)
