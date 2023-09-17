@@ -1,4 +1,3 @@
-{% extends "base.html" %}
 {% load static %}
 
 {% block content %}
@@ -8,11 +7,15 @@
     <title>Home Page</title>
     <link rel="stylesheet" type="text/css" href="{% static 'mycss.css' %}">
 </head>
+
+<div class = "home-title">
+    <h1>Spotify Enhanced</h1>
+</div>
 <div class="headers">
     <body>
             {% if user.is_authenticated %}
                 <div class = "user-actions">
-                    <p>Welcome, {{ user.username }}!</p>
+                    <p>Welcome, <b>{{ user.username }}</b>!</p>
                     <a href="{% url 'user_logout' %}">Log out</a>
                 </div>
                 <div class="spotify-account">
