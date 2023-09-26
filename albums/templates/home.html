@@ -24,11 +24,12 @@
                     {% else %}
                         <p> You are not logged into a Spotify account. </p>
                         <a href="{% url 'spotify_login' %}"target="_blank">Log into Spotify</a>
+                        <div class="spotify-note">
+                            <p>Note: once you sign into Spotify with this SpotifyEnhance account,
+                            you cannot switch to a different Spotify account.</p>
+                        </div>
                     {% endif %}
-                    <div class="spotify-note">
-                        <p>Note: once you sign into Spotify with this SpotifyEnhance account,
-                        you cannot switch to a different Spotify account.</p>
-                    </div>
+                    
                 </div>
                 
                 <div class="app-functions">
@@ -41,6 +42,13 @@
                         </div>
                         <div class="choose-random">
                             <a href="{% url 'choose_random' %}">Pick A Random Album</a>
+                        </div>
+                        <br>
+                        <div>
+                            <a href="{% url 'display_list' %}?type=completed">Display Completed List</a>
+                        </div>
+                        <div>
+                            <a href="{% url 'display_list' %}?type=to_do">Display To-Do List</a>
                         </div>
                     </body>
                 </div>

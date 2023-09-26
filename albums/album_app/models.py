@@ -1,9 +1,13 @@
 from django.db import models
 from django import forms
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, UserManager
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import UserCreationForm
+
 
 # Create your models here.
+
+
 class SpotifyToken(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     access_token = models.CharField(max_length=255)
@@ -11,6 +15,9 @@ class SpotifyToken(models.Model):
     token_type = models.CharField(max_length=50)
     expires_at = models.DateTimeField()
     last_refreshed = models.DateTimeField(auto_now = True)
+
+
+
 
 class Artist(models.Model):
     name = models.CharField(max_length=255)
@@ -22,8 +29,8 @@ class Artist(models.Model):
 class Song(models.Model):
     name = models.CharField(max_length=255)
     artists = models.ManyToManyField(Artist, related_name='song_artists')
-    duration_min = models.FloatField()
-    duration_sec = models.FloatField()
+    duration_min = models.IntegerField()
+    duration_sec = models.IntegerField()
     number = models.IntegerField()
     song_id = models.CharField(max_length=255)
     
@@ -60,9 +67,27 @@ class Album(models.Model):
     genres = models.ManyToManyField(Genre, related_name='album_genre')
     songs = models.ManyToManyField(Song, related_name='albums_songs')
 
+    """completed_lists = models.ManyToManyField(CompletedList, related_name='album_completed_lists')
+    to_do_lists = models.ManyToManyField(ToDoList, related_name = 'album_to_do_lists')"""
+
     def __str__(self):
         return self.name
+    
+class CompletedList(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    albums = models.ManyToManyField(Album, related_name='completed_list_albums')
 
+class ToDoList(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    albums = models.ManyToManyField(Album, related_name='to_do_list_albums')
+""" 
+class CustomUser(models.Model):
+    completed_list = models.OneToOneField(CompletedList, on_delete=models.CASCADE, related_name='user_comp_list')
+    to_do_list = models.OneToOneField(ToDoList, on_delete=models.CASCADE, related_name='user_to_do_list')
+
+    REQUIRED_FIELDS = [] """
+    
+    
 class UserChoice(models.Model):
     CHOICES = (
         ('Option1', 'Option 1'),

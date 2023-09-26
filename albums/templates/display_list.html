@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Completed Albums</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'mycss.css' %}">
+</head>
+<div>
+    <a href="javascript:history.back()">Return to previous page</a>
+</div>
+<body>
+    <h1>
+        {% if completed %}
+            Completed Albums ({{ num_albums }} total)
+        {% else %}
+            To-Do Albums ({{ num_albums }} total)
+        {% endif %}
+    </h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th class = "cover-column" >Cover</th>
+                <th class = "other-column">Album</th>
+                <th class = "other-column">Artist</th>
+                <th class = "other-column">Year</th>
+                <th class = "pop-column">Popularity</th>
+                <th class = "other-column">Length (Min)</th>
+                <th class = "other-column">Save</th>
+                <th class = "other-column">Remove</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for album in all_albums %}
+                <tr>
+                    <td class = "cover-column" ><img src="{{ album.5 }}" width="50" height="50"></td>
+                    <td class = "other-column"><a href="{% url 'album_detail' album.6 %}">{{ album.0 }}</a></td>
+                    <td class = "other-column">{{ album.1 }}</td>
+                    <td class = "other-column">{{ album.2 }}</td>
+                    <td class = "pop-column">{{ album.3 }}</td>
+                    <td class = "other-column">{{ album.4 }}</td>
+                    <td class = "other-column"><a href="{% url 'add_to_lib' %}?album_id={{album.6}}&album_name={{album.0|urlencode}}&artist_name={{album.1|urlencode}}">Save To Your Library</a></td>
+                    {% if completed %}
+                        <td class = "other-column"><a href="{% url 'remove_from_completed' album.6 %}">Remove From List</a></td>
+                    {% else %}
+                        <td class = "other-column"><a href="{% url 'remove_from_to_do' album.6 %}">Remove From List</a></td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</html>
+{% endblock %}

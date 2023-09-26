@@ -44,19 +44,27 @@
                 <th class = "other-column">Year</th>
                 <th class = "pop-column">Popularity</th>
                 <th class = "other-column">Length (Min)</th>
+                <th class = "other-column">Language</th>
                 <th class = "other-column">Save</th>
+                <th class = "other-column">Add</th>
             </tr>
         </thead>
         <tbody>
             {% for row in similar_albums %}
                 <tr>
-                    <td class = "cover-column" ><img src="{{ row.5 }}" width="50" height="50"></td>
-                    <td class = "other-column"><a href="{% url 'album_detail' row.6 %}">{{ row.0 }}</a></td>
-                    <td class = "other-column">{{ row.1 }}</td>
-                    <td class = "other-column">{{ row.2 }}</td>
-                    <td class = "pop-column">{{ row.3 }}</td>
-                    <td class = "other-column">{{ row.4 }}</td>
-                    <td class = "other-column"><a href="{% url 'add_to_lib' %}?album_id={{row.6}}&album_name={{row.0|urlencode}}&artist_name={{row.1|urlencode}}">Save To Your Library</a></td>
+                    <td class = "cover-column" ><img src="{{ row.Cover }}" width="50" height="50"></td>
+                    <td class = "other-column"><a href="{% url 'album_detail' row.ID %}">{{ row.Album }}</a></td>
+                    <td class = "other-column">{{ row.Artist }}</td>
+                    <td class = "other-column">{{ row.Year }}</td>
+                    <td class = "pop-column">{{ row.Popularity }}</td>
+                    <td class = "other-column">{{ row.Duration }}</td>
+                    <td class = "other-column">{{ row.Language }}</td>
+                    <td class = "other-column"><a href="{% url 'add_to_lib' %}?album_id={{row.ID}}&album_name={{row.Album|urlencode}}&artist_name={{row.Artist|urlencode}}">Save To Your Library</a></td>
+                    <td class = "other-column">
+                        <a href="{% url 'add_to_completed' row.ID %}">Add To Your Completed List</a>
+                        <br>
+                        <a href="{% url 'add_to_to_do' row.ID %}">Add To Your To-Do List</a>
+                    </td>
                 </tr>
             {% endfor %}
         </tbody>

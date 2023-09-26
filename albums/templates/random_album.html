@@ -27,16 +27,22 @@
 <body>
     <h1>Random Album (1 of {{ all_count }})</h1>
     <div class="album-card">
-        <img class="album-cover" src="{{ album.5 }}" width=300 height = 300 alt="Album Cover">
-        <div class = "album_name"><a href="{% url 'album_detail' album.6 %}">{{ album.1 }}</a></div>
-        <div class="album-artist">{{ album.0 }}</div>
-        <div class="album-year">{{ album.2 }}</div>
+        <img class="album-cover" src="{{ album.Cover }}" width=300 height = 300 alt="Album Cover">
+        <div class = "album_name"><a href="{% url 'album_detail' album.ID %}">{{ album.Album }}</a></div>
+        <div class="album-artist">{{ album.Artist }}</div>
+        <div class="album-year">{{ album.Year }}</div>
         <div class="album-details">
-            <div class="album-popularity">Popularity: {{ album.3 }}</div>
-            <div class="album-duration">{{ album.4 }} minutes </div>
+            <div class="album-popularity">Popularity: {{ album.Popularity }}</div>
+            <div class="album-duration">{{ album.Duration }} minutes </div>
         </div>
-        <div class = "album-duration"><a href="{% url 'add_to_lib' %}?album_id={{album.6}}&album_name={{album.1|urlencode}}&artist_name={{album.0|urlencode}}">Save To Your Library</a></div>
+        <div class = "album-duration"><a href="{% url 'add_to_lib' %}?album_id={{album.ID}}&album_name={{album.Album|urlencode}}&artist_name={{album.Artist|urlencode}}">Save To Your Library</a></div>
+        <div class = "album-duration"><a href="{% url 'add_to_completed' album.ID %}">Add To Your Completed List</a></div>
+        <div class = "album-duration"><a href="{% url 'add_to_to_do' album.ID %}">Add To Your To-Do List</a></div>
+        <br><br><br><br>
+
+        <div class = "album-artist"><a href="{% url 'choose_random' %}">Randomize Again</a></div>
     </div>
+
 </body>
 </html>
 {% endblock %}

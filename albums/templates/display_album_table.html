@@ -55,10 +55,21 @@
         <div>
             <b>Year Filter:</b>
             <form method="get">
-                {{ form }}
+                {{ year_form }}
             </form>
             <div>
                 <button type="submit">Apply Filters</button>
+            </div>
+        </div>
+        <br>
+        <div style = "margin-right:1px">
+            <b>Search:</b>
+            <form method="get">
+                {{ search_form }}
+            </form>
+            <br>
+            <div>
+                <button type="submit">Search</button>
             </div>
         </div>
     </form>
@@ -96,6 +107,7 @@
                         <!-- <th>ID</th> -->
                         <th class = "pop-column">Language</th>
                         <th class = "other-column">Save</th>
+                        <th class = "other-column">Add</th>
                         <!-- <th>Acousticness</th>
                         <th>Danceability</th>
                         <th>Energy</th>
@@ -118,7 +130,15 @@
                             <td class = "pop-column">{{ row.Duration }}</td>
                             <!-- <td>{{ row.ID }}</td> -->
                             <td class = "pop-column">{{ row.Language }}</td>
-                            <td class = "other-column"><a href="{% url 'add_to_lib' %}?album_id={{row.ID}}&album_name={{row.Album|urlencode}}&artist_name={{row.Artist|urlencode}}">Save To Your Library</a></td>
+                            <td class = "other-column">
+                                <a href="{% url 'add_to_lib' %}?album_id={{row.ID}}&album_name={{row.Album|urlencode}}&artist_name={{row.Artist|urlencode}}">Save To Your Library</a>
+                            </td>
+                            <td class = "other-column">
+                                <a href="{% url 'add_to_completed' row.ID %}">Add To Your Completed List</a>
+                                <br>
+                                <a href="{% url 'add_to_to_do' row.ID %}">Add To Your To-Do List</a>
+                            </td>
+
                             <!-- <td>{{ row.acousticness }}</td>
                             <td>{{ row.danceability }}</td>
                             <td>{{ row.energy }}</td>

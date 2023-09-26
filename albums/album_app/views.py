@@ -1,10 +1,11 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import logout, authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.utils import timezone
 from django.core.cache import cache
 from django_ratelimit.decorators import ratelimit
+from django.urls import reverse
 
 from albums import settings
 import spotipy
@@ -18,15 +19,15 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.cluster import KMeans
 from album_app.forms import UserChoiceForm
 
-from .models import SpotifyToken, Album, Genre, Artist, Song
+from .models import *
 import random
 import urllib.parse
 
-from .forms import YearFilterForm
+from .forms import *
 
 client_id = settings.SPOTIFY_CLIENT_ID
 client_secret = settings.SPOTIFY_CLIENT_SECRET
-redirect_uri = settings.SPOTIFY_REDIRECT_URI_REMOTE
+redirect_uri = settings.SPOTIFY_REDIRECT_URI_LOCAL
 scope = "user-library-read user-top-read user-library-modify"
 
 local = 0
@@ -50,7 +51,9 @@ if local:
     redirect_uri = settings.SPOTIFY_REDIRECT_URI_LOCAL
 
 #print(list_temp)
-output_titles = ['ID','Artist','Album','Year','Popularity','Duration', 
+small_output_titles = ['Artist','Album','Year','Popularity','Duration',
+                       'Cover', 'ID', 'Language', 'AudioFeatures', 'Genres']
+output_titles = ['xID','Artist','Album','Year','Popularity','Duration', 
                       'Cover', 'ID', 'Language','acousticness',
                       'danceability','energy','instrumentalness','loudness',
                       'mode','speechiness','tempo','valence', 'liveness',
@@ -145,6 +148,8 @@ def sign_up(request):
         if User.objects.filter(username=username).exists():
             return render(request, 'sign_up.html', {'error': 'Username already exists.'})
         user = User.objects.create_user(username=username, password=password)
+        CompletedList.objects.create(user=user)
+        ToDoList.objects.create(user=user)
         login(request, user)
         return redirect('home_page')
     else:
@@ -422,12 +427,12 @@ def most_similar_albums(request):
     cluster_label = kmeans.predict(scaled_af_values)
 
     same_cluster_indices = [i for i, label in enumerate(labels) if label == cluster_label[0]]
-    
+
     similar_album_names_cat1 = []
     similar_album_ids_cat1 = []
     for m in range(0,len(same_cluster_indices)):
         similar_album_names_cat1.append(all_album_data[same_cluster_indices[m]][1])
-        similar_album_ids_cat1.append(all_album_data[same_cluster_indices[m]][6])
+        similar_album_ids_cat1.append(all_album_data[same_cluster_indices[m]][id_col])
 
     # This is the second method: using the weighted Euclidian distance between items
     if language_input == 'English':
@@ -444,58 +449,77 @@ def most_similar_albums(request):
         similar_album_ids_cat2.append(all_album_data[distance_closest_indices[n]][id_col])
 
     # Check which values are in both lists, and append those to the list of similar albums
+    sim_album_ids = []
+
+    for album_id in similar_album_ids_cat1:
+        if album_id in similar_album_ids_cat2:
+            sim_album_ids.append(album_id)
+    
+    # If there are none in both then just use all of both
+    if len(sim_album_ids) == 0:
+        sim_album_ids = similar_album_ids_cat1 + similar_album_ids_cat2
+
     sim_albums_temp = []
-    for p in range(0, len(similar_album_ids_cat1)):
-        if similar_album_ids_cat1[p] in similar_album_ids_cat2:
+
+    for current_album in sim_album_ids:
             album_info = []
-            album_id = all_album_data[same_cluster_indices[p]][id_col]
 
             # Get the relevant information about the albums (artists & genres)
-            album_instance = Album.objects.get(album_id=album_id)
-            album_artist = album_instance.artists.first().name
-            
+            album_instance = Album.objects.get(album_id=current_album)
+
+            album_af = []
+            album_af += [album_instance.acousticness,
+                         album_instance.danceability,
+                         album_instance.energy,
+                         album_instance.instrumentalness,
+                         album_instance.loudness,
+                         album_instance.mode,
+                         album_instance.speechiness,
+                         album_instance.tempo,
+                         album_instance.valence]
+           
             associated_genres = album_instance.genres.all()
             album_genres = [genre.name for genre in associated_genres]
 
-            album_name = all_album_data[same_cluster_indices[p]][1]
-            album_year = all_album_data[same_cluster_indices[p]][year_col]
-            album_pop = all_album_data[same_cluster_indices[p]][pop_col]
-            album_length = all_album_data[same_cluster_indices[p]][4]
-            album_cover = all_album_data[same_cluster_indices[p]][5]
-
-            album_af = data_np_scaled[same_cluster_indices[p]]
-
-            album_info.append(album_name)
-            album_info.append(album_artist)
-            album_info.append(album_year)
-            album_info.append(album_pop)
-            album_info.append(album_length)
-            album_info.append(album_cover)
-            album_info.append(album_id)
+            album_info.append(album_instance.artists.first().name)
+            album_info.append(album_instance.name)
+            album_info.append(album_instance.year)
+            album_info.append(album_instance.pop)
+            album_info.append(album_instance.duration)
+            album_info.append(album_instance.cover)
+            album_info.append(album_instance.album_id)
+            album_info.append(album_instance.language)
             album_info.append(album_af)
-            album_info.append(album_genres)
+            album_info.append(album_genres) # Index 9
             sim_albums_temp.append(album_info)
 
-    all_similar_albums = []
+    all_similar_albums_1 = []
 
     top_genres = get_genres(top_tracks_raw)
+
 
     # Check which of the most similar albums also match any of the genres
     # from the user's top tracks
     for sim_album in sim_albums_temp:
-        album_genres = sim_album[8]
+        album_genres = sim_album[9]
         for genre in album_genres:
             # String formatting
-            cleaned_genre = genre.replace("'", '').replace('[', '').replace(']', '')
-            if cleaned_genre in top_genres:
-                all_similar_albums.append(sim_album)
+            #cleaned_genre = genre.replace("'", '').replace('[', '').replace(']', '')
+            if genre in top_genres:
+                all_similar_albums_1.append(sim_album)
 
-    # Mix up the albums so they're not in alphabetical order by artist
+    # Remove duplicates, then mix up the albums so they're not in alphabetical order by artist
+    all_similar_albums = []
+    [all_similar_albums.append(x) for x in all_similar_albums_1 if x not in all_similar_albums]
     random.shuffle(all_similar_albums)
+    all_similar_albums = [dict(zip(small_output_titles, row)) for row in all_similar_albums]
+
+
 
     # Process the data and render the template
-    context = {'similar_albums': all_similar_albums, 'top_tracks': scaled_af_values, 
-               'similar_count': len(all_similar_albums), 'all_count': len(all_album_data)}
+    context = {'headers': small_output_titles,'similar_albums': all_similar_albums, 
+               'top_tracks': scaled_af_values, 'similar_count': len(all_similar_albums), 
+               'all_count': len(all_album_data)}
     
     return render(request, 'similar_albums.html', context)
 
@@ -549,6 +573,85 @@ def rem_from_lib(request):
                     'album_id': album_id}
             
         return render(request, 'delete_success.html', context)
+    
+def add_to_completed(request, input_album_id):
+    current_album = get_object_or_404(Album, album_id = input_album_id)
+
+    user_completed_list, created = CompletedList.objects.get_or_create(user=request.user)
+
+    user_completed_list.albums.add(current_album)
+
+    url = reverse('display_list') + f'?type={"completed"}'
+
+    return redirect(url)  # Redirect to a view that lists albums
+ 
+def add_to_to_do(request, input_album_id):
+    current_album = get_object_or_404(Album, album_id = input_album_id)
+
+    user_completed_list, created = ToDoList.objects.get_or_create(user=request.user)
+
+    user_completed_list.albums.add(current_album)
+
+    url = reverse('display_list') + f'?type={"to_do"}'
+
+    return redirect(url)
+
+def remove_from_completed(request, input_album_id):
+    current_album = get_object_or_404(Album, album_id = input_album_id)
+
+    user_completed_list, created = CompletedList.objects.get_or_create(user=request.user)
+
+    user_completed_list.albums.remove(current_album)
+
+    url = reverse('display_list') + f'?type={"completed"}'
+
+    return redirect(url)
+
+def remove_from_to_do(request, input_album_id):
+    current_album = get_object_or_404(Album, album_id = input_album_id)
+
+    user_completed_list, created = ToDoList.objects.get_or_create(user=request.user)
+
+    user_completed_list.albums.remove(current_album)
+
+    url = reverse('display_list') + f'?type={"to_do"}'
+
+    return redirect(url)
+
+def display_list(request):
+
+    type = request.GET.get('type')
+
+    all_albums = []
+
+    if type == "completed":
+        list =  CompletedList.objects.get(user=request.user)
+        completed = 1
+    else:
+        list =  ToDoList.objects.get(user=request.user)
+        completed = 0
+
+    for album in list.albums.all():
+        temp = []
+        temp.append(album.name)
+        temp.append(album.primary_artist)
+        temp.append(album.year)
+        temp.append(album.pop)
+        temp.append(album.duration)
+        temp.append(album.cover)
+        temp.append(album.album_id)
+        all_albums.append(temp)
+
+    album_id = ''
+    if len(list.albums.all()) != 0:
+        album_id = album.album_id
+
+    context = {'all_albums': all_albums, 
+               'num_albums': len(all_albums),
+               'album_id': album_id,
+               'completed': completed}
+
+    return render(request, 'display_list.html', context)
 
 def all_albums(request):
     # Get the input values from the web page forms
@@ -557,13 +660,18 @@ def all_albums(request):
     type_sort = request.GET.get('type_sort1', 'desc') == 'desc'
     language_input = request.GET.get('language_select', 'Both')
     pop_input = request.GET.get('pop_select')
-    form = YearFilterForm(request.GET)
+    search_form = SearchForm(request.GET)
+    year_form = YearFilterForm(request.GET)
 
-    if form.is_valid():
-        min_year = form.cleaned_data['min_year']
-        max_year = form.cleaned_data['max_year']
+    if search_form.is_valid():
+        search_input = search_form.cleaned_data['search_input']
     else:
-        print('invalid form')
+        print('invalid search')
+    if year_form.is_valid():
+        min_year = year_form.cleaned_data['min_year']
+        max_year = year_form.cleaned_data['max_year']
+    else:
+        print('invalid year form')
     
     # Formatting the parameters & title for year filtering
     if min_year == None and max_year == None:
@@ -604,6 +712,7 @@ def all_albums(request):
             dict(zip(output_titles, row)) 
             for row in all_album_data 
             if row[language_col] == language_input
+            and (search_input.lower() in row[1].lower() or search_input.lower() in row[2].lower())
             and int(row[year_col]) >= min_year
             and int(row[year_col]) < max_year
             and int(row[pop_col]) > min_pop
@@ -616,12 +725,18 @@ def all_albums(request):
             dict(zip(output_titles, row)) 
             for row in all_album_data 
             if int(row[year_col]) >= min_year
+            and (search_input.lower() in row[1].lower() or search_input.lower() in row[2].lower())
             and int(row[year_col]) < max_year
             and int(row[pop_col]) > min_pop
             and int(row[pop_col]) <= max_pop
         ]
+    
+    if search_input != '':
+        stitle = "(Search criteria: '"+ search_input + "')"
+    else:
+        stitle = ''
 
-    title = 'All ' + ltitle + ' ' + ptitle + ' Albums in Database ' + mtitle
+    title = 'All ' + ltitle + ' ' + ptitle + ' Albums in Database ' + mtitle + stitle
 
     if sort_by2 == 'Random':
         try:
@@ -639,7 +754,8 @@ def all_albums(request):
                'title': title,
                'cat_count': len(album_table),
                'all_count': len(all_album_data),
-               'form': form}
+               'search_form': search_form,
+               'year_form': year_form}
     
     return render(request, 'display_album_table.html', context)
 
@@ -653,6 +769,7 @@ def album_detail(request, input_album_id):
 
 def choose_random(request):
     random_row = df_all.sample().values.tolist()[0]
+    random_row = dict(zip(output_titles, random_row))
     context = {'album': random_row, 
                'all_count': len(df_all)}
     return render(request, 'random_album.html', context)

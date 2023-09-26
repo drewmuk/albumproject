@@ -1,4 +1,5 @@
 from django import forms
+
 from album_app.models import UserChoice
 
 class UserChoiceForm(forms.ModelForm):
@@ -10,6 +11,8 @@ class YearFilterForm(forms.Form):
     min_year = forms.IntegerField(required=False, label='Minimum')
     max_year = forms.IntegerField(required=False, label='Maximum')
 
+class SearchForm(forms.Form):
+    search_input = forms.CharField(required=False, label='Search')
 
 class AcousticnessForm(forms.Form):
     OPTIONS = (
