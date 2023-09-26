@@ -27,7 +27,7 @@ from .forms import *
 
 client_id = settings.SPOTIFY_CLIENT_ID
 client_secret = settings.SPOTIFY_CLIENT_SECRET
-redirect_uri = settings.SPOTIFY_REDIRECT_URI_LOCAL
+redirect_uri = settings.SPOTIFY_REDIRECT_URI_REMOTE
 scope = "user-library-read user-top-read user-library-modify"
 
 local = 0
@@ -44,13 +44,7 @@ except:
     df_all = pd.DataFrame([])
 
 all_album_data = df_all.values.tolist()
-#df_all = pd.DataFrame(list_df_all)
-#list_raw_albums = list(raw_all_albums)
 
-if local:
-    redirect_uri = settings.SPOTIFY_REDIRECT_URI_LOCAL
-
-#print(list_temp)
 small_output_titles = ['Artist','Album','Year','Popularity','Duration',
                        'Cover', 'ID', 'Language', 'AudioFeatures', 'Genres']
 output_titles = ['xID','Artist','Album','Year','Popularity','Duration', 
