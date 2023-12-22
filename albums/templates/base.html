@@ -2,12 +2,29 @@
 <html>
 <head>
     <title>{% block title %}Spotify Enhance{% endblock %}</title>
-    <!-- other headers -->
+    <style>
+        body {
+            background-color: #cfd9d2;
+        }
+    </style>
+
 </head>
 <body>
     <header>
         <a href="{% url 'home_page' %}">Return to Home</a>
-        <!-- other header information -->
+        <div class="dropdown">
+            <button class="dropbtn">Albums</button>
+            <div class="album-dropdown">
+                <a href="{% url 'most_similar_albums' %}">Recommended Albums</a>
+                <a href="{% url 'display_all_albums' %}">All Albums</a>
+                <a href="{% url 'choose_random' %}">Random Album</a>
+            </div>
+            <button class="dropbtn">My Lists</button>
+            <div class="list-dropdown">
+                <a href="{% url 'display_list' %}?type=completed">Completed</a>
+                <a href="{% url 'display_list' %}?type=to_do">To Do</a>
+            </div>
+        </div>
     </header>
     {% block content %}
     {% endblock %}
