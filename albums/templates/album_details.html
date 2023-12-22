@@ -7,21 +7,43 @@
 <head>
     <meta charset="UTF-8">
     <title>{{ album.name }} Details</title>
-</head>
-<body>
-    <h1>{{ album.name }}</h1>
-    <!-- <p>Artist: {{ album.primary_artist }}</p> -->
-    <p>Release Year: {{ album.year }}</p>
+    <link rel="stylesheet" type="text/css" href="{% static 'mycss.css' %}">
 
-    <h2>{{num_songs}} Songs:</h2>
-    <ol>
-        {% for song in songs %}
-            <li>{{ song.name }} - {{ song.duration_min }} minutes {{ song.duration_sec }} seconds</li>
-        {% endfor %}
-    </ol>
-</body>
+</head>
 <div>
     <a href="javascript:history.back()">Return to previous page</a>
 </div>
+<body>
+    <br>
+    <div class = "container">
+        <div class = "column">
+            <img src="{{ album.cover }}" width=300 height = 300 alt="Album Cover">
+            <h1>{{ album.name }}</h1>
+            <h3> By {{ album.primary_artist }}</h3>
+            <p>Release Year: {{ album.year }}</p>
+            <a href="{% url 'add_to_lib' %}?album_id={{album.album_id}}&album_name={{album.name|urlencode}}&artist_name={{album.primary_artist|urlencode}}">Save To Your Library</a>
+        </div>
+    
+        <div class = "column">
+            <h2>{{num_songs}} Songs:</h2>
+            <table border="1">
+                <tbody>
+                    {% for song in songs %}
+                        <tr>
+                            <td class = "other-column" >{{ song.name }}</td>
+                            <td class = "other-column" >{{ song.duration_sec }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <!-- <ol>
+                {% for song in songs %}
+                    <li>{{ song.name }} - {{ song.duration_min }} minutes {{ song.duration_sec }} seconds</li>
+                {% endfor %}
+            </ol> -->
+        </div>
+    </div>
+        
+</body>
 </html>
 {% endblock %}
