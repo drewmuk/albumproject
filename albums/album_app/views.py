@@ -6,6 +6,7 @@ from django.utils import timezone
 from django.core.cache import cache
 from django_ratelimit.decorators import ratelimit
 from django.urls import reverse
+import re
 
 from albums import settings
 import spotipy
@@ -30,7 +31,7 @@ client_secret = settings.SPOTIFY_CLIENT_SECRET
 redirect_uri = settings.SPOTIFY_REDIRECT_URI_REMOTE
 scope = "user-library-read user-top-read user-library-modify"
 
-local = 0
+local = 1
 # read the csv file
 """try:
     df_all = pd.read_csv('C:/Users/drewm/Desktop/album_project/input_output/output.csv', encoding='utf-8')
@@ -111,19 +112,22 @@ def home_page(request):
     except:
         return render(request, 'home.html', context = {'logged_in': logged_in})
 
-@ratelimit(key='ip', rate='5/m')  # Limit of 5 attempts per minute
+@ratelimit(key='ip', rate='3/m')  # Limit of 5 attempts per minute
 def user_login(request):
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
-        user = authenticate(request, username=username, password=password)
+        pattern = r'^[\w.-]+$'
+        if re.match(pattern, username):
+            user = authenticate(request, username=username, password=password)
+        else:
+            return render(request, 'login.html', {'error': 'Not a valid username'})
         if user is not None:
             login(request, user)
             # Redirect to a success page.
             return redirect('home_page')
         else:
             # Return an 'invalid login' error message.
-            print('here instead')
             return render(request, 'login.html', {'error': 'Invalid username or password.'})
     else:
         return render(request, 'login.html')
@@ -139,13 +143,20 @@ def sign_up(request):
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
-        if User.objects.filter(username=username).exists():
-            return render(request, 'sign_up.html', {'error': 'Username already exists.'})
-        user = User.objects.create_user(username=username, password=password)
-        CompletedList.objects.create(user=user)
-        ToDoList.objects.create(user=user)
-        login(request, user)
-        return redirect('home_page')
+        pattern = r'^[\w.-]+$'
+        if re.match(pattern, username):
+            if User.objects.filter(username=username).exists():
+                return render(request, 'sign_up.html', {'error': 'Username already exists.'})
+            else:
+                user = User.objects.create_user(username=username, password=password)
+                CompletedList.objects.create(user=user)
+                ToDoList.objects.create(user=user)
+                login(request, user)
+                return redirect('home_page')        
+            
+        else:
+            return render(request, 'login.html', {'error': 'Not a valid username. Must only contain letters, numbers, periods, or dashes.'})
+        
     else:
         return render(request, 'sign_up.html')
 
