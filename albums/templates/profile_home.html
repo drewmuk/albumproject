@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Profile</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'mycss.css' %}">
+
+</head>
+
+<div class = "user-info">
+    {% if user.is_authenticated %}
+        <p>Username: <b>{{ user.username }}</b></p>
+        <p>Join date: {{ user.date_joined }}</p>
+    {% else %}
+        <div class="please-log-in">
+            <p>Log in to access all features.</p>
+            <a href="{% url 'user_login' %}">Log in</a>
+        </div>
+    {% endif %}
+    
+</div>
+
+</html>
+{% endblock %}
