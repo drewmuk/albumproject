@@ -1,0 +1,90 @@
+.header {
+    display: flex;
+    justify-content: center; /* aligns center-element to center */
+    position: relative; /* relative position to the parent for right-element's absolute positioning */
+}
+
+.home-title {
+    text-align: center;
+}
+
+.user-actions {
+    width: 100%;
+    text-align: center;
+    top: 0;
+}
+
+.spotify-account {
+    position: absolute;
+    width: 20%;
+    right: 0; /* places right-element to the far-right of the header */
+    top: 0;
+    text-align: right;
+}
+
+.spotify-note {
+    text-align: right;
+    font-size: 80%;
+}
+
+.cover-column {
+    width: 50px;
+}
+
+.album-column {
+    text-align: center;
+    width: 50px;
+}
+
+.other-column {
+    text-align: center;
+}
+
+.pop-column {
+    text-align: center;
+    width: 70px;
+}
+
+.please-log-in {
+    width: 100%;
+    text-align: center;
+    top: 0;
+}
+
+.album-card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+    height:1000px
+}
+.album-cover {
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+.album-name {
+    font-size: 1.5;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.album-artist {
+    font-size: 1.2rem;
+    color: #777;
+    margin-bottom: 10px;
+}
+.album-year {
+    font-size: 1.2rem;
+    color: #777;
+    margin-bottom: 10px;
+}
+.album-details {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.song-details {
+    justify-content: right;
+}

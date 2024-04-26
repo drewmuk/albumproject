@@ -1,7 +1,9 @@
 import requests
 import csv
 import time
+from datetime import date
 import os
+import random
 
 from albums import settings
 
@@ -11,7 +13,7 @@ import django
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'albums.settings')
 django.setup()
 
-from album_app.models import Album, Song, Genre, Artist  # Import models?
+from album_app.models import *
 
 # Get the API access token (updates every hour)
 def get_access_token(client_id, client_secret):
@@ -41,15 +43,21 @@ def get_access_token(client_id, client_secret):
 client_id = settings.SPOTIFY_CLIENT_ID
 client_secret = settings.SPOTIFY_CLIENT_SECRET
 
-def get_albums_data(artist_ids, other_album_ids, spanish_artists, omit_ids):
+def get_albums_data():
     access_token = get_access_token(client_id, client_secret)
     last_access_time = time.time()
-    # Headers for the eventual table
-    all_albums = [['Artist','Album','Year','Popularity','Duration', 'Cover',
-                   'ID', 'Language',
-                   'acousticness','danceability','energy','instrumentalness',
-                   'loudness','mode','speechiness','tempo','valence', 'liveness',
-                   'Genres']]
+    
+    artist_ids = list(Input_Artist.objects.values_list('artist_id', flat=True))
+
+    spanish_artists = Input_Artist.objects.filter(language__iexact='Spanish')
+    spanish_ids = []
+    for artist in spanish_artists:
+        spanish_ids.append(artist.artist_id)
+    
+    omit_album_ids = list(Omit_Album.objects.values_list('album_id', flat=True))
+
+    random.seed(9)
+    random.shuffle(artist_ids)
     
     highest_ac = []; lowest_ac = []
     highest_da = []; lowest_da = []
@@ -62,17 +70,27 @@ def get_albums_data(artist_ids, other_album_ids, spanish_artists, omit_ids):
     highest_va = []; lowest_va = []
 
     extreme_value_cutoff = 30
-    popularity_cutoff = 20
+
+    duration_cutoff = 24
+    high_duration_cutoff = 120
+    popularity_cutoff = 33
+    alt_pop_cutoff = 40
+    stop = 0
 
     genre_id_counter = 1
-
-    Album.objects.all().delete()
-    Song.objects.all().delete()
-    Genre.objects.all().delete()
-    Artist.objects.all().delete()
-
+ 
+    """ try:
+        Album.objects.all().delete()
+        Song.objects.all().delete()
+        Genre.objects.all().delete()
+        Artist.objects.all().delete()
+    except:
+        print("Did not need to delete tables")
+ """
     # Start by iterating over all the artists I want to include
     for i in range(0,len(artist_ids)):
+        if stop == 1:
+            break
         if time.time() - last_access_time > 3200:
             access_token = get_access_token(client_id, client_secret)
             last_access_time = time.time()
@@ -81,14 +99,14 @@ def get_albums_data(artist_ids, other_album_ids, spanish_artists, omit_ids):
             "Authorization": f"Bearer {access_token}"
         }
         
-        time.sleep(.5)
+        time.sleep(6)
 
         language = "English"
 
         indiv_id = artist_ids[i]
-        if indiv_id in spanish_artists:
+        if indiv_id in spanish_ids:
             language = "Spanish"
-
+            
         artist_albums_url = f"https://api.spotify.com/v1/artists/{indiv_id}/albums?include_groups=album" # filter out singles, comps, etc.
 
         # Make a GET request to get the album data
@@ -101,7 +119,7 @@ def get_albums_data(artist_ids, other_album_ids, spanish_artists, omit_ids):
             all_album_ids = []
             for j in range(0,len(artist_data['items'])):
                 album_id = artist_data['items'][j]['id']
-                if album_id not in omit_ids:
+                if album_id not in omit_album_ids:
                     all_album_ids.append(album_id)
 
             query_album_params = {"ids": ",".join(all_album_ids)}
@@ -112,7 +130,7 @@ def get_albums_data(artist_ids, other_album_ids, spanish_artists, omit_ids):
                 all_albums_data = response_album.json()
                 print(all_albums_data['albums'][0]['artists'][0]['name'])
                 for k in range(0, len(all_albums_data['albums'])):
-                    time.sleep(.5)
+                    time.sleep(8)
                     all_track_ids = []
 
                     total_duration_ms = 0
@@ -124,7 +142,9 @@ def get_albums_data(artist_ids, other_album_ids, spanish_artists, omit_ids):
                     duration_min = round((total_duration_ms/1000/60),1)
                     popularity = all_albums_data['albums'][k]['popularity']
 
-                    if duration_min < 24 or popularity < popularity_cutoff:
+                    if duration_min < duration_cutoff or popularity < popularity_cutoff:
+                        continue
+                    if duration_min > high_duration_cutoff and popularity < alt_pop_cutoff:
                         continue
                     
                     print(all_albums_data['albums'][k]['name'])
@@ -142,6 +162,7 @@ def get_albums_data(artist_ids, other_album_ids, spanish_artists, omit_ids):
                         af_values = [0,0,0,0,0,0,0,0,0,0]
                         total_tracks = 0
                         for n in range(0,len(all_tracks_data['audio_features'])):
+                            time.sleep(.3)
                             try:
                                 ac = all_tracks_data['audio_features'][n]['acousticness']
                                 da = all_tracks_data['audio_features'][n]['danceability']
@@ -160,7 +181,7 @@ def get_albums_data(artist_ids, other_album_ids, spanish_artists, omit_ids):
                                 af_values[8] += va; af_values[9] += li
 
                                 if li < .6:
-                                    if len(highest_ac) < extreme_value_cutoff:
+                                    """if len(highest_ac) < extreme_value_cutoff:
                                         # If the list of highest tracks is not yet filled with X tracks, add the current track to the list
                                         highest_ac.append((all_tracks_data['audio_features'][n]['id'], ac, "ac"))
                                     else:
@@ -304,18 +325,23 @@ def get_albums_data(artist_ids, other_album_ids, spanish_artists, omit_ids):
                                         if va < max_va[1]:
                                             lowest_va.remove(max_va)
                                             lowest_va.append((all_tracks_data['audio_features'][n]['id'], va, "va"))
-                                    total_tracks += 1
-                                else:
+                                    total_tracks += 1"""
+                                #else:
                                     total_tracks += 1
                             except:
                                 total_tracks += 0
 
-                        af_values = [round(x / total_tracks,3) for x in af_values]
+                        try:
+                            af_values = [round(x / total_tracks,3) for x in af_values]
+                        except:
+                            af_values = af_values
                         if af_values[9] > .5:
                             continue
                         #average_audio_features = dict(zip(af_keys,af_values))
                     elif response_track.status_code == 429:
                         print("Too many requests", response_track.headers.get('Retry-After'))
+                        stop = 1
+                        break
                     else:
                         print("Error:",response_track.status_code)
                         
@@ -358,8 +384,9 @@ def get_albums_data(artist_ids, other_album_ids, spanish_artists, omit_ids):
                         for track in all_albums_data['albums'][k]['tracks']['items']:
                             current_song = Song(
                                 name = track['name'],
+                                primary_artist = all_albums_data['albums'][k]['artists'][0]['name'],
                                 duration_min = round((track['duration_ms'] / 1000) / 60, 0),
-                                duration_sec = round((track['duration_ms'] / 1000) % 60, 0),
+                                duration_sec = int(round((track['duration_ms'] / 1000) % 60, 0)),
                                 number = track['track_number'],
                                 song_id = track['id']
                             )
@@ -383,12 +410,12 @@ def get_albums_data(artist_ids, other_album_ids, spanish_artists, omit_ids):
                             current_genre.save()
                             new_album.genres.add(current_genre)
 
-                        new_album.save()
+                        new_album.save()   
                         
             else:
                 print("Failed on individual album level")
                 return None
-
+                        
         elif response_artist_albums.status_code == 401:
             print("Authorization code expired")
             return None
@@ -399,6 +426,9 @@ def get_albums_data(artist_ids, other_album_ids, spanish_artists, omit_ids):
             return None
         
     print('All other albums...')
+
+    other_album_ids = Input_Album.objects.values_list('album_id', flat=True)
+
     for s in range(0, len(other_album_ids)):
         if time.time() - last_access_time > 3200:
             access_token = get_access_token(client_id, client_secret)
@@ -446,7 +476,7 @@ def get_albums_data(artist_ids, other_album_ids, spanish_artists, omit_ids):
             if duration_min < 24 or popularity < popularity_cutoff:
                 continue
                     
-            other_album_cover_url = other_album_data["images"][0]["url"]
+            album_cover_url = other_album_data["images"][0]["url"]
                     
             query_track_params = {"ids": ",".join(all_track_ids)}
             all_tracks_url = "https://api.spotify.com/v1/audio-features"
@@ -475,7 +505,7 @@ def get_albums_data(artist_ids, other_album_ids, spanish_artists, omit_ids):
                             af_values[8] += va; af_values[9] += li
 
                             if li < .6:
-                                if len(highest_ac) < extreme_value_cutoff:
+                                """"if len(highest_ac) < extreme_value_cutoff:
                                     # If the list of highest tracks is not yet filled with X tracks, add the current track to the list
                                     highest_ac.append((all_tracks_data['audio_features'][n]['id'], ac, "ac"))
                                 else:
@@ -619,25 +649,16 @@ def get_albums_data(artist_ids, other_album_ids, spanish_artists, omit_ids):
                                     if va < max_va[1]:
                                         lowest_va.remove(max_va)
                                         lowest_va.append((all_tracks_data['audio_features'][n]['id'], va, "va"))
-                                total_tracks += 1
-                            else:
+                                total_tracks += 1"""
+                            #else:
                                 total_tracks += 1
                     except:
                         total_tracks += 0
                             
-                af_values = [round(x / total_tracks,3) for x in af_values]
-
-            
-                """ temp = [other_album_data['artists'][0]['name'],
-                        other_album_data['name'],
-                        other_album_data['release_date'][:4], 
-                        popularity, duration_min, other_album_cover_url, 
-                        other_album_id, language]
-                for p in range(0,len(af_values)):
-                    temp.append(af_values[p])
-                temp.append(artist_genres)
-                print(other_album_data['name'])
-                all_albums.append(temp) """
+                try:
+                    af_values = [round(x / total_tracks,3) for x in af_values]
+                except:
+                    af_values = af_values
 
                 if other_album_data['artists'][0]['id'] == indiv_id:
                         new_album = Album.objects.create(
@@ -657,8 +678,9 @@ def get_albums_data(artist_ids, other_album_ids, spanish_artists, omit_ids):
                         for track in other_album_data['tracks']['items']:
                             current_song = Song(
                                 name = track['name'],
+                                primary_artist = other_album_data['artists'][0]['name'],
                                 duration_min = round((track['duration_ms'] / 1000) / 60, 0),
-                                duration_sec = round((track['duration_ms'] / 1000) % 60, 0),
+                                duration_sec = int(round((track['duration_ms'] / 1000) % 60, 0)),
                                 number = track['track_number'],
                                 song_id = track['id']
                             )
@@ -725,12 +747,14 @@ def get_albums_data(artist_ids, other_album_ids, spanish_artists, omit_ids):
         for data in combined_list:
             writer.writerow(data) """
 
-    return all_albums
+    # print(songs_per_artist)
 
-def find_artist_ids(artist_names):
+    return None
+
+def find_artist_ids(artist_names, artist_languages):
+    Input_Artist.objects.all().delete()
     print("Getting artists")
     search_url = "https://api.spotify.com/v1/search"
-    artist_ids = []
 
     access_token = get_access_token(client_id, client_secret)
 
@@ -744,6 +768,8 @@ def find_artist_ids(artist_names):
             "type": "artist"
         }
         response_search = requests.get(search_url, headers=headers, params=query_artist_params)
+        current_language = artist_languages[q]
+
         if response_search.status_code == 200:
             search_results = response_search.json()
 
@@ -760,7 +786,15 @@ def find_artist_ids(artist_names):
                             artist = artists[p] 
                             current_artist = artist
                             current_pop = artist['popularity']
-                artist_ids.append(current_artist['id'])
+                try:
+                    Input_Artist.objects.get_or_create(
+                        artist_id = current_artist['id'],
+                        name = current_artist['name'],
+                        language = current_language
+                    )
+                    print(current_artist['name'])
+                except:
+                    x = 0
             else:
                 print("Artist not found.")
         elif response_search.status_code == 401:
@@ -769,7 +803,7 @@ def find_artist_ids(artist_names):
             print(response_search.status_code)
             print("Search failed")
 
-    return artist_ids
+    return None
 
 def find_track_info(track_id):
     search_url = f"https://api.spotify.com/v1/tracks/{track_id}"
@@ -796,9 +830,8 @@ def find_track_info(track_id):
 
     return track_info
 
-def find_album_ids(album_names, by_names):
+def find_album_ids(album_names, by_names, to_omit = 0):
     print("Getting albums")
-    album_ids = []
     search_url = "https://api.spotify.com/v1/search"
 
     access_token = get_access_token(client_id, client_secret)
@@ -823,8 +856,16 @@ def find_album_ids(album_names, by_names):
             albums = search_results["albums"]["items"]
             if len(albums) > 0:
                 album = albums[0]  # Get the first matching album
-                album_id = album["id"]
-                album_ids.append(album_id)
+                if to_omit == 0:
+                    Input_Album.objects.get_or_create(
+                        album_id = album["id"],
+                        name = album["name"]
+                    )
+                else:
+                    Omit_Album.objects.get_or_create(
+                        album_id = album["id"],
+                        name = album["name"]
+                    )
             else:
                 print(album_name)
                 print("Album not found.")
@@ -834,32 +875,34 @@ def find_album_ids(album_names, by_names):
             print(response_search.status_code)
             print("Search failed")
 
-    return album_ids
+    return None
 
 # List of all the artist IDs I want to include
 artist_names = []
+artist_languages = []
 
 album_names = []
 by_names = []
 
-spanish_names = []
+#spanish_names = []
 
-omit_ids = []
+omit_by_names = []
+omit_album_names = []
 
 # File path of the CSV files
-    
-artist_file_path = "C:/Users/drewm/Desktop/album_project/input_output/input_artists.csv"   
-output_file_path = 'C:/Users/drewm/Desktop/album_project/input_output/output.csv'
-album_file_path = "C:/Users/drewm/Desktop/album_project/input_output/input_albums.csv"
-language_file_path = "C:/Users/drewm/Desktop/album_project/input_output/languages.csv"
-omit_file_path = "C:/Users/drewm/Desktop/album_project/input_output/omit_albums.csv"
+artist_file_path = "C:/Users/drewm/OneDrive - The University of Chicago/Desktop/album_project/input_output/input_artists.csv"   
+album_file_path = "C:/Users/drewm/OneDrive - The University of Chicago/Desktop/album_project/input_output/input_albums.csv"
+#language_file_path = "C:/Users/drewm/OneDrive - The University of Chicago/Desktop/album_project/input_output/languages.csv"
+omit_file_path = "C:/Users/drewm/OneDrive - The University of Chicago/Desktop/album_project/input_output/omit_albums.csv"
 
 # Read the Input Artists CSV
 with open(artist_file_path, "r", newline="") as csvfile:
     csv_reader = csv.DictReader(csvfile)
     for row in csv_reader:
         artist_name = row["Artist Name"]
+        artist_language = row["Language"]
         artist_names.append(artist_name)
+        artist_languages.append(artist_language)
 
 # Read the Input Albums CSV
 with open(album_file_path, "r", newline="") as csvfile:
@@ -871,49 +914,34 @@ with open(album_file_path, "r", newline="") as csvfile:
         by_names.append(by_name)
 
 # Read the Spanish Artists CSV
-with open(language_file_path, "r", newline="") as csvfile:
+""" with open(language_file_path, "r", newline="") as csvfile:
     csv_reader = csv.DictReader(csvfile)
     for row in csv_reader:
         spanish_artist = row["Artist Name"]
         spanish_names.append(spanish_artist)
-
+ """
 # Read the Omit Albums CSV
 with open(omit_file_path, "r", newline="") as csvfile:
     csv_reader = csv.DictReader(csvfile)
     for row in csv_reader:
-        album_id = row["ID"]
-        omit_ids.append(album_id)
+        omit_album_name = row["Album"]
+        omit_by_name = row["By"]
+        omit_album_names.append(omit_album_name)
+        omit_by_names.append(omit_by_name)
 
 start_time = time.time()
 
-artist_ids = find_artist_ids(artist_names)
-album_ids = find_album_ids(album_names, by_names)
-""" spanish_artists = find_artist_ids(spanish_names)
-print('Spanish Artists:', spanish_artists) """
+#find_artist_ids(artist_names, artist_languages)
+#find_album_ids(album_names, by_names)
+#find_album_ids(omit_album_names, omit_by_names, to_omit=1)
 
-spanish_artists = ['2R21vXR83lH98kGeO99Y66', '4SsVbpTthjScTS7U2hmr1X', '1qto4hHid1P71emI6Fd8xi', '1mux8L6xg2Cmrc7k0wQczl', 
-                   '4q3ewBCX7sLwd24euuV69X', '4obzFoKoKRHIphyHzJ35G3', '09xj0S68Y1OU1vHMCZAIvz', '28gNT5KBp7IjEOQoevXf9N', 
-                   '0XwVARXT135rw8lyw1EeWP', '0eecdvMrqBftK0M1VKhaF4', '4VMYDCV2IEDYJArk749S6m', '0KPX4Ucy9dk82uj4GpKesn', 
-                   '2oQX8QiMXOyuqbcZEFsZfm', '0XeEobZplHxzM9QzFQWLiR', '329e4yvIujISKGKz1BZZbO', '2LRoIwlKmHjgvigdNGBHNo', 
-                   '1QOmebWGB6FdFtW7Bo3F0W', '1vyhD5VmyZ7KMfW5gqLgo5', '6nVcHLIgY5pE2YCl8ubca1', '2QWIScpFDNxmS6ZEMIUvgm', 
-                   '1U1el3k54VvEUzo3ybLPlM', '790FomKkXshlbRYZFtlgla', '4TK1gDgb7QKoPFlzRrBRgR', '2mSHY8JOR0nRi3mtHqVa04', 
-                   '47MpMsUfWtgyIIBEFOr4FE', '1r4hJ1h58CWwUQe3MxPuau', '7okwEbXzyT2VffBmyQBWLz', '0tmwSHipWxN12fsoLcFU3B', 
-                   '4boI7bJtmB1L3b1cuL75Zr', '0Q8NcsJwoCbZOHHW63su5S', '5C4PDR4LnhZTbVnKWXuDKD', '7iK8PXO48WeuP03g8YR51W', 
-                   '1hcdI2N1023RvSwLzTtdsp', '1SupJlEpv7RS2tPNRaHViT', '5hdhHgpxyniooUiQVaPxQ0', '1i8SpTcr7yvPOmcqrbnVXY', 
-                   '3vQ0GE3mI0dAaxIMYe5g7z', '12GqGscKJx3aE4t07u7eVZ', '4bw2Am3p9ji3mYsXNXtQcd', '52iwsT98xCoGgiGntTiR7K', 
-                   '1mcTU81TzQhprhouKaTkpq', '2IMZYfNi21MGqxopj9fWx8', '7slfeZO9LsJbWgpkIoXBUJ', '5lwmRuXgjX8xIwlnauTZIP', 
-                   '7ltDVBr6mKbRvohxheJ9h1', '77ziqFxp5gaInVrF2lj4ht', '0EmeFodog0BfCgMzAIvKQp', '7An4yvF7hDYDolN4m5zKBp', 
-                   '0GM7qgcRCORpGnfcN2tCiB', '5Y3MV9DZ0d87NnVm56qSY1', '1wZtkThiXbVNtj6hee6dz9', '21451j1KhjAiaYKflxBjr1', 
-                   '6IdtcAwaNVAggwd6sCKgTI']
+get_albums_data()
 
-all_albums = get_albums_data(artist_ids, album_ids, spanish_artists, omit_ids)
-""" 
-with open(output_file_path, "w", newline="", encoding="utf-8") as csvfile:
-    csv_writer = csv.writer(csvfile)
-    csv_writer.writerows(all_albums) """
+Last_Update.objects.get_or_create(
+    update_date = date.today()
+)
 
 print("Database has been created successfully.")
-
 end_time = time.time()
 elapsed_time = end_time - start_time
 elapsed_min = round((elapsed_time / 60),1)

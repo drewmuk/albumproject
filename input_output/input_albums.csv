@@ -18,7 +18,6 @@ America,Homecoming
 America,View From The Ground
 Andrés Calamaro,Alta Suciedad
 Andrés Calamaro,Bohemio
-Bunbury,Hijos del pueblo
 Andrés Calamaro,Honestidad Brutal
 Aqua,Aquarium
 Aretha Franklin,Aretha Now
@@ -48,9 +47,9 @@ Bruce Springsteen,Darkness On the Edge of Town
 Bruce Springsteen,The River
 Bruce Springsteen,Tunnel Of Love
 Buena Vista Social Club,Buena Vista Social Club
+Bunbury,Hijos del pueblo
 Céline Dion,A New Day Has Come
 Céline Dion,Falling into You
-Céline Dion,Let's Talk About Love
 Céline Dion,The Colour Of My Love
 Chris Isaak,Chris Isaak
 Chris Isaak,Forever Blue
@@ -81,6 +80,7 @@ Dolly Parton,Coat Of Many Colors
 Dolly Parton,Here You Come Again
 Dolly Parton,Jolene
 Don McLean,American Pie
+Dr. Dre,The Chronic
 Eagle-Eye Cherry,Desireless
 Ella Fitzgerald,Ella and Louis
 Ella Fitzgerald,Porgy And Bess
@@ -104,7 +104,6 @@ Extreme,Extreme II
 Frank Sinatra,"Days Of Wine And Roses, Moon River And Other Academy Award Winners"
 Frank Sinatra,My Way
 Frank Sinatra,Strangers In The Night
-Frank Sinatra,That's Life
 Frank Sinatra,The World We Knew
 Gerry Rafferty,City to City
 Grateful Dead,American Beauty
@@ -143,7 +142,6 @@ Johnny Cash,At Folsom Prison
 Johnny Cash,Sings the Songs that Made Him Famous
 Kenny Rogers,Kenny
 Kenny Rogers,The Gambler
-Kenny Rogers,We've Got Tonight
 KISS,Animalize
 KISS,Dressed To Kill
 KISS,Dynasty
@@ -160,7 +158,6 @@ Kylie Minogue,Kylie
 Kylie Minogue,Light Years
 Linkin Park,Hybrid Theory (Bonus Edition)
 Lionel Richie,Back to Front
-Lionel Richie,Can't Slow Down
 Lionel Richie,Dancing On The Ceiling
 Lionel Richie,Lionel Richie
 Lionel Richie,Tuskegee
@@ -195,6 +192,11 @@ Miles Davis,Kind of Blue
 Moby,18
 Moby,Hotel
 Moby,Play
+Nina Simone,Baltimore
+Nina Simone,I Put A Spell On You
+Nina Simone,Little Girl Blue
+Nina Simone,Pastel Blues
+Nina Simone,Silk & Soul
 P.O.D.,Satellite
 P.O.D.,Testify
 P.O.D.,The Fundamental Elements of Southtown
@@ -208,7 +210,6 @@ Poison,Look What The Cat Dragged In
 Poison,Open Up And Say…Ahh!
 Prince,1999
 Prince,Around The World In A Day
-Prince,Prince
 Prince,Purple Rain
 Prince,Sign O' The Times
 Queen,A Day At The Races
@@ -219,10 +220,8 @@ Queen,Sheer Heart Attack
 Queen,The Game
 Ray Charles,Ray Charles
 Ray Charles,The Genius of Ray Charles
-Ray Charles,What'd I Say
 Rob Zombie,Hellbilly Deluxe
-Robbie Williams,Escapalogy
-Robbie Williams,I've Been Expecting You
+Robbie Williams,Escapology
 Robbie Williams,Life Thru A Lens
 Robbie Williams,Sing When You're Winning
 Robbie Williams,Swing When You're Winning
@@ -260,13 +259,18 @@ Shania Twain,Up!
 Sixpence None The Richer,Sixpence None The Richer
 Snoop Dogg,Doggystyle
 Snoop Dogg,R&G (Rhythm & Gangsta)
-Snoop Dogg,The Chronic
+Sonic Youth,Daydream Nation
+Sonic Youth,Goo
+Sonic Youth,Rather Ripped
+Sonic Youth,Sister
 Spin Doctors,Pocket Full Of Kryptonite
 Sting,…Nothing Like The Sun
 Sting,44/876
 Sting,Brand New Day
 Sting,Ten Summoner´s Tales
 Sting,The Dream Of The Blue Turtles
+Taylor Swift,Fearless
+Taylor Swift,Taylor Swift
 The Beach Boys,All Summer Long
 The Beach Boys,Pet Sounds
 The Beach Boys,"Shut Down, Vol. 2"
@@ -286,7 +290,18 @@ The Rolling Stones,Sticky Fingers
 The Rolling Stones,Tattoo You
 The Stone Roses,Second Coming
 The Stone Roses,The Stone Roses
-Toploader,Onka´s Big Moka
+Van Morrison,Astral Weeks
+Van Morrison,Avalon Sunset
+Van Morrison,Beautiful Vision
+Van Morrison,Blowin' Your Mind!
+Van Morrison,Days Like This
+Van Morrison,Hard Nose the Highway
+Van Morrison,His Band and the Street Choir
+Van Morrison,Into the Music
+Van Morrison,Moondance
+Van Morrison,Saint Dominic's Preview
+Van Morrison,Veedon Fleece
+Van Morrison,Wavelength
 Vanessa Carlton,Be Not Nobody
 Warren G,Regulate… G Funk Era
 Weezer,Pinkerton
@@ -296,22 +311,10 @@ Westlife,World of Our Own
 Whitesnake,Saints & Sinners
 Whitesnake,Slip of the Tongue
 Whitesnake,Whitesnake
-Yiruma,First Love
-Zoe,MTV Unplugged Musica De Fondo
 Yes,90125
-Yes,Fragile
-Yes,The Yes Album
 Yes,Big Generator
 Yes,Close to the Edge
-Van Morrison,Blowin' Your Mind!
-Van Morrison,Moondance
-Van Morrison,Days Like This
-Van Morrison,Avalon Sunset
-Van Morrison,Into the Music
-Van Morrison,His Band and the Street Choir
-Van Morrison,Astral Weeks
-Van Morrison,Saint Dominic's Preview
-Van Morrison,Hard Nose the Highway
-Van Morrison,Veedon Fleece
-Van Morrison,Wavelength
-Van Morrison,Beautiful Vision
+Yes,Fragile
+Yes,The Yes Album
+Yiruma,First Love
+Zoe,MTV Unplugged Musica De Fondo

@@ -6,6 +6,7 @@
 <!DOCTYPE html>
 <html>
     <link rel="stylesheet" type="text/css" href="{% static 'mycss.css' %}">
+    <p style="font-size: 36px; text-align: center;""><b>All Albums in Database (More to be Added)</b></p>
     <form action="{% url 'display_all_albums' %}" method="get">
         <div style="margin-bottom: 10px;">
             <b>Sort by:</b>
@@ -75,7 +76,6 @@
     </form>
     <table id="myTable">
         <thead>
-            <title>All Albums In Database</title>
             <style>
                 table {
                     width: 100%; /* Set the table width to 100% of its container */
@@ -95,6 +95,7 @@
         <tbody>
             <h1>{{ title }}</h1>
             <h2>Count: {{ cat_count }} of {{ all_count }} </h2>
+            <h3>Last Update: {{ update_date }}</h3>
             <table border="1">
                 <thead>
                     <tr>
@@ -136,7 +137,7 @@
                             <td class = "other-column">
                                 <a href="{% url 'add_to_completed' row.ID %}">Add To Your Completed List</a>
                                 <br>
-                                <a href="{% url 'add_to_to_do' row.ID %}">Add To Your To-Do List</a>
+                                <a href="{% url 'add_to_to_do' row.ID %}">Add To Your 'Next Listens'</a>
                             </td>
 
                             <!-- <td>{{ row.acousticness }}</td>

@@ -6,23 +6,78 @@
         body {
             background-color: #cfd9d2;
         }
-    </style>
+    
+    .dropbtn {
+        background-color: #04AA6D;
+        color: white;
+        padding: 6px;
+        font-size: 18px;
+        border: none;
+    }
+    
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+    
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f1f1f1;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+    }
+    
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+    
+    .dropdown-content a:hover {background-color: #ddd;}
+    
+    .dropdown:hover .dropdown-content {display: block;}
+    
+    .dropdown:hover .dropbtn {background-color: #3e8e41;}
 
+        a {
+            color: black; /* Sets the text color of all links */
+        }
+        a:hover {
+            color: green; /* Changes color when the mouse hovers over the link */
+        }
+        a:visited {
+            color: black; /* Sets the color of visited links */
+        }
+    
+    </style>   
 </head>
 <body>
     <header>
         <a href="{% url 'home_page' %}">Return to Home</a>
         <div class="dropdown">
             <button class="dropbtn">Albums</button>
-            <div class="album-dropdown">
+            <div class="dropdown-content">
                 <a href="{% url 'most_similar_albums' %}">Recommended Albums</a>
                 <a href="{% url 'display_all_albums' %}">All Albums</a>
                 <a href="{% url 'choose_random' %}">Random Album</a>
             </div>
+        </div>
+        <div class="dropdown">
             <button class="dropbtn">My Lists</button>
-            <div class="list-dropdown">
-                <a href="{% url 'display_list' %}?type=completed">Completed</a>
-                <a href="{% url 'display_list' %}?type=to_do">To Do</a>
+            <div class="dropdown-content">
+                <a href="{% url 'display_list' %}?type=completed">Completed Albums</a>
+                <a href="{% url 'display_list' %}?type=to_do">Next Listens</a>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <button class="dropbtn">Profile</button>
+            <div class="dropdown-content">
+                <a href="{% url 'profile_display' %}">Home</a>
+                <a href="{% url 'logout' %}">Sign Out</a>
             </div>
         </div>
     </header>

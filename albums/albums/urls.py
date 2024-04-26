@@ -43,4 +43,5 @@ urlpatterns = [
     path('lists/completed/delete/<str:input_album_id>/', views.remove_from_completed, name='remove_from_completed'),
     path('lists/to_do/add/<str:input_album_id>/', views.add_to_to_do, name ='add_to_to_do'),
     path('lists/to_do/delete/<str:input_album_id>/', views.remove_from_to_do, name='remove_from_to_do'),
+    path('profile/',views.profile_display, name='profile_display' ),
 ]

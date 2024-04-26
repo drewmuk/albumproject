@@ -7,7 +7,6 @@
 <head>
     <title>Home Page</title>
     <link rel="stylesheet" type="text/css" href="{% static 'mycss.css' %}">
-</head>
 
 <div class = "home-title">
     <h1>Spotify Enhanced</h1>
@@ -55,7 +54,7 @@
                 </div>
             {% else %}
                 <div class="please-log-in">
-                    <p>Log in to access more features.</p>
+                    <p>Log in to access all features.</p>
                     <a href="{% url 'user_login' %}">Log in</a>
                 </div>
             {% endif %}

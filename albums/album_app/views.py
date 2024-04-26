@@ -31,16 +31,10 @@ client_secret = settings.SPOTIFY_CLIENT_SECRET
 redirect_uri = settings.SPOTIFY_REDIRECT_URI_REMOTE
 scope = "user-library-read user-top-read user-library-modify"
 
-local = 1
-# read the csv file
-"""try:
-    df_all = pd.read_csv('C:/Users/drewm/Desktop/album_project/input_output/output.csv', encoding='utf-8')
-    local = 1
-except:
-    df_all = pd.read_csv('/home/dm1202/albumproject/input_output/output.csv', encoding='utf-8')"""
-
 try:
     df_all = pd.DataFrame(list(Album.objects.all().values()))
+    song_data = pd.DataFrame(list(Song.objects.values_list('primary_artist', flat=True)))
+
 except:
     df_all = pd.DataFrame([])
 
@@ -92,14 +86,15 @@ headers = {
 }
 
 def home_page(request):
+    print(song_data.groupby(0).size().sort_values(ascending=False))
     logged_in = False
+    #print(song_df.head())
     try:
         tokens = SpotifyToken.objects.filter(user=request.user)
     
         if tokens.exists():
             # User is logged in to Spotify
             logged_in = True
-        
     
         token_info = tokens[0]
         now = timezone.now()
@@ -159,6 +154,9 @@ def sign_up(request):
         
     else:
         return render(request, 'sign_up.html')
+    
+def profile_display(request):
+    return render(request, 'profile_home.html')
 
     
 def spotify_login(request):
@@ -328,8 +326,6 @@ def most_similar_albums(request):
     # Get the currently logged in user's top X tracks, cannot be over 50
     limit_tracks = 30
     top_tracks_raw = sp.current_user_top_tracks(limit=limit_tracks)
-
-    #print(top_tracks_raw)
 
     # Get the audio features for these tracks
     all_track_ids = []
@@ -502,13 +498,11 @@ def most_similar_albums(request):
 
     top_genres = get_genres(top_tracks_raw)
 
-
     # Check which of the most similar albums also match any of the genres
     # from the user's top tracks
     for sim_album in sim_albums_temp:
         album_genres = sim_album[9]
         for genre in album_genres:
-            # String formatting
             #cleaned_genre = genre.replace("'", '').replace('[', '').replace(']', '')
             if genre in top_genres:
                 all_similar_albums_1.append(sim_album)
@@ -518,7 +512,6 @@ def most_similar_albums(request):
     [all_similar_albums.append(x) for x in all_similar_albums_1 if x not in all_similar_albums]
     random.shuffle(all_similar_albums)
     all_similar_albums = [dict(zip(small_output_titles, row)) for row in all_similar_albums]
-
 
 
     # Process the data and render the template
@@ -741,7 +734,7 @@ def all_albums(request):
     else:
         stitle = ''
 
-    title = 'All ' + ltitle + ' ' + ptitle + ' Albums in Database ' + mtitle + stitle
+    title = 'All ' + ltitle + ' ' + ptitle + ' Albums ' + mtitle + stitle
 
     if sort_by2 == 'Random':
         try:
@@ -754,13 +747,16 @@ def all_albums(request):
         except:
             sorted_data = sorted(album_table, key=lambda x: (x[sort_by1], x[sort_by2]), reverse=type_sort)
 
+    update_date = list(Last_Update.objects.values_list('update_date', flat=True))[0]
+
     context = {'headers': output_titles,
                'rows': sorted_data, 
                'title': title,
                'cat_count': len(album_table),
                'all_count': len(all_album_data),
                'search_form': search_form,
-               'year_form': year_form}
+               'year_form': year_form,
+               'update_date': update_date}
     
     return render(request, 'display_album_table.html', context)
 
