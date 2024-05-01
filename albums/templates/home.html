@@ -32,26 +32,6 @@
                     
                 </div>
                 
-                <div class="app-functions">
-                    <body>
-                        <div class="most-similar-albums">
-                            <a href="{% url 'most_similar_albums' %}">Find Most Similar Albums</a>
-                        </div>
-                        <div class="display-all-albums">
-                            <a href="{% url 'display_all_albums' %}">Display All Albums In Database</a>
-                        </div>
-                        <div class="choose-random">
-                            <a href="{% url 'choose_random' %}">Pick A Random Album</a>
-                        </div>
-                        <br>
-                        <div>
-                            <a href="{% url 'display_list' %}?type=completed">Display Completed List</a>
-                        </div>
-                        <div>
-                            <a href="{% url 'display_list' %}?type=to_do">Display To-Do List</a>
-                        </div>
-                    </body>
-                </div>
             {% else %}
                 <div class="please-log-in">
                     <p>Log in to access all features.</p>

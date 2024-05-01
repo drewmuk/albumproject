@@ -56,7 +56,12 @@
 </head>
 <body>
     <header>
-        <a href="{% url 'home_page' %}">Return to Home</a>
+        <div class="dropdown">
+            <button class="dropbtn">Home</button>
+            <div class="dropdown-content">
+                <a href="{% url 'home_page' %}">Return to Home</a>
+            </div>
+        </div>
         <div class="dropdown">
             <button class="dropbtn">Albums</button>
             <div class="dropdown-content">

@@ -31,6 +31,7 @@ class Input_Artist(models.Model):
     name = models.CharField(max_length=255)
     artist_id = models.CharField(max_length=255)
     language = models.CharField(max_length=255, db_index=True)
+    done = models.IntegerField(default=0)
 
     def __str__(self):
         return self.name
@@ -86,6 +87,8 @@ class Album(models.Model):
 class Input_Album(models.Model):
     name = models.CharField(max_length=255)
     album_id = models.CharField(max_length=255)
+    done = models.IntegerField(default=0)
+
 
     def __str__(self):
         return self.name
@@ -98,6 +101,7 @@ class Omit_Album(models.Model):
         return self.name
     
 class Last_Update(models.Model):
+    date_id = models.IntegerField(default=1)
     update_date = models.DateField(null=True, blank=True)
 
 class CompletedList(models.Model):

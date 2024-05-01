@@ -35,6 +35,15 @@ try:
     df_all = pd.DataFrame(list(Album.objects.all().values()))
     song_data = pd.DataFrame(list(Song.objects.values_list('primary_artist', flat=True)))
 
+    album_genres = Album.objects.prefetch_related('genres').all()
+    genre_data = []
+    for album in album_genres:
+        genres = ', '.join(genre.name for genre in album.genres.all())
+        genre_data.append(genres)
+
+    
+    df_all = pd.concat([df_all, pd.DataFrame(genre_data)], axis=1)
+
 except:
     df_all = pd.DataFrame([])
 
@@ -86,14 +95,16 @@ headers = {
 }
 
 def home_page(request):
-    print(song_data.groupby(0).size().sort_values(ascending=False))
+    print(song_data.groupby(0).size().sort_values(ascending=False).head(15))
+
+    #deleted_count, _ = Song.objects.filter(primary_artist="Julieta Venegas").delete()
+    
     logged_in = False
-    #print(song_df.head())
     try:
         tokens = SpotifyToken.objects.filter(user=request.user)
     
         if tokens.exists():
-            # User is logged in to Spotify
+            # User is logged in to Spotify 
             logged_in = True
     
         token_info = tokens[0]
