@@ -336,7 +336,7 @@ def most_similar_albums(request):
 
     # Get the currently logged in user's top X tracks, cannot be over 50
     limit_tracks = 30
-    top_tracks_raw = sp.current_user_top_tracks(limit=limit_tracks)
+    top_tracks_raw = sp.current_user_top_tracks(limit=limit_tracks, time_range='medium_term')
 
     # Get the audio features for these tracks
     all_track_ids = []
