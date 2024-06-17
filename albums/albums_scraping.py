@@ -25,6 +25,8 @@ alt_pop_cutoff = 40
 
 stop = 0
 
+#Input_Artist.objects.all().update(done=0)
+#Input_Album.objects.all().update(done=0)
 
 # Get the artist IDs that haven't been done yet
 artist_ids = list(Input_Artist.objects.filter(done__iexact=0).values_list('artist_id', flat=True))
@@ -65,7 +67,14 @@ def get_access_token(client_id, client_secret):
 client_id = settings.SPOTIFY_CLIENT_ID
 client_secret = settings.SPOTIFY_CLIENT_SECRET
 
-def scrape_album(headers, album, indiv_id, language):
+def scrape_album(headers, album, indiv_id, language, last_access_time):
+                    if time.time() - last_access_time > 3200:
+                        access_token = get_access_token(client_id, client_secret)
+                        last_access_time = time.time()
+
+                        headers = {
+                                "Authorization": f"Bearer {access_token}"
+                        }      
                     
                     time.sleep(8)
                     all_track_ids = []
@@ -317,29 +326,31 @@ def scrape_album(headers, album, indiv_id, language):
                         )
                         new_album.save()
 
-                        if created:
-                            for track in album['tracks']['items']:
-                                current_song, created = Song.objects.update_or_create(
-                                    song_id = track['id'],
-                                    defaults = {
-                                        'name': track['name'],
-                                        'primary_artist': album['artists'][0]['name'],
-                                        'duration_min': round((track['duration_ms'] / 1000) / 60, 0),
-                                        'duration_sec': int(round((track['duration_ms'] / 1000) % 60, 0)),
-                                        'number': track['track_number'],
-                                        'song_id': track['id']
-                                    }
-                                )
-                                current_song.save()
-                                new_album.songs.add(current_song)
-
-                                for i in range(0,len(track['artists'])):
-                                    current_artist, created = Artist.objects.get_or_create(
-                                        artist_id = track['artists'][i]['id'],
-                                        name = track['artists'][i]['name']
-                                        )
-                                    if i == 0:
-                                        new_album.artists.add(current_artist)
+                        #if created:
+                        for track in album['tracks']['items']:
+                            Song.objects.filter(song_id = track['id']).delete()
+                            current_song, created = Song.objects.update_or_create(
+                                song_id = track['id'],
+                                name = track['name'],
+                                defaults = {
+                                    'name': track['name'],
+                                    'primary_artist': album['artists'][0]['name'],
+                                    'duration_min': round((track['duration_ms'] / 1000) / 60, 0),
+                                    'duration_sec': int(round((track['duration_ms'] / 1000) % 60, 0)),
+                                    'number': track['track_number'],
+                                    'song_id': track['id']
+                                }
+                            )
+                            current_song.save()
+                            new_album.songs.add(current_song)
+                          
+                            for i in range(0,len(track['artists'])):
+                                current_artist, created = Artist.objects.get_or_create(
+                                    artist_id = track['artists'][i]['id'],
+                                    name = track['artists'][i]['name']
+                                    )
+                                if i == 0:
+                                    new_album.artists.add(current_artist)
                                     current_song.artists.add(current_artist)
                             
                             new_album.save()
@@ -367,75 +378,6 @@ def get_albums_data():
     highest_te = []; lowest_te = []
     highest_va = []; lowest_va = []
 
-    """ try:
-        Album.objects.all().delete()
-        Song.objects.all().delete()
-        Genre.objects.all().delete()
-        Artist.objects.all().delete()
-    except:
-        print("Did not need to delete tables")
- """
-    # Start by iterating over all the artists I want to include
-    for i in range(0,len(artist_ids)):
-        if stop == 1:
-            break
-        if time.time() - last_access_time > 3200:
-            access_token = get_access_token(client_id, client_secret)
-            last_access_time = time.time()
-
-        headers = {
-            "Authorization": f"Bearer {access_token}"
-        }
-        
-        time.sleep(8)
-
-        language = "English"
-
-        indiv_id = artist_ids[i]
-        if indiv_id in spanish_ids:
-            language = "Spanish"
-            
-        artist_albums_url = f"https://api.spotify.com/v1/artists/{indiv_id}/albums?include_groups=album" # filter out singles, comps, etc.
-
-        # Make a GET request to get the album data
-        response_artist_albums = requests.get(artist_albums_url, headers=headers)
-
-        # Check if the request was successful
-        if response_artist_albums.status_code == 200:
-            # Parse the response JSON to access the album data
-            artist_data = response_artist_albums.json()
-            all_album_ids = []
-            for j in range(0,len(artist_data['items'])):
-                album_id = artist_data['items'][j]['id']
-                if album_id not in omit_album_ids:
-                    all_album_ids.append(album_id)
-
-            query_album_params = {"ids": ",".join(all_album_ids)}
-            all_albums_url = "https://api.spotify.com/v1/albums"
-            response_album = requests.get(all_albums_url, headers=headers, params=query_album_params)
-
-            if response_album.status_code == 200:
-                all_albums_data = response_album.json()
-                print(all_albums_data['albums'][0]['artists'][0]['name'])
-                for artist_album in all_albums_data['albums']:
-                    scrape_album(headers, artist_album, indiv_id, language)
-                        
-            else:
-                print("Error ", response_artist_albums.status_code, " on individual album level: ", album_id)
-                return None
-                        
-        elif response_artist_albums.status_code == 401:
-            print("Authorization code expired")
-            return None
-        else:
-            # Handle the error if the request was unsuccessful
-            print("Error code:", response_artist_albums.status_code)
-            print("Failed on artist level")
-            return None
-        
-        if stop == 0:
-            Input_Artist.objects.filter(artist_id__iexact = indiv_id).update(done=1)
-
     print('All other albums...')
 
     for s in range(0, len(other_album_ids)):
@@ -456,8 +398,11 @@ def get_albums_data():
         if response_other_album.status_code == 200:
             other_album_data = response_other_album.json()
 
+            album_indiv_id = other_album_data['id']
             indiv_id = other_album_data['artists'][0]['id']
-            
+
+            Album.objects.filter(album_id=album_indiv_id).delete()
+
             artist_url = f"https://api.spotify.com/v1/artists/{indiv_id}"
 
             response_artist = requests.get(artist_url, headers=headers)
@@ -471,12 +416,83 @@ def get_albums_data():
             else:
                 print(response_artist.status_code)
 
-            scrape_album(headers, other_album_data, indiv_id, language)
+            scrape_album(headers, other_album_data, indiv_id, language, last_access_time)
 
             Input_Album.objects.filter(album_id__iexact = other_album_data['id']).update(done=1)
 
         else: 
             print("Error code:", response_artist.status_code)
+
+        # Start by iterating over all the artists I want to include
+    for i in range(0,len(artist_ids)):
+        if stop == 1:
+            break
+        if time.time() - last_access_time > 3200:
+            access_token = get_access_token(client_id, client_secret)
+            last_access_time = time.time()
+
+        headers = {
+            "Authorization": f"Bearer {access_token}"
+        }
+        
+        time.sleep(8)
+
+        language = "English"
+
+        indiv_id = artist_ids[i]
+        if indiv_id in spanish_ids:
+            language = "Spanish"
+
+        # If the artist already exists in the database, delete their albums
+        try:
+            temp_artist = Artist.objects.get(artist_id=indiv_id)
+            Album.objects.filter(primary_artist=temp_artist.name).delete()
+        except:
+            x = 0
+
+        artist_albums_url = f"https://api.spotify.com/v1/artists/{indiv_id}/albums?include_groups=album" # filter out singles, comps, etc.
+
+        # Make a GET request to get the album data
+        response_artist_albums = requests.get(artist_albums_url, headers=headers)
+
+        # Check if the request was successful
+        if response_artist_albums.status_code == 200:
+            # Parse the response JSON to access the album data
+            artist_data = response_artist_albums.json()
+            all_album_ids = []
+            for j in range(0,len(artist_data['items'])):
+                album_id = artist_data['items'][j]['id']
+                if album_id not in omit_album_ids:
+                    all_album_ids.append(album_id)
+
+            query_album_params = {"ids": ",".join(all_album_ids)}
+            all_albums_url = "https://api.spotify.com/v1/albums"
+            response_album = requests.get(all_albums_url, headers=headers, params=query_album_params)
+
+            #print(all_album_ids)
+
+            if response_album.status_code == 200:
+                all_albums_data = response_album.json()
+                print(all_albums_data['albums'][0]['artists'][0]['name'])
+                for artist_album in all_albums_data['albums']:
+                    scrape_album(headers, artist_album, indiv_id, language, last_access_time)
+              
+            elif response_album.status_code == 401:
+                print("Authorization code expired")
+                return None
+            else:
+                print("Error ", response_album.status_code, " on individual album level")
+                return None
+                      
+        else:
+            # Handle the error if the request was unsuccessful
+            print("Error code:", response_artist_albums.status_code)
+            print("Failed on artist level")
+            return None
+        
+        if stop == 0:
+            Input_Artist.objects.filter(artist_id__iexact = indiv_id).update(done=1)
+
 
     """ lists_names = ['high acousticness','high danceability','high energy','high instrumentalness',
                    'high loudness','high mode','high speechiness','high tempo','high valence',

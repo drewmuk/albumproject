@@ -1,10 +1,12 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth import logout, authenticate, login
+from django.contrib.auth import logout, authenticate, login, update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.utils import timezone
 from django.core.cache import cache
 from django_ratelimit.decorators import ratelimit
+from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib import messages
 from django.urls import reverse
 import re
 
@@ -93,12 +95,13 @@ access_token = get_access_token(client_id, client_secret)
 headers = {
     "Authorization": f"Bearer {access_token}"
 }
+from django.db.models import Count
 
 def home_page(request):
     print(song_data.groupby(0).size().sort_values(ascending=False).head(15))
 
-    #deleted_count, _ = Song.objects.filter(primary_artist="Julieta Venegas").delete()
-    
+    #deleted_count, _ = Song.objects.filter(primary_artist="test").delete()
+        
     logged_in = False
     try:
         tokens = SpotifyToken.objects.filter(user=request.user)
@@ -165,6 +168,22 @@ def sign_up(request):
         
     else:
         return render(request, 'sign_up.html')
+    
+def change_password(request):
+    if request.method == 'POST':
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user)  # Important to update the session with the new password
+            messages.success(request, 'Your password was successfully updated!')
+            return redirect('change_password')
+        else:
+            messages.error(request, 'Please correct the error below.')
+    else:
+        form = PasswordChangeForm(request.user)
+    return render(request, 'change_password.html', {
+        'form': form
+    })
     
 def profile_display(request):
     return render(request, 'profile_home.html')
