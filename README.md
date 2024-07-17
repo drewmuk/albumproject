@@ -1,0 +1,1 @@
+Data engineering project to find the most similar albums to Spotify users' top songs using statistical algorithms. This website also provides a database for users to catalog, view, and share albums for future listening. I used the Spotify API to scrape data on 5,000+ albums, 5,000+ artists, and 10,000+ songs.
